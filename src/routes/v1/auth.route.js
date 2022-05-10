@@ -14,6 +14,8 @@ router.post('/forgot-password', validate(authValidation.forgotPassword), authCon
 router.post('/reset-password', validate(authValidation.resetPassword), authController.resetPassword);
 router.post('/send-verification-email', auth(), authController.sendVerificationEmail);
 router.post('/verify-email', validate(authValidation.verifyEmail), authController.verifyEmail);
+router.post('/start-session', validate(authValidation.startSession), authController.startSession);
+router.post('/authenticate', validate(authValidation.authenticate), authController.authenticate);
 
 module.exports = router;
 
@@ -288,4 +290,106 @@ module.exports = router;
  *             example:
  *               code: 401
  *               message: verify email failed
+ */
+
+/**
+ * @swagger
+ * /auth/start-session:
+ *   post:
+ *     summary: start session
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - token
+ *               - address
+ *             properties:
+ *               token:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *             example:
+ *               token: 428489af-3ca1-4861-b1c7-5f634f6466e2
+ *               address: "0xFf893698faC953dBbCdC3276e8aD13ed3267fB06"
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               required:
+ *                 - success
+ *                 - data
+ *               properties:
+ *                 success:
+ *                   type: bool
+ *                 data:
+ *                   type: object
+ *                   required:
+ *                     - nonce
+ *                   properties:
+ *                     nonce:
+ *                       type: string
+ *               example:
+ *                 success: true
+ *                 data:
+ *                   nonce: signin-0652c409-17ef-4ad6-b580-3faaefcc204d
+ *       "400":
+ *         $ref: '#/components/responses/Fail'
+ */
+
+/**
+ * @swagger
+ * /auth/authenticate:
+ *   post:
+ *     summary: authenticate
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - token
+ *               - signature
+ *             properties:
+ *               token:
+ *                 type: string
+ *               signature:
+ *                 type: string
+ *             example:
+ *               token: 428489af-3ca1-4861-b1c7-5f634f6466e2
+ *               signature: "0xe0434ea8ff5123a570b6b7e5f1b837af4524372d4552021bfcede66219abe00c376a8c8417299be23938b9644ba922ffd36bbbdd1cdf15719da9b2af9affdec601"
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               required:
+ *                 - success
+ *                 - data
+ *               properties:
+ *                 success:
+ *                   type: bool
+ *                 data:
+ *                   type: object
+ *                   required:
+ *                     - authenticated
+ *                   properties:
+ *                     nonce:
+ *                       type: bool
+ *               example:
+ *                 success: true
+ *                 data:
+ *                   authenticated: true
+ *       "400":
+ *         $ref: '#/components/responses/Fail'
  */

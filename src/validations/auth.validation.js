@@ -49,6 +49,20 @@ const verifyEmail = {
   }),
 };
 
+const startSession = {
+  body: Joi.object().keys({
+    token: Joi.string().required(),
+    address: Joi.string().required(),
+  }),
+};
+
+const authenticate = {
+  body: Joi.object().keys({
+    token: Joi.string().required(),
+    signature: Joi.string().required(),
+  }),
+};
+
 module.exports = {
   register,
   login,
@@ -57,4 +71,6 @@ module.exports = {
   forgotPassword,
   resetPassword,
   verifyEmail,
+  startSession,
+  authenticate,
 };

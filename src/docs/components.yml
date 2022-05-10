@@ -47,6 +47,14 @@ components:
         message:
           type: string
 
+    Fail:
+      type: object
+      properties:
+        success:
+          type: bool
+        error:
+          type: string
+
   responses:
     DuplicateEmail:
       description: Email already taken
@@ -84,6 +92,15 @@ components:
           example:
             code: 404
             message: Not found
+    Fail:
+      description: Fail
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Fail'
+          example:
+            code: 400
+            message: Fail
 
   securitySchemes:
     bearerAuth:
