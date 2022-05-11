@@ -165,8 +165,8 @@ module.exports = router;
  *                 success: true
  *                 data:
  *                   nonce: signin-0652c409-17ef-4ad6-b580-3faaefcc204d
- *       "400":
- *         $ref: '#/components/responses/Fail'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
  */
 
 /**
@@ -216,6 +216,6 @@ module.exports = router;
  *                 success: true
  *                 data:
  *                   authenticated: true
- *       "400":
- *         $ref: '#/components/responses/Fail'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
  */
