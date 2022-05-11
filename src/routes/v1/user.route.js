@@ -3,19 +3,20 @@ const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const userValidation = require('../../validations/user.validation');
 const userController = require('../../controllers/user.controller');
+const { lowercaseAddress } = require('../../middlewares/user');
 
 const router = express.Router();
 
 router
   .route('/')
-  .post(auth('manageUsers'), validate(userValidation.createUser), userController.createUser)
+  .post(auth('manageUsers'), validate(userValidation.createUser), lowercaseAddress, userController.createUser)
   .get(auth('getUsers'), validate(userValidation.getUsers), userController.getUsers);
 
 router
-  .route('/:userId')
-  .get(auth('getUsers'), validate(userValidation.getUser), userController.getUser)
-  .patch(auth('manageUsers'), validate(userValidation.updateUser), userController.updateUser)
-  .delete(auth('manageUsers'), validate(userValidation.deleteUser), userController.deleteUser);
+  .route('/:address')
+  .get(auth('getUsers'), validate(userValidation.getUser), lowercaseAddress, userController.getUser)
+  .patch(auth('manageUsers'), validate(userValidation.updateUser), lowercaseAddress, userController.updateUser)
+  .delete(auth('manageUsers'), validate(userValidation.deleteUser), lowercaseAddress, userController.deleteUser);
 
 module.exports = router;
 
@@ -43,28 +44,20 @@ module.exports = router;
  *             type: object
  *             required:
  *               - name
- *               - email
- *               - password
+ *               - address
  *               - role
  *             properties:
  *               name:
  *                 type: string
- *               email:
+ *               address:
  *                 type: string
- *                 format: email
  *                 description: must be unique
- *               password:
- *                 type: string
- *                 format: password
- *                 minLength: 8
- *                 description: At least one number and one letter
  *               role:
  *                  type: string
  *                  enum: [user, admin]
  *             example:
  *               name: fake name
- *               email: fake@example.com
- *               password: password1
+ *               address: "0xFf893698faC953dBbCdC3276e8aD13ed3267fB06"
  *               role: user
  *     responses:
  *       "201":
@@ -74,7 +67,7 @@ module.exports = router;
  *             schema:
  *                $ref: '#/components/schemas/User'
  *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
+ *         $ref: '#/components/responses/DuplicateAddress'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -198,19 +191,12 @@ module.exports = router;
  *             properties:
  *               name:
  *                 type: string
- *               email:
+ *               address:
  *                 type: string
- *                 format: email
  *                 description: must be unique
- *               password:
- *                 type: string
- *                 format: password
- *                 minLength: 8
- *                 description: At least one number and one letter
  *             example:
  *               name: fake name
- *               email: fake@example.com
- *               password: password1
+ *               address: "0xFf893698faC953dBbCdC3276e8aD13ed3267fB06"
  *     responses:
  *       "200":
  *         description: OK
@@ -219,7 +205,7 @@ module.exports = router;
  *             schema:
  *                $ref: '#/components/schemas/User'
  *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
+ *         $ref: '#/components/responses/DuplicateAddress'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":

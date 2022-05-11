@@ -33,18 +33,12 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - email
- *               - password
+ *               - address
  *             properties:
- *               email:
+ *               address:
  *                 type: string
- *                 format: email
- *               password:
- *                 type: string
- *                 format: password
  *             example:
- *               email: fake@example.com
- *               password: password1
+ *               address: "0xFf893698faC953dBbCdC3276e8aD13ed3267fB06"
  *     responses:
  *       "200":
  *         description: OK
@@ -58,14 +52,14 @@ module.exports = router;
  *                 tokens:
  *                   $ref: '#/components/schemas/AuthTokens'
  *       "401":
- *         description: Invalid email or password
+ *         description: Invalid token
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Error'
  *             example:
  *               code: 401
- *               message: Invalid email or password
+ *               message: Invalid token
  */
 
 /**

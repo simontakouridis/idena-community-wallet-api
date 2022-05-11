@@ -11,17 +11,35 @@ const { tokenTypes } = require('../config/tokens');
 const { idenaAuthStatusTypes, idenaAuthExpiresMinutes } = require('../config/idenaAuth');
 
 /**
- * Login with username and password
- * @param {string} email
- * @param {string} password
+ * Login with idenaAuthToken
+ * @param {string} idenaAuthToken
  * @returns {Promise<User>}
  */
-const loginUserWithEmailAndPassword = async (email, password) => {
-  const user = await userService.getUserByEmail(email);
-  if (!user || !(await user.isPasswordMatch(password))) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect email or password');
+const loginUserWithToken = async (idenaAuthToken) => {
+  try {
+    const idenaAuthDoc = await IdenaAuth.findOne({ idenaAuthToken, status: idenaAuthStatusTypes.SUCCESS });
+    if (!idenaAuthDoc || (await idenaAuthDoc.isTokenExpired())) {
+      throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect or expired token');
+    }
+    idenaAuthDoc.status = idenaAuthStatusTypes.CONSUMED;
+    await idenaAuthDoc.save();
+
+    let user = await userService.getUserByAddress(idenaAuthDoc.userAddress.toLowerCase());
+    if (!user) {
+      user = await userService.createUser({
+        name: 'unnamed',
+        address: idenaAuthDoc.userAddress.toLowerCase(),
+        role: 'user',
+        isAddressVerified: true,
+      });
+    }
+    return user;
+  } catch (error) {
+    if (error instanceof ApiError) {
+      throw error;
+    }
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Error with login');
   }
-  return user;
 };
 
 /**
@@ -89,10 +107,13 @@ const getIdenaAuthDoc = async (idenaAuthToken) => {
 
   try {
     idenaAuthDoc = await IdenaAuth.findOne({ idenaAuthToken, status: idenaAuthStatusTypes.ISSUED });
-    if (!idenaAuthDoc || new Date(idenaAuthDoc.expires).getTime() < new Date().getTime()) {
-      throw new Error();
+    if (!idenaAuthDoc || (await idenaAuthDoc.isTokenExpired())) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Incorrect or expired token');
     }
   } catch (error) {
+    if (error instanceof ApiError) {
+      throw error;
+    }
     throw new ApiError(httpStatus.BAD_REQUEST, 'This is a error message');
   }
   return idenaAuthDoc;
@@ -106,12 +127,16 @@ const getIdenaAuthDoc = async (idenaAuthToken) => {
  * @returns {bool}
  */
 const verifyAuthenticated = (nonce, address, signature) => {
-  const nonceHash = keccak256(keccak256(Buffer.from(nonce, 'utf-8')));
-  const { v, r, s } = fromRpcSig(signature);
-  const pubKey = ecrecover(nonceHash, v, r, s);
-  const addrBuf = pubToAddress(pubKey);
-  const signatureAddress = bufferToHex(addrBuf);
-  return signatureAddress === address;
+  try {
+    const nonceHash = keccak256(keccak256(Buffer.from(nonce, 'utf-8')));
+    const { v, r, s } = fromRpcSig(signature);
+    const pubKey = ecrecover(nonceHash, v, r, s);
+    const addrBuf = pubToAddress(pubKey);
+    const signatureAddress = bufferToHex(addrBuf);
+    return signatureAddress === address;
+  } catch (error) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Error with signature verification');
+  }
 };
 
 /**
@@ -128,7 +153,7 @@ const updateIdenaAuthDoc = async (idenaAuthToken, authenticated) => {
 };
 
 module.exports = {
-  loginUserWithEmailAndPassword,
+  loginUserWithToken,
   logout,
   refreshAuth,
   startSession,

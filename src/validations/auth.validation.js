@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const { validateAddress } = require('./custom.validation');
 
 const login = {
   body: Joi.object().keys({
@@ -21,7 +22,7 @@ const refreshTokens = {
 const startSession = {
   body: Joi.object().keys({
     token: Joi.string().required(),
-    address: Joi.string().required(),
+    address: Joi.string().required().custom(validateAddress),
   }),
 };
 

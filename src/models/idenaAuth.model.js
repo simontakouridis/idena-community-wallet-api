@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { isValidChecksumAddress } = require('ethereumjs-util');
 const { toJSON } = require('./plugins');
 const { idenaAuthStatusTypes } = require('../config/idenaAuth');
 
@@ -12,6 +13,12 @@ const idenaAuthSchema = mongoose.Schema(
     userAddress: {
       type: String,
       required: true,
+      trim: true,
+      validate(value) {
+        if (!isValidChecksumAddress(value)) {
+          throw new Error('Invalid checksum address');
+        }
+      },
     },
     nonce: {
       type: String,
@@ -23,7 +30,7 @@ const idenaAuthSchema = mongoose.Schema(
     },
     status: {
       type: String,
-      enum: [idenaAuthStatusTypes.ISSUED, idenaAuthStatusTypes.SUCCESS, idenaAuthStatusTypes.FAIL],
+      enum: [idenaAuthStatusTypes.ISSUED, idenaAuthStatusTypes.SUCCESS, idenaAuthStatusTypes.FAIL, idenaAuthStatusTypes.CONSUMED],
       required: true,
     },
   },
@@ -34,6 +41,15 @@ const idenaAuthSchema = mongoose.Schema(
 
 // add plugin that converts mongoose to json
 idenaAuthSchema.plugin(toJSON);
+
+/**
+ * Check if token expired
+ * @returns {Promise<boolean>}
+ */
+idenaAuthSchema.methods.isTokenExpired = async function () {
+  const idenaAuthDoc = this;
+  return new Date(idenaAuthDoc.expires).getTime() < new Date().getTime();
+};
 
 /**
  * @typedef IdenaAuth
