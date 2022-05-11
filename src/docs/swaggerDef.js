@@ -8,7 +8,7 @@ const swaggerDef = {
     version,
     license: {
       name: 'MIT',
-      url: 'https://github.com/simontakouridis/node-boilerplate-idena-signin.git',
+      url: 'https://github.com/simontakouridis/node-boilerplate-idena-signin/blob/master/LICENSE',
     },
   },
   servers: [
