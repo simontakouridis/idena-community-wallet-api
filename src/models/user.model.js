@@ -52,14 +52,6 @@ userSchema.statics.isAddressTaken = async function (address, excludeUserId) {
   return !!user;
 };
 
-userSchema.pre('save', async function (next) {
-  const user = this;
-  if (user.isModified('address')) {
-    user.address = user.address.toLowerCase();
-  }
-  next();
-});
-
 /**
  * @typedef User
  */

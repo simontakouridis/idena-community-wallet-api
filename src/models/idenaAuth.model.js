@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { isValidChecksumAddress } = require('ethereumjs-util');
+const { isValidAddress } = require('ethereumjs-util');
 const { toJSON } = require('./plugins');
 const { idenaAuthStatusTypes } = require('../config/idenaAuth');
 
@@ -15,7 +15,7 @@ const idenaAuthSchema = mongoose.Schema(
       required: true,
       trim: true,
       validate(value) {
-        if (!isValidChecksumAddress(value)) {
+        if (!isValidAddress(value)) {
           throw new Error('Invalid checksum address');
         }
       },

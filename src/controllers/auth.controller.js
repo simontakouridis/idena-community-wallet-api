@@ -28,11 +28,6 @@ const startSession = catchAsync(async (req, res) => {
 const authenticate = catchAsync(async (req, res) => {
   const { token: idenaAuthToken, signature } = req.body;
   const { userAddress, nonce } = await authService.getIdenaAuthDoc(idenaAuthToken);
-  // temporary logs
-  console.log('🚀 ~ signature', signature);
-  console.log('🚀 ~ idenaAuthToken', idenaAuthToken);
-  console.log('🚀 ~ nonce', nonce);
-  console.log('🚀 ~ userAddress', userAddress);
   const authenticated = authService.verifyAuthenticated(nonce, userAddress, signature);
   await authService.updateIdenaAuthDoc(idenaAuthToken, authenticated);
   res.send({ success: true, data: { authenticated } });

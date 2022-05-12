@@ -2,13 +2,14 @@ const express = require('express');
 const validate = require('../../middlewares/validate');
 const authValidation = require('../../validations/auth.validation');
 const authController = require('../../controllers/auth.controller');
+const { lowercaseAddress } = require('../../middlewares/user');
 
 const router = express.Router();
 
 router.post('/login', validate(authValidation.login), authController.login);
 router.post('/logout', validate(authValidation.logout), authController.logout);
 router.post('/refresh-tokens', validate(authValidation.refreshTokens), authController.refreshTokens);
-router.post('/start-session', validate(authValidation.startSession), authController.startSession);
+router.post('/start-session', validate(authValidation.startSession), lowercaseAddress, authController.startSession);
 router.post('/authenticate', validate(authValidation.authenticate), authController.authenticate);
 
 module.exports = router;
@@ -33,12 +34,12 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - address
+ *               - idenaAuthToken
  *             properties:
- *               address:
+ *               idenaAuthToken:
  *                 type: string
  *             example:
- *               address: "0xFf893698faC953dBbCdC3276e8aD13ed3267fB06"
+ *               address: 428489af-3ca1-4861-b1c7-5f634f6466e2
  *     responses:
  *       "200":
  *         description: OK

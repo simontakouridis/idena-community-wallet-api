@@ -24,11 +24,11 @@ const loginUserWithToken = async (idenaAuthToken) => {
     idenaAuthDoc.status = idenaAuthStatusTypes.CONSUMED;
     await idenaAuthDoc.save();
 
-    let user = await userService.getUserByAddress(idenaAuthDoc.userAddress.toLowerCase());
+    let user = await userService.getUserByAddress(idenaAuthDoc.userAddress);
     if (!user) {
       user = await userService.createUser({
         name: 'unnamed',
-        address: idenaAuthDoc.userAddress.toLowerCase(),
+        address: idenaAuthDoc.userAddress,
         role: 'user',
         isAddressVerified: true,
       });
@@ -84,19 +84,11 @@ const startSession = async (idenaAuthToken, userAddress) => {
   const nonce = `signin-${uuidv4()}`;
   const idenaAuthTokenExpires = moment().add(idenaAuthExpiresMinutes, 'minutes');
   try {
-    // temporary logs
-    console.log('🚀 ~ userAddress', userAddress);
-    console.log('🚀 ~ idenaAuthToken', idenaAuthToken);
-    console.log('🚀 ~ nonce', nonce);
-    console.log('🚀 ~ idenaAuthTokenExpires.toDate()', idenaAuthTokenExpires.toDate());
-    console.log('🚀 ~ idenaAuthStatusTypes.ISSUED', idenaAuthStatusTypes.ISSUED);
     await IdenaAuth.create({
       idenaAuthToken,
       userAddress,
       nonce,
-
       expires: idenaAuthTokenExpires.toDate(),
-
       status: idenaAuthStatusTypes.ISSUED,
     });
   } catch (error) {
