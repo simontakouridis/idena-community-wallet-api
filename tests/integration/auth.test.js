@@ -53,7 +53,7 @@ describe('Auth routes', () => {
       await insertIdenaAuths([idenaAuthIssued]);
       const requestBody = {
         token: idenaAuthIssued.idenaAuthToken,
-        signature: '0xe0434ea8ff5123a570b6b7e5f1b837af4524372d4552021bfcede66219abe00c376a8c8417299be23938b9644ba922ffd36bbbdd1cdf15719da9b2af9affdec601',
+        signature: '0xce301a22ea888f6c60c01ac4e9ea65a817036b76ab1cb625917d9cceda19a5541628691c8981647e2deb4c2f74c68b1d8875cffbb68cfeb38eca26bcb82b488300',
       };
 
       const res = await request(app).post('/v1/auth/authenticate').send(requestBody).expect(httpStatus.OK);

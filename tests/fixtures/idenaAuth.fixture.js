@@ -6,9 +6,9 @@ const { idenaAuthStatusTypes, idenaAuthExpiresMinutes } = require('../../src/con
 
 const idenaAuthIssued = {
   _id: mongoose.Types.ObjectId(),
-  idenaAuthToken: '428489af-3ca1-4861-b1c7-5f634f6466e2',
-  userAddress: '0xFf893698faC953dBbCdC3276e8aD13ed3267fB06',
-  nonce: `signin-${faker.datatype.uuid()}`,
+  idenaAuthToken: 'e56513c6-ffb6-4b97-95db-59e72cf12a64',
+  userAddress: '0x0f28f51f0cea481a5e52c00f88109ebb4f793009',
+  nonce: 'signin-b5c1378f-daba-465a-8992-1513ec723de9',
   expires: moment().add(idenaAuthExpiresMinutes, 'minutes').toDate(),
   status: idenaAuthStatusTypes.ISSUED,
 };
