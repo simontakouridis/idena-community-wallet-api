@@ -84,15 +84,23 @@ const startSession = async (idenaAuthToken, userAddress) => {
   const nonce = `signin-${uuidv4()}`;
   const idenaAuthTokenExpires = moment().add(idenaAuthExpiresMinutes, 'minutes');
   try {
+    // temporary logs
+    console.log('🚀 ~ userAddress', userAddress);
+    console.log('🚀 ~ idenaAuthToken', idenaAuthToken);
+    console.log('🚀 ~ nonce', nonce);
+    console.log('🚀 ~ idenaAuthTokenExpires.toDate()', idenaAuthTokenExpires.toDate());
+    console.log('🚀 ~ idenaAuthStatusTypes.ISSUED', idenaAuthStatusTypes.ISSUED);
     await IdenaAuth.create({
       idenaAuthToken,
       userAddress,
       nonce,
+
       expires: idenaAuthTokenExpires.toDate(),
+
       status: idenaAuthStatusTypes.ISSUED,
     });
   } catch (error) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'This is a error message');
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Error with idena authentication');
   }
   return nonce;
 };
@@ -114,7 +122,7 @@ const getIdenaAuthDoc = async (idenaAuthToken) => {
     if (error instanceof ApiError) {
       throw error;
     }
-    throw new ApiError(httpStatus.BAD_REQUEST, 'This is a error message');
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Error with getting idena session');
   }
   return idenaAuthDoc;
 };
@@ -148,7 +156,7 @@ const updateIdenaAuthDoc = async (idenaAuthToken, authenticated) => {
   try {
     await IdenaAuth.updateOne({ idenaAuthToken }, { status: authenticated ? idenaAuthStatusTypes.SUCCESS : idenaAuthStatusTypes.FAIL });
   } catch (error) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'This is a error message');
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Error with updating idena session.');
   }
 };
 
