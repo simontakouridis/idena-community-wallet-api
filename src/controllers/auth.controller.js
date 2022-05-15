@@ -1,16 +1,10 @@
 const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
-const { authService, userService, tokenService, emailService } = require('../services');
-
-const register = catchAsync(async (req, res) => {
-  const user = await userService.createUser(req.body);
-  const tokens = await tokenService.generateAuthTokens(user);
-  res.status(httpStatus.CREATED).send({ user, tokens });
-});
+const { authService, tokenService } = require('../services');
 
 const login = catchAsync(async (req, res) => {
-  const { email, password } = req.body;
-  const user = await authService.loginUserWithEmailAndPassword(email, password);
+  const { idenaAuthToken } = req.body;
+  const user = await authService.loginUserWithToken(idenaAuthToken);
   const tokens = await tokenService.generateAuthTokens(user);
   res.send({ user, tokens });
 });
@@ -25,35 +19,24 @@ const refreshTokens = catchAsync(async (req, res) => {
   res.send({ ...tokens });
 });
 
-const forgotPassword = catchAsync(async (req, res) => {
-  const resetPasswordToken = await tokenService.generateResetPasswordToken(req.body.email);
-  await emailService.sendResetPasswordEmail(req.body.email, resetPasswordToken);
-  res.status(httpStatus.NO_CONTENT).send();
+const startSession = catchAsync(async (req, res) => {
+  const { token: idenaAuthToken, address } = req.body;
+  const nonce = await authService.startSession(idenaAuthToken, address);
+  res.send({ success: true, data: { nonce } });
 });
 
-const resetPassword = catchAsync(async (req, res) => {
-  await authService.resetPassword(req.query.token, req.body.password);
-  res.status(httpStatus.NO_CONTENT).send();
-});
-
-const sendVerificationEmail = catchAsync(async (req, res) => {
-  const verifyEmailToken = await tokenService.generateVerifyEmailToken(req.user);
-  await emailService.sendVerificationEmail(req.user.email, verifyEmailToken);
-  res.status(httpStatus.NO_CONTENT).send();
-});
-
-const verifyEmail = catchAsync(async (req, res) => {
-  await authService.verifyEmail(req.query.token);
-  res.status(httpStatus.NO_CONTENT).send();
+const authenticate = catchAsync(async (req, res) => {
+  const { token: idenaAuthToken, signature } = req.body;
+  const { userAddress, nonce } = await authService.getIdenaAuthDoc(idenaAuthToken);
+  const authenticated = authService.verifyAuthenticated(nonce, userAddress, signature);
+  await authService.updateIdenaAuthDoc(idenaAuthToken, authenticated);
+  res.send({ success: true, data: { authenticated } });
 });
 
 module.exports = {
-  register,
   login,
   logout,
   refreshTokens,
-  forgotPassword,
-  resetPassword,
-  sendVerificationEmail,
-  verifyEmail,
+  startSession,
+  authenticate,
 };

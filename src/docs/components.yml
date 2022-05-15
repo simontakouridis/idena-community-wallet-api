@@ -5,9 +5,8 @@ components:
       properties:
         id:
           type: string
-        email:
+        address:
           type: string
-          format: email
         name:
           type: string
         role:
@@ -15,7 +14,7 @@ components:
           enum: [user, admin]
       example:
         id: 5ebac534954b54139806c112
-        email: fake@example.com
+        address: '0xFf893698faC953dBbCdC3276e8aD13ed3267fB06'
         name: fake name
         role: user
 
@@ -48,15 +47,15 @@ components:
           type: string
 
   responses:
-    DuplicateEmail:
-      description: Email already taken
+    DuplicateAddress:
+      description: Address already taken
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
           example:
             code: 400
-            message: Email already taken
+            message: Address already taken
     Unauthorized:
       description: Unauthorized
       content:

@@ -2,18 +2,15 @@ const express = require('express');
 const validate = require('../../middlewares/validate');
 const authValidation = require('../../validations/auth.validation');
 const authController = require('../../controllers/auth.controller');
-const auth = require('../../middlewares/auth');
+const { lowercaseAddress } = require('../../middlewares/user');
 
 const router = express.Router();
 
-router.post('/register', validate(authValidation.register), authController.register);
 router.post('/login', validate(authValidation.login), authController.login);
 router.post('/logout', validate(authValidation.logout), authController.logout);
 router.post('/refresh-tokens', validate(authValidation.refreshTokens), authController.refreshTokens);
-router.post('/forgot-password', validate(authValidation.forgotPassword), authController.forgotPassword);
-router.post('/reset-password', validate(authValidation.resetPassword), authController.resetPassword);
-router.post('/send-verification-email', auth(), authController.sendVerificationEmail);
-router.post('/verify-email', validate(authValidation.verifyEmail), authController.verifyEmail);
+router.post('/start-session', validate(authValidation.startSession), lowercaseAddress, authController.startSession);
+router.post('/authenticate', validate(authValidation.authenticate), authController.authenticate);
 
 module.exports = router;
 
@@ -22,54 +19,6 @@ module.exports = router;
  * tags:
  *   name: Auth
  *   description: Authentication
- */
-
-/**
- * @swagger
- * /auth/register:
- *   post:
- *     summary: Register as user
- *     tags: [Auth]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - name
- *               - email
- *               - password
- *             properties:
- *               name:
- *                 type: string
- *               email:
- *                 type: string
- *                 format: email
- *                 description: must be unique
- *               password:
- *                 type: string
- *                 format: password
- *                 minLength: 8
- *                 description: At least one number and one letter
- *             example:
- *               name: fake name
- *               email: fake@example.com
- *               password: password1
- *     responses:
- *       "201":
- *         description: Created
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 user:
- *                   $ref: '#/components/schemas/User'
- *                 tokens:
- *                   $ref: '#/components/schemas/AuthTokens'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  */
 
 /**
@@ -85,18 +34,12 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - email
- *               - password
+ *               - idenaAuthToken
  *             properties:
- *               email:
+ *               idenaAuthToken:
  *                 type: string
- *                 format: email
- *               password:
- *                 type: string
- *                 format: password
  *             example:
- *               email: fake@example.com
- *               password: password1
+ *               address: 428489af-3ca1-4861-b1c7-5f634f6466e2
  *     responses:
  *       "200":
  *         description: OK
@@ -110,14 +53,14 @@ module.exports = router;
  *                 tokens:
  *                   $ref: '#/components/schemas/AuthTokens'
  *       "401":
- *         description: Invalid email or password
+ *         description: Invalid token
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Error'
  *             example:
  *               code: 401
- *               message: Invalid email or password
+ *               message: Invalid token
  */
 
 /**
@@ -178,10 +121,9 @@ module.exports = router;
 
 /**
  * @swagger
- * /auth/forgot-password:
+ * /auth/start-session:
  *   post:
- *     summary: Forgot password
- *     description: An email will be sent to reset password.
+ *     summary: start session
  *     tags: [Auth]
  *     requestBody:
  *       required: true
@@ -190,33 +132,50 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - email
+ *               - token
+ *               - address
  *             properties:
- *               email:
+ *               token:
  *                 type: string
- *                 format: email
+ *               address:
+ *                 type: string
  *             example:
- *               email: fake@example.com
+ *               token: 428489af-3ca1-4861-b1c7-5f634f6466e2
+ *               address: "0xFf893698faC953dBbCdC3276e8aD13ed3267fB06"
  *     responses:
- *       "204":
- *         description: No content
- *       "404":
- *         $ref: '#/components/responses/NotFound'
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               required:
+ *                 - success
+ *                 - data
+ *               properties:
+ *                 success:
+ *                   type: bool
+ *                 data:
+ *                   type: object
+ *                   required:
+ *                     - nonce
+ *                   properties:
+ *                     nonce:
+ *                       type: string
+ *               example:
+ *                 success: true
+ *                 data:
+ *                   nonce: signin-0652c409-17ef-4ad6-b580-3faaefcc204d
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
  */
 
 /**
  * @swagger
- * /auth/reset-password:
+ * /auth/authenticate:
  *   post:
- *     summary: Reset password
+ *     summary: authenticate
  *     tags: [Auth]
- *     parameters:
- *       - in: query
- *         name: token
- *         required: true
- *         schema:
- *           type: string
- *         description: The reset password token
  *     requestBody:
  *       required: true
  *       content:
@@ -224,68 +183,40 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - password
+ *               - token
+ *               - signature
  *             properties:
- *               password:
+ *               token:
  *                 type: string
- *                 format: password
- *                 minLength: 8
- *                 description: At least one number and one letter
+ *               signature:
+ *                 type: string
  *             example:
- *               password: password1
+ *               token: 428489af-3ca1-4861-b1c7-5f634f6466e2
+ *               signature: "0xe0434ea8ff5123a570b6b7e5f1b837af4524372d4552021bfcede66219abe00c376a8c8417299be23938b9644ba922ffd36bbbdd1cdf15719da9b2af9affdec601"
  *     responses:
- *       "204":
- *         description: No content
- *       "401":
- *         description: Password reset failed
+ *       "200":
+ *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Error'
- *             example:
- *               code: 401
- *               message: Password reset failed
- */
-
-/**
- * @swagger
- * /auth/send-verification-email:
- *   post:
- *     summary: Send verification email
- *     description: An email will be sent to verify email.
- *     tags: [Auth]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       "204":
- *         description: No content
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- */
-
-/**
- * @swagger
- * /auth/verify-email:
- *   post:
- *     summary: verify email
- *     tags: [Auth]
- *     parameters:
- *       - in: query
- *         name: token
- *         required: true
- *         schema:
- *           type: string
- *         description: The verify email token
- *     responses:
- *       "204":
- *         description: No content
- *       "401":
- *         description: verify email failed
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *             example:
- *               code: 401
- *               message: verify email failed
+ *               type: object
+ *               required:
+ *                 - success
+ *                 - data
+ *               properties:
+ *                 success:
+ *                   type: bool
+ *                 data:
+ *                   type: object
+ *                   required:
+ *                     - authenticated
+ *                   properties:
+ *                     nonce:
+ *                       type: bool
+ *               example:
+ *                 success: true
+ *                 data:
+ *                   authenticated: true
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
  */

@@ -8,8 +8,8 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<User>}
  */
 const createUser = async (userBody) => {
-  if (await User.isEmailTaken(userBody.email)) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+  if (await User.isAddressTaken(userBody.address)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Address already taken');
   }
   return User.create(userBody);
 };
@@ -38,15 +38,6 @@ const getUserById = async (id) => {
 };
 
 /**
- * Get user by email
- * @param {string} email
- * @returns {Promise<User>}
- */
-const getUserByEmail = async (email) => {
-  return User.findOne({ email });
-};
-
-/**
  * Update user by id
  * @param {ObjectId} userId
  * @param {Object} updateBody
@@ -57,8 +48,8 @@ const updateUserById = async (userId, updateBody) => {
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
-  if (updateBody.email && (await User.isEmailTaken(updateBody.email, userId))) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+  if (updateBody.address && (await User.isAddressTaken(updateBody.address, userId))) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Address already taken');
   }
   Object.assign(user, updateBody);
   await user.save();
@@ -79,11 +70,55 @@ const deleteUserById = async (userId) => {
   return user;
 };
 
+/**
+ * Get user by address
+ * @param {string} address
+ * @returns {Promise<User>}
+ */
+const getUserByAddress = async (address) => {
+  return User.findOne({ address });
+};
+
+/**
+ * Update user by address
+ * @param {string} address
+ * @param {Object} updateBody
+ * @returns {Promise<User>}
+ */
+const updateUserByAddress = async (address, updateBody) => {
+  const user = await getUserByAddress(address);
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+  }
+  if (updateBody.address && (await User.isAddressTaken(updateBody.address))) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Address already taken');
+  }
+  Object.assign(user, updateBody);
+  await user.save();
+  return user;
+};
+
+/**
+ * Delete user by address
+ * @param {ObjectId} address
+ * @returns {Promise<User>}
+ */
+const deleteUserByAddress = async (address) => {
+  const user = await getUserByAddress(address);
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+  }
+  await user.remove();
+  return user;
+};
+
 module.exports = {
   createUser,
   queryUsers,
   getUserById,
-  getUserByEmail,
   updateUserById,
   deleteUserById,
+  getUserByAddress,
+  updateUserByAddress,
+  deleteUserByAddress,
 };

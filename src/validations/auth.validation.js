@@ -1,18 +1,9 @@
 const Joi = require('joi');
-const { password } = require('./custom.validation');
-
-const register = {
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().custom(password),
-    name: Joi.string().required(),
-  }),
-};
+const { validateAddress } = require('./custom.validation');
 
 const login = {
   body: Joi.object().keys({
-    email: Joi.string().required(),
-    password: Joi.string().required(),
+    idenaAuthToken: Joi.string().required(),
   }),
 };
 
@@ -28,33 +19,24 @@ const refreshTokens = {
   }),
 };
 
-const forgotPassword = {
+const startSession = {
   body: Joi.object().keys({
-    email: Joi.string().email().required(),
+    token: Joi.string().required(),
+    address: Joi.string().required().custom(validateAddress),
   }),
 };
 
-const resetPassword = {
-  query: Joi.object().keys({
-    token: Joi.string().required(),
-  }),
+const authenticate = {
   body: Joi.object().keys({
-    password: Joi.string().required().custom(password),
-  }),
-};
-
-const verifyEmail = {
-  query: Joi.object().keys({
     token: Joi.string().required(),
+    signature: Joi.string().required(),
   }),
 };
 
 module.exports = {
-  register,
   login,
   logout,
   refreshTokens,
-  forgotPassword,
-  resetPassword,
-  verifyEmail,
+  startSession,
+  authenticate,
 };
