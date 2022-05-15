@@ -38,7 +38,7 @@ const loginUserWithToken = async (idenaAuthToken) => {
     if (error instanceof ApiError) {
       throw error;
     }
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Error with login');
+    throw new ApiError(httpStatus.BAD_REQUEST, `Error with login: ${error}`);
   }
 };
 
@@ -114,7 +114,7 @@ const getIdenaAuthDoc = async (idenaAuthToken) => {
     if (error instanceof ApiError) {
       throw error;
     }
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Error with getting idena session');
+    throw new ApiError(httpStatus.BAD_REQUEST, `Error with getting idena session: ${error}`);
   }
   return idenaAuthDoc;
 };
