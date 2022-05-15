@@ -141,7 +141,7 @@ module.exports = router;
 
 /**
  * @swagger
- * /users/{id}:
+ * /users/{address}:
  *   get:
  *     summary: Get a user
  *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
@@ -150,11 +150,11 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: address
  *         required: true
  *         schema:
  *           type: string
- *         description: User id
+ *         description: User address
  *     responses:
  *       "200":
  *         description: OK
@@ -177,11 +177,11 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: address
  *         required: true
  *         schema:
  *           type: string
- *         description: User id
+ *         description: User address
  *     requestBody:
  *       required: true
  *       content:
@@ -221,11 +221,11 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: address
  *         required: true
  *         schema:
  *           type: string
- *         description: User id
+ *         description: User address
  *     responses:
  *       "200":
  *         description: No content
