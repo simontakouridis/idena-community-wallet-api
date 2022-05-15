@@ -48,7 +48,7 @@ userSchema.plugin(paginate);
  * @returns {Promise<boolean>}
  */
 userSchema.statics.isAddressTaken = async function (address, excludeUserId) {
-  const user = await this.findOne({ address, _id: { $ne: excludeUserId } });
+  const user = await this.findOne({ address, ...(excludeUserId && { _id: { $ne: excludeUserId } }) });
   return !!user;
 };
 
