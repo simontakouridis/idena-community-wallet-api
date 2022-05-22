@@ -10,11 +10,11 @@ const router = express.Router();
 router
   .route('/')
   .post(auth('manageUsers'), validate(userValidation.createUser), lowercaseAddress, userController.createUser)
-  .get(auth('getUsers'), validate(userValidation.getUsers), userController.getUsers);
+  .get(validate(userValidation.getUsers), userController.getUsers);
 
 router
   .route('/:address')
-  .get(auth('getUsers'), validate(userValidation.getUser), lowercaseAddress, userController.getUser)
+  .get(validate(userValidation.getUser), lowercaseAddress, userController.getUser)
   .patch(auth('manageUsers'), validate(userValidation.updateUser), lowercaseAddress, userController.updateUser)
   .delete(auth('manageUsers'), validate(userValidation.deleteUser), lowercaseAddress, userController.deleteUser);
 
@@ -77,8 +77,6 @@ module.exports = router;
  *     summary: Get all users
  *     description: Only admins can retrieve all users.
  *     tags: [Users]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -146,8 +144,6 @@ module.exports = router;
  *     summary: Get a user
  *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
  *     tags: [Users]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: address

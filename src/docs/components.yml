@@ -12,11 +12,16 @@ components:
         role:
           type: string
           enum: [user, admin]
+        wallets:
+          type: array
+          items:
+            type: string
       example:
         id: 5ebac534954b54139806c112
         address: '0xFf893698faC953dBbCdC3276e8aD13ed3267fB06'
         name: fake name
         role: user
+        wallets: ['5ebac534954b54139806c113', '5ebac534954b54139806c114', '5ebac534954b54139806c115']
 
     Token:
       type: object
@@ -37,6 +42,102 @@ components:
           $ref: '#/components/schemas/Token'
         refresh:
           $ref: '#/components/schemas/Token'
+
+    Wallet:
+      type: object
+      properties:
+        id:
+          type: string
+        round:
+          type: number
+        address:
+          type: string
+        signatories:
+          type: array
+          items:
+            type: string
+          minItems: 5
+          maxItems: 5
+        transactions:
+          items:
+            type: string
+      example:
+        id: 5ebac534954b54139806c112
+        round: 0
+        address: '0xFf893698faC953dBbCdC3276e8aD13ed3267fB06'
+        signatories: ['0x110ce820803c73abfce80a4e57676d88c0fc3b44', '0xddb2d878800a1607442884598ac8e9c3fc273b6f', '0x7cf09d4f134eb514811538145292b75748d8d80c']
+        transactions: ['5ebac534954b54139806c116', '5ebac534954b54139806c117', '5ebac534954b54139806c118']
+
+    Proposal:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        oracle:
+          type: string
+        wallet:
+          type: string
+        accepted:
+          type: string
+          enum: [pending, yes, no]
+        status:
+          type: string
+          enum: [pending, funded, unfunded]
+        transaction:
+          type: string
+      example:
+        id: 5ebac534954b54139806c112
+        title: 'This is a title'
+        description: 'This is a description'
+        oracle: '0xa303f357b382dc042c8a4e28a0abf616189b6a79'
+        wallet: '0xedf870a142bcba372f74e8d4d083a336c95e4d5b'
+        accepted: pending
+        status: pending
+        transaction: 5ebac534954b54139806c119
+
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        category:
+          type: string
+          enum: [fundProposal, transferToNewWallet, payForOracle]
+        proposal:
+          type: string
+        wallet:
+          type: string
+        recipient:
+          type: string
+        amount:
+          type: number
+        sends:
+          type: array
+          items:
+            type: string
+        push:
+          type: string
+      example:
+        id: 5ebac534954b54139806c120
+        title: 'This is a title'
+        category: fundProposal
+        proposal: 5ebac534954b54139806c121
+        wallet: 5ebac534954b54139806c122
+        recipient: '0xd839ffd2e9b5cb0301665cc9437c2aaa7e863eef'
+        amount: 10
+        sends:
+          [
+            '0xe1bd6eb3d75f8fceabbe07b1a5f9b5d4c5702691d8d0c650e7523a4518a83748',
+            '0x21c53fe856364a1964009f05bd06e4f62c3b6cfd99bc522816d2338b685a64d8',
+            '0xbc2f6b0280755c4544b74362fe1fc75e739ca41ebe8919334b7dbad06602853b',
+          ]
+        push: '0x1f05ce48cf88e1737f3a1878252649f6b838583da9cf5138c08898c8c39f1586'
 
     Error:
       type: object

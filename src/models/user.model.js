@@ -31,6 +31,9 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    wallets: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wallet' }],
+    },
   },
   {
     timestamps: true,

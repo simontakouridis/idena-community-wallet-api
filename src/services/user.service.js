@@ -112,6 +112,15 @@ const deleteUserByAddress = async (address) => {
   return user;
 };
 
+/**
+ * Get user count
+ * @returns {Promise<number>}
+ */
+const getAdminUserCount = async () => {
+  const userCount = await User.countDocuments({ role: 'admin' });
+  return userCount;
+};
+
 module.exports = {
   createUser,
   queryUsers,
@@ -121,4 +130,5 @@ module.exports = {
   getUserByAddress,
   updateUserByAddress,
   deleteUserByAddress,
+  getAdminUserCount,
 };
