@@ -4,10 +4,6 @@ const { toJSON, paginate } = require('./plugins');
 
 const walletSchema = mongoose.Schema(
   {
-    round: {
-      type: Number,
-      required: true,
-    },
     address: {
       type: String,
       required: true,
@@ -20,7 +16,18 @@ const walletSchema = mongoose.Schema(
         }
       },
     },
-    signatories: {
+    author: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+      validate(value) {
+        if (!isValidAddress(value)) {
+          throw new Error('Invalid wallet author address');
+        }
+      },
+    },
+    signers: {
       type: [
         {
           type: String,
@@ -34,6 +41,10 @@ const walletSchema = mongoose.Schema(
         },
       ],
       required: true,
+    },
+    round: {
+      type: Number,
+      default: 0,
     },
     transactions: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Transaction' }],

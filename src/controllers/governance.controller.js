@@ -9,7 +9,7 @@ const createWallet = catchAsync(async (req, res) => {
 });
 
 const getWallets = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['round', 'address']);
+  const filter = pick(req.query, ['address', 'author', 'round']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await governanceService.queryWallets(filter, options);
   res.send(result);

@@ -6,14 +6,16 @@ const { transactionTypes } = require('../config/transaction');
 const createWallet = {
   body: Joi.object().keys({
     address: Joi.string().required().custom(validateAddress),
-    signatories: Joi.array().items(Joi.string().custom(validateAddress)).unique().min(5).max(5).required(),
+    author: Joi.string().required().custom(validateAddress),
+    signers: Joi.array().items(Joi.string().custom(validateAddress)).max(5),
   }),
 };
 
 const getWallets = {
   query: Joi.object().keys({
     round: Joi.string(),
-    address: Joi.string(),
+    address: Joi.string().custom(validateAddress),
+    author: Joi.string().custom(validateAddress),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),

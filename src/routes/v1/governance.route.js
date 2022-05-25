@@ -59,11 +59,13 @@ module.exports = router;
  *             type: object
  *             required:
  *               - address
- *               - signatories
+ *               - author
  *             properties:
  *               address:
  *                 type: string
- *               signatories:
+ *               author:
+ *                 type: string
+ *               signers:
  *                 type: array
  *                 items:
  *                   type: string
@@ -71,7 +73,8 @@ module.exports = router;
  *                 maxItems: 5
  *             example:
  *               address: '0xebb1bc133f0db6869c8ba67d0ce94ea86be83bc1'
- *               signatories:
+ *               author: '0x88ff0fa670eccd63ace9cc6f0b1a6194a18ac3cd'
+ *               signers:
  *                 [
  *                   '0x883858f4afe0a15339a637109757213bb423d23d',
  *                   '0x589a74e1c833bb8936e9c7086898b50862515b3e',
@@ -100,15 +103,20 @@ module.exports = router;
  *     tags: [Governance]
  *     parameters:
  *       - in: query
- *         name: round
- *         schema:
- *           type: string
- *         description: Wallet round
- *       - in: query
  *         name: address
  *         schema:
  *           type: string
  *         description: Wallet address
+ *       - in: query
+ *         name: author
+ *         schema:
+ *           type: string
+ *         description: Wallet author
+ *       - in: query
+ *         name: round
+ *         schema:
+ *           type: string
+ *         description: Wallet round
  *       - in: query
  *         name: sortBy
  *         schema:

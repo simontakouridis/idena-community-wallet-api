@@ -48,24 +48,27 @@ components:
       properties:
         id:
           type: string
-        round:
-          type: number
         address:
           type: string
-        signatories:
+
+        author:
+          type: string
+        signers:
           type: array
           items:
             type: string
-          minItems: 5
           maxItems: 5
+        round:
+          type: number
         transactions:
           items:
             type: string
       example:
         id: 5ebac534954b54139806c112
-        round: 0
         address: '0xFf893698faC953dBbCdC3276e8aD13ed3267fB06'
-        signatories: ['0x110ce820803c73abfce80a4e57676d88c0fc3b44', '0xddb2d878800a1607442884598ac8e9c3fc273b6f', '0x7cf09d4f134eb514811538145292b75748d8d80c']
+        author: '0x88ff0fa670eccd63ace9cc6f0b1a6194a18ac3cd'
+        signers: ['0x110ce820803c73abfce80a4e57676d88c0fc3b44', '0xddb2d878800a1607442884598ac8e9c3fc273b6f', '0x7cf09d4f134eb514811538145292b75748d8d80c']
+        round: 0
         transactions: ['5ebac534954b54139806c116', '5ebac534954b54139806c117', '5ebac534954b54139806c118']
 
     Proposal:
