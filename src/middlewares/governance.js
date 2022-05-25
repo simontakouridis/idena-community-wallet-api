@@ -34,8 +34,8 @@ const adminOfCurrentWalletOnly = async (req, res, next) => {
 const adminOfCurrentWalletOrSoleAdminOnly = async (req, res, next) => {
   const { user } = req;
   const currentWallet = await governanceService.getCurrentWallet();
-  const adminCount = await userService.getAdminUserCount();
   if (!currentWallet) {
+    const adminCount = await userService.getAdminUserCount();
     if (adminCount === 1) {
       return next();
     }
