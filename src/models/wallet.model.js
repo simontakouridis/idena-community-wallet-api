@@ -75,7 +75,9 @@ walletSchema.statics.isAddressTaken = async function (address) {
  * @returns {Promise<Wallet>}
  */
 walletSchema.statics.getCurrent = async function () {
-  const currentWallet = await this.sort({ round: -1 }).limit(1);
+  const currentWallet = await this.find({ round: { $gte: 1 } })
+    .sort({ round: -1 })
+    .limit(1);
   return currentWallet;
 };
 
