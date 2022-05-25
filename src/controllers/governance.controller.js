@@ -4,7 +4,9 @@ const catchAsync = require('../utils/catchAsync');
 const { governanceService } = require('../services');
 
 const createWallet = catchAsync(async (req, res) => {
+  console.log('6');
   const wallet = await governanceService.createWallet(req.body);
+  console.log('7');
   res.status(httpStatus.CREATED).send(wallet);
 });
 

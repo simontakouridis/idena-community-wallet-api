@@ -34,11 +34,16 @@ const adminOfCurrentWalletOnly = async (req, res, next) => {
 const adminOfCurrentWalletOrSoleAdminOnly = async (req, res, next) => {
   const { user } = req;
   const currentWallet = await governanceService.getCurrentWallet();
+  console.log('1');
   if (!currentWallet) {
+    console.log('2');
     const adminCount = await userService.getAdminUserCount();
+    console.log('3');
     if (adminCount === 1) {
+      console.log('4');
       return next();
     }
+    console.log('5');
     throw new ApiError(httpStatus.NOT_FOUND, 'Current wallet not found, and more than 1 admin');
   }
   const isUserSignatory = user.wallets.find((wallet) => wallet === currentWallet.id);
