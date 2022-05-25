@@ -5,7 +5,7 @@ const config = require('../config/config');
 
 /**
  * get contract details from idena api
- * @param {Object} walletBody
+ * @param {string} contract
  * @returns {Promise<Any>}
  */
 const getContract = async (contract) => {
@@ -18,7 +18,7 @@ const getContract = async (contract) => {
 
 /**
  * get multisig contract details from idena api
- * @param {Object} walletBody
+ * @param {string} contract
  * @returns {Promise<Any>}
  */
 const getMultisigContract = async (contract) => {
