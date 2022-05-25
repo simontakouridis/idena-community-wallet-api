@@ -7,7 +7,6 @@ const createWallet = {
   body: Joi.object().keys({
     address: Joi.string().required().custom(validateAddress),
     author: Joi.string().required().custom(validateAddress),
-    signers: Joi.array().items(Joi.string().custom(validateAddress)).max(5),
   }),
 };
 

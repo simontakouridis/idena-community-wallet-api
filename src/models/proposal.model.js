@@ -24,15 +24,8 @@ const proposalSchema = mongoose.Schema(
       },
     },
     wallet: {
-      type: String,
-      unique: true,
-      trim: true,
-      lowercase: true,
-      validate(value) {
-        if (!isValidAddress(value)) {
-          throw new Error('Invalid wallet address');
-        }
-      },
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Wallet',
     },
     accepted: {
       type: String,

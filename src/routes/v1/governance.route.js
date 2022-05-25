@@ -4,6 +4,7 @@ const validate = require('../../middlewares/validate');
 const { adminOfWalletOnly, adminOfCurrentWalletOnly, adminOfCurrentWalletOrSoleAdminOnly } = require('../../middlewares/governance');
 const governanceValidation = require('../../validations/governance.validation');
 const governanceController = require('../../controllers/governance.controller');
+const { lowercaseAddress } = require('../../middlewares/general');
 
 const router = express.Router();
 
@@ -12,27 +13,30 @@ router.post(
   auth('manageWallets'),
   adminOfCurrentWalletOrSoleAdminOnly,
   validate(governanceValidation.createWallet),
+  lowercaseAddress,
   governanceController.createWallet
 );
-router.get('wallets', validate(governanceValidation.getWallets), governanceController.getWallets);
+router.get('wallets', validate(governanceValidation.getWallets), lowercaseAddress, governanceController.getWallets);
 
 router.post(
   'create-proposal',
   auth('manageProposals'),
   adminOfCurrentWalletOnly,
   validate(governanceValidation.createProposal),
+  lowercaseAddress,
   governanceController.createProposal
 );
-router.get('proposals', validate(governanceValidation.getProposals), governanceController.getProposals);
+router.get('proposals', validate(governanceValidation.getProposals), lowercaseAddress, governanceController.getProposals);
 
 router.post(
   'create-transaction',
   auth('manageTransactions'),
   adminOfWalletOnly,
   validate(governanceValidation.createTransaction),
+  lowercaseAddress,
   governanceController.createTransaction
 );
-router.get('transactions', validate(governanceValidation.getTransactions), governanceController.getTransactions);
+router.get('transactions', validate(governanceValidation.getTransactions), lowercaseAddress, governanceController.getTransactions);
 
 module.exports = router;
 
@@ -65,23 +69,9 @@ module.exports = router;
  *                 type: string
  *               author:
  *                 type: string
- *               signers:
- *                 type: array
- *                 items:
- *                   type: string
- *                 minItems: 5
- *                 maxItems: 5
  *             example:
  *               address: '0xebb1bc133f0db6869c8ba67d0ce94ea86be83bc1'
  *               author: '0x88ff0fa670eccd63ace9cc6f0b1a6194a18ac3cd'
- *               signers:
- *                 [
- *                   '0x883858f4afe0a15339a637109757213bb423d23d',
- *                   '0x589a74e1c833bb8936e9c7086898b50862515b3e',
- *                   '0x6f1abf821d05d8ef53fd877e9bbdda7adc1c97fa',
- *                   '0x2a1d875532189fb82c4c2b08cd46e9555dda3d8a',
- *                   '0x31e07c6dc4910381379adcddffaae6497e22dd5c',
- *                 ]
  *     responses:
  *       "201":
  *         description: Created

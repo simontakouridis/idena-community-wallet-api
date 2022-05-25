@@ -97,7 +97,7 @@ components:
         title: 'This is a title'
         description: 'This is a description'
         oracle: '0xa303f357b382dc042c8a4e28a0abf616189b6a79'
-        wallet: '0xedf870a142bcba372f74e8d4d083a336c95e4d5b'
+        wallet: 5ebac534954b54139806c122
         accepted: pending
         status: pending
         transaction: 5ebac534954b54139806c119

@@ -3,7 +3,7 @@ const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const userValidation = require('../../validations/user.validation');
 const userController = require('../../controllers/user.controller');
-const { lowercaseAddress } = require('../../middlewares/user');
+const { lowercaseAddress } = require('../../middlewares/general');
 
 const router = express.Router();
 
