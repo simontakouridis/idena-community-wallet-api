@@ -12,7 +12,7 @@ components:
         role:
           type: string
           enum: [user, admin]
-        wallets:
+        activatedWallets:
           type: array
           items:
             type: string
@@ -21,7 +21,7 @@ components:
         address: '0xFf893698faC953dBbCdC3276e8aD13ed3267fB06'
         name: fake name
         role: user
-        wallets: ['5ebac534954b54139806c113', '5ebac534954b54139806c114', '5ebac534954b54139806c115']
+        activatedWallets: ['5ebac534954b54139806c113', '5ebac534954b54139806c114', '5ebac534954b54139806c115']
 
     Token:
       type: object

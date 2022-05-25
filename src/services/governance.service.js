@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const { Wallet, Proposal, Transaction } = require('../models');
 const ApiError = require('../utils/ApiError');
+const externalService = require('./external.service');
 
 /**
  * WALLET FUNCTIONS
@@ -16,6 +17,31 @@ const createWallet = async (walletBody) => {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Wallet address already taken');
   }
   return Wallet.create(walletBody);
+};
+
+/**
+ * Validates a new multisig wallet
+ * @param {Object} walletBody
+ * @returns {Promise<Any>}
+ */
+const validateNewMultisigWallet = async (walletBody) => {
+  if (await Wallet.find({ author: walletBody.author, round: 0 })) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Non-activated wallet already existing for this user');
+  }
+
+  const contractData = await externalService.getContract(walletBody.address);
+  if (
+    contractData.address.toLowerCase() !== walletBody.address ||
+    contractData.type !== 'Multisig' ||
+    contractData.author.toLowerCase() !== walletBody.author
+  ) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Data inconsistency with new contract');
+  }
+
+  const multisigContractData = await externalService.getMultisigContract(walletBody.address);
+  if (multisigContractData.minVotes !== 3 || multisigContractData.maxVotes !== 5 || multisigContractData.signers) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Data inconsistency with new multisig contract');
+  }
 };
 
 /**
@@ -96,6 +122,7 @@ const queryTransactions = async (filter, options) => {
 
 module.exports = {
   createWallet,
+  validateNewMultisigWallet,
   queryWallets,
   getCurrentWallet,
   createProposal,

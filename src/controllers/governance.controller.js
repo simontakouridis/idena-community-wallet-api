@@ -4,6 +4,7 @@ const catchAsync = require('../utils/catchAsync');
 const { governanceService } = require('../services');
 
 const createWallet = catchAsync(async (req, res) => {
+  await governanceService.validateNewMultisigWallet(req.body);
   const wallet = await governanceService.createWallet(req.body);
   res.status(httpStatus.CREATED).send(wallet);
 });

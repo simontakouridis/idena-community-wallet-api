@@ -9,34 +9,34 @@ const { lowercaseAddress } = require('../../middlewares/general');
 const router = express.Router();
 
 router.post(
-  'create-wallet',
+  '/create-wallet',
   auth('manageWallets'),
   adminOfCurrentWalletOrSoleAdminOnly,
   validate(governanceValidation.createWallet),
   lowercaseAddress,
   governanceController.createWallet
 );
-router.get('wallets', validate(governanceValidation.getWallets), lowercaseAddress, governanceController.getWallets);
+router.get('/wallets', validate(governanceValidation.getWallets), lowercaseAddress, governanceController.getWallets);
 
 router.post(
-  'create-proposal',
+  '/create-proposal',
   auth('manageProposals'),
   adminOfCurrentWalletOnly,
   validate(governanceValidation.createProposal),
   lowercaseAddress,
   governanceController.createProposal
 );
-router.get('proposals', validate(governanceValidation.getProposals), lowercaseAddress, governanceController.getProposals);
+router.get('/proposals', validate(governanceValidation.getProposals), lowercaseAddress, governanceController.getProposals);
 
 router.post(
-  'create-transaction',
+  '/create-transaction',
   auth('manageTransactions'),
   adminOfWalletOnly,
   validate(governanceValidation.createTransaction),
   lowercaseAddress,
   governanceController.createTransaction
 );
-router.get('transactions', validate(governanceValidation.getTransactions), lowercaseAddress, governanceController.getTransactions);
+router.get('/transactions', validate(governanceValidation.getTransactions), lowercaseAddress, governanceController.getTransactions);
 
 module.exports = router;
 

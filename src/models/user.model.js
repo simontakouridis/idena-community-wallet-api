@@ -31,7 +31,7 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    wallets: {
+    activatedWallets: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wallet' }],
     },
   },

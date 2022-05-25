@@ -14,6 +14,7 @@ env:
     - JWT_SECRET=thisisasamplesecret
     - JWT_ACCESS_EXPIRATION_MINUTES=30
     - JWT_REFRESH_EXPIRATION_DAYS=30
+    - IDENA_API_URL=https://api.idena.io/api
 script:
   - yarn lint
   - yarn test
