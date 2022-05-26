@@ -92,7 +92,7 @@ module.exports = router;
 
 /**
  * @swagger
- * /governance/add-signer
+ * /governance/add-signer:
  *   post:
  *     summary: Add signer to draft wallet
  *     tags: [Governance]
@@ -113,8 +113,8 @@ module.exports = router;
  *               contract:
  *                 type: string
  *             example:
- *               address: '0x21bcedf993e0ae914e42498e0c7e0be5f9fac83d'
- *               address: '0x7013a7e43c610ab7f4b61f67cb1830252f9b38eb'
+ *               signer: '0x21bcedf993e0ae914e42498e0c7e0be5f9fac83d'
+ *               contract: '0x7013a7e43c610ab7f4b61f67cb1830252f9b38eb'
  *     responses:
  *       "200":
  *         description: Created
