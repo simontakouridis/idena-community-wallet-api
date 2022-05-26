@@ -86,7 +86,10 @@ const validateNewSignerForDraftWallet = async (newSignerBody) => {
  * @returns {Promise<DraftWallet>}
  */
 const addSignerToDraftWallet = async (newSignerBody, signers) => {
-  return DraftWallet.findOneAndUpdate({ address: newSignerBody.contract, signers: { $all: signers } }, { $push: { signers: newSignerBody.signer } });
+  return DraftWallet.findOneAndUpdate(
+    { address: newSignerBody.contract, signers: { $all: signers, $size: signers.length } },
+    { $push: { signers: newSignerBody.signer } }
+  );
 };
 
 /**
