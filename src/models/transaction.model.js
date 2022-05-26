@@ -29,7 +29,6 @@ const transactionSchema = mongoose.Schema(
     recipient: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
       lowercase: true,
       validate(value) {

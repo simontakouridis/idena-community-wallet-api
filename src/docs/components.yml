@@ -12,7 +12,7 @@ components:
         role:
           type: string
           enum: [user, admin]
-        activatedWallets:
+        wallets:
           type: array
           items:
             type: string
@@ -21,7 +21,7 @@ components:
         address: '0xFf893698faC953dBbCdC3276e8aD13ed3267fB06'
         name: fake name
         role: user
-        activatedWallets: ['5ebac534954b54139806c113', '5ebac534954b54139806c114', '5ebac534954b54139806c115']
+        wallets: ['5ebac534954b54139806c113', '5ebac534954b54139806c114', '5ebac534954b54139806c115']
 
     Token:
       type: object
@@ -43,6 +43,26 @@ components:
         refresh:
           $ref: '#/components/schemas/Token'
 
+    DraftWallet:
+      type: object
+      properties:
+        id:
+          type: string
+        address:
+          type: string
+        author:
+          type: string
+        signers:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+      example:
+        id: 5ebac534954b54139806c112
+        address: '0xFf893698faC953dBbCdC3276e8aD13ed3267fB06'
+        author: '0x88ff0fa670eccd63ace9cc6f0b1a6194a18ac3cd'
+        signers: ['0x110ce820803c73abfce80a4e57676d88c0fc3b44', '0xddb2d878800a1607442884598ac8e9c3fc273b6f', '0x7cf09d4f134eb514811538145292b75748d8d80c']
+
     Wallet:
       type: object
       properties:
@@ -50,7 +70,6 @@ components:
           type: string
         address:
           type: string
-
         author:
           type: string
         signers:

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { isValidAddress } = require('ethereumjs-util');
 const { toJSON, paginate } = require('./plugins');
 
-const walletSchema = mongoose.Schema(
+const draftWalletSchema = mongoose.Schema(
   {
     address: {
       type: String,
@@ -19,6 +19,7 @@ const walletSchema = mongoose.Schema(
     author: {
       type: String,
       required: true,
+      unique: true,
       trim: true,
       lowercase: true,
       validate(value) {
@@ -43,14 +44,6 @@ const walletSchema = mongoose.Schema(
       ],
       required: true,
     },
-    round: {
-      type: Number,
-      default: 0,
-    },
-    transactions: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Transaction' }],
-      required: true,
-    },
   },
   {
     timestamps: true,
@@ -58,33 +51,32 @@ const walletSchema = mongoose.Schema(
 );
 
 // add plugin that converts mongoose to json
-walletSchema.plugin(toJSON);
-walletSchema.plugin(paginate);
+draftWalletSchema.plugin(toJSON);
+draftWalletSchema.plugin(paginate);
 
 /**
  * Check if address is taken
  * @param {string} address - The wallet address
  * @returns {Promise<boolean>}
  */
-walletSchema.statics.isAddressTaken = async function (address) {
+draftWalletSchema.statics.isAddressTaken = async function (address) {
   const wallet = await this.findOne({ address });
   return !!wallet;
 };
 
 /**
- * Get the current wallet
- * @returns {Promise<Wallet>}
+ * Check if author is already present
+ * @param {string} author - The authors' address
+ * @returns {Promise<boolean>}
  */
-walletSchema.statics.getCurrent = async function () {
-  const currentWallet = await this.find({ round: { $gte: 1 } })
-    .sort({ round: -1 })
-    .limit(1);
-  return currentWallet;
+draftWalletSchema.statics.isAuthorPresent = async function (author) {
+  const wallet = await this.findOne({ author });
+  return !!wallet;
 };
 
 /**
- * @typedef Wallet
+ * @typedef DraftWallet
  */
-const Wallet = mongoose.model('Wallet', walletSchema);
+const DraftWallet = mongoose.model('DraftWallet', draftWalletSchema);
 
-module.exports = Wallet;
+module.exports = DraftWallet;

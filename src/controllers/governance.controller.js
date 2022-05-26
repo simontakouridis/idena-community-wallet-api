@@ -3,11 +3,18 @@ const pick = require('../utils/pick');
 const catchAsync = require('../utils/catchAsync');
 const { governanceService } = require('../services');
 
-const createWallet = catchAsync(async (req, res) => {
+const createDraftWallet = catchAsync(async (req, res) => {
   req.body.author = req.user.address;
   await governanceService.validateNewMultisigWallet(req.body);
-  const wallet = await governanceService.createWallet(req.body);
-  res.status(httpStatus.CREATED).send(wallet);
+  const draftWallet = await governanceService.createDraftWallet(req.body);
+  res.status(httpStatus.CREATED).send(draftWallet);
+});
+
+const getDraftWallets = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['address', 'author']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const result = await governanceService.queryDraftWallets(filter, options);
+  res.send(result);
 });
 
 const getWallets = catchAsync(async (req, res) => {
@@ -15,6 +22,13 @@ const getWallets = catchAsync(async (req, res) => {
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await governanceService.queryWallets(filter, options);
   res.send(result);
+});
+
+const addSigner = catchAsync(async (req, res) => {
+  req.body.author = req.user.address;
+  const signers = await governanceService.validateNewSignerForDraftWallet(req.body);
+  const draftWallet = await governanceService.addSignerToDraftWallet(req.body, signers);
+  res.send(draftWallet);
 });
 
 const createProposal = catchAsync(async (req, res) => {
@@ -42,8 +56,10 @@ const getTransactions = catchAsync(async (req, res) => {
 });
 
 module.exports = {
-  createWallet,
+  createDraftWallet,
+  getDraftWallets,
   getWallets,
+  addSigner,
   createProposal,
   getProposals,
   createTransaction,

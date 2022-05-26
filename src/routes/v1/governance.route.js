@@ -9,13 +9,22 @@ const { lowercaseAddress } = require('../../middlewares/general');
 const router = express.Router();
 
 router.post(
-  '/create-wallet',
+  '/create-draft-wallet',
   auth('manageWallets'),
   adminOfCurrentWalletOrSoleAdminOnly,
-  validate(governanceValidation.createWallet),
+  validate(governanceValidation.createDraftWallet),
   lowercaseAddress,
-  governanceController.createWallet
+  governanceController.createDraftWallet
 );
+router.post(
+  '/add-signer',
+  auth('manageWallets'),
+  adminOfCurrentWalletOrSoleAdminOnly,
+  validate(governanceValidation.addSigner),
+  lowercaseAddress,
+  governanceController.addSigner
+);
+router.get('/draft-wallets', validate(governanceValidation.getDraftWallets), lowercaseAddress, governanceController.getDraftWallets);
 router.get('/wallets', validate(governanceValidation.getWallets), lowercaseAddress, governanceController.getWallets);
 
 router.post(
@@ -49,9 +58,9 @@ module.exports = router;
 
 /**
  * @swagger
- * /governance/create-wallet:
+ * /governance/create-draft-wallet:
  *   post:
- *     summary: Create Wallet
+ *     summary: Create Draft Wallet
  *     tags: [Governance]
  *     security:
  *       - bearerAuth: []
@@ -74,7 +83,111 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Wallet'
+ *                $ref: '#/components/schemas/DraftWallet'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ */
+
+/**
+ * @swagger
+ * /governance/add-signer
+ *   post:
+ *     summary: Add signer to draft wallet
+ *     tags: [Governance]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - signer
+ *               - contract
+ *             properties:
+ *               signer:
+ *                 type: string
+ *               contract:
+ *                 type: string
+ *             example:
+ *               address: '0x21bcedf993e0ae914e42498e0c7e0be5f9fac83d'
+ *               address: '0x7013a7e43c610ab7f4b61f67cb1830252f9b38eb'
+ *     responses:
+ *       "200":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/DraftWallet'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ */
+
+/**
+ * @swagger
+ * /governance/draft-wallets:
+ *   get:
+ *     summary: Get all draft wallets
+ *     tags: [Governance]
+ *     parameters:
+ *       - in: query
+ *         name: address
+ *         schema:
+ *           type: string
+ *         description: Draft wallet address
+ *       - in: query
+ *         name: author
+ *         schema:
+ *           type: string
+ *         description: Draft wallet author
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *         description: sort by query in the form of field:desc/asc (ex. name:asc)
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         default: 10
+ *         description: Maximum number of wallets
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Page number
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 results:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/DraftWallet'
+ *                 page:
+ *                   type: integer
+ *                   example: 1
+ *                 limit:
+ *                   type: integer
+ *                   example: 10
+ *                 totalPages:
+ *                   type: integer
+ *                   example: 1
+ *                 totalResults:
+ *                   type: integer
+ *                   example: 1
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":

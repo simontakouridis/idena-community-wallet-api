@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { Wallet, Proposal, Transaction } = require('../models');
+const { DraftWallet, Wallet, Proposal, Transaction } = require('../models');
 const ApiError = require('../utils/ApiError');
 const externalService = require('./external.service');
 
@@ -8,40 +8,99 @@ const externalService = require('./external.service');
  */
 
 /**
- * Create a wallet
- * @param {Object} walletBody
- * @returns {Promise<Wallet>}
+ * Validates a new multisig wallet
+ * @param {Object} draftWalletBody
+ * @returns {Promise<Any>}
  */
-const createWallet = async (walletBody) => {
-  if (await Wallet.isAddressTaken(walletBody.address)) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Wallet address already taken');
+const validateNewMultisigWallet = async (draftWalletBody) => {
+  if (await DraftWallet.isAddressTaken(draftWalletBody.address)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Draft wallet address already taken');
   }
-  return Wallet.create(walletBody);
+  if (await DraftWallet.isAuthorPresent(draftWalletBody.author)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Author already has a draft wallet');
+  }
+  const contractData = await externalService.getContract(draftWalletBody.address);
+  if (
+    contractData.address.toLowerCase() !== draftWalletBody.address ||
+    contractData.type !== 'Multisig' ||
+    contractData.author.toLowerCase() !== draftWalletBody.author
+  ) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Data inconsistency with new contract');
+  }
+  const multisigContractData = await externalService.getMultisigContract(draftWalletBody.address);
+  if (multisigContractData.minVotes !== 3 || multisigContractData.maxVotes !== 5 || multisigContractData.signers) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Data inconsistency with new multisig contract');
+  }
+};
+
+/**
+ * Create a draft wallet
+ * @param {Object} draftWalletBody
+ * @returns {Promise<DraftWallet>}
+ */
+const createDraftWallet = async (draftWalletBody) => {
+  return DraftWallet.create(draftWalletBody);
 };
 
 /**
  * Validates a new multisig wallet
- * @param {Object} walletBody
- * @returns {Promise<Any>}
+ * @param {Object} newSignerBody
+ * @returns {Promise<Array>}
  */
-const validateNewMultisigWallet = async (walletBody) => {
-  if (await Wallet.find({ author: walletBody.author, round: 0 })) {
-    throw new ApiError(httpStatus.FORBIDDEN, 'Non-activated wallet already existing for this user');
+const validateNewSignerForDraftWallet = async (newSignerBody) => {
+  const draftWallet = await DraftWallet.findOne({ author: newSignerBody.author, round: 0 });
+  if (!draftWallet) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Non-activated draft wallet does not exist for this user');
   }
-
-  const contractData = await externalService.getContract(walletBody.address);
+  if (draftWallet.address !== newSignerBody.contract) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Draft wallet address not consistent with supplied address');
+  }
+  if (draftWallet.signers.length >= 5) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Draft wallet has reached its max number of signers');
+  }
+  if (draftWallet.signers.includes(newSignerBody.signer)) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Draft wallet already possesses this signer');
+  }
+  const multisigContractData = await externalService.getMultisigContract(draftWallet.address);
+  if (!multisigContractData.signers) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'No signers on multisig contract');
+  }
+  const multisigSigner = multisigContractData.signers.find((signer) => signer.address === newSignerBody.signer);
+  if (!multisigSigner) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Signer not present on multisig contract');
+  }
+  const multisigSignersLessSigner = multisigContractData.signers.filter((signer) => signer.address !== newSignerBody.signer);
   if (
-    contractData.address.toLowerCase() !== walletBody.address ||
-    contractData.type !== 'Multisig' ||
-    contractData.author.toLowerCase() !== walletBody.author
+    multisigSignersLessSigner.length !== draftWallet.signers.length ||
+    !multisigSignersLessSigner.every((signerA) => draftWallet.signers.some((signerB) => signerB === signerA))
   ) {
-    throw new ApiError(httpStatus.FORBIDDEN, 'Data inconsistency with new contract');
+    throw new ApiError(httpStatus.FORBIDDEN, 'Draft wallet signers inconsistent with multisig signers');
   }
 
-  const multisigContractData = await externalService.getMultisigContract(walletBody.address);
-  if (multisigContractData.minVotes !== 3 || multisigContractData.maxVotes !== 5 || multisigContractData.signers) {
-    throw new ApiError(httpStatus.FORBIDDEN, 'Data inconsistency with new multisig contract');
-  }
+  return draftWallet.signers;
+};
+
+/**
+ * Add signer to draft wallet
+ * @param {Object} newSignerBody
+ * @returns {Promise<DraftWallet>}
+ */
+const addSignerToDraftWallet = async (newSignerBody, signers) => {
+  return DraftWallet.findOneAndUpdate({ address: newSignerBody.contract, signers: { $all: signers } }, { $push: { signers: newSignerBody.signer } });
+};
+
+/**
+ * Query for draft wallets
+ * @param {Object} filter - Mongo filter
+ * @param {Object} options - Query options
+ * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
+ * @param {number} [options.limit] - Maximum number of results per page (default = 10)
+ * @param {number} [options.page] - Current page (default = 1)
+ * @returns {Promise<QueryResult>}
+ */
+const queryDraftWallets = async (filter, options) => {
+  const draftWallets = await DraftWallet.paginate(filter, options);
+  return draftWallets;
 };
 
 /**
@@ -121,8 +180,11 @@ const queryTransactions = async (filter, options) => {
 };
 
 module.exports = {
-  createWallet,
   validateNewMultisigWallet,
+  createDraftWallet,
+  validateNewSignerForDraftWallet,
+  addSignerToDraftWallet,
+  queryDraftWallets,
   queryWallets,
   getCurrentWallet,
   createProposal,
