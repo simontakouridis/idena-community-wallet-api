@@ -6,7 +6,6 @@ const { transactionTypes } = require('../config/transaction');
 const createWallet = {
   body: Joi.object().keys({
     address: Joi.string().required().custom(validateAddress),
-    author: Joi.string().required().custom(validateAddress),
   }),
 };
 

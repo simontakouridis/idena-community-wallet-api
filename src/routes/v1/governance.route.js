@@ -63,15 +63,11 @@ module.exports = router;
  *             type: object
  *             required:
  *               - address
- *               - author
  *             properties:
  *               address:
  *                 type: string
- *               author:
- *                 type: string
  *             example:
  *               address: '0xebb1bc133f0db6869c8ba67d0ce94ea86be83bc1'
- *               author: '0x88ff0fa670eccd63ace9cc6f0b1a6194a18ac3cd'
  *     responses:
  *       "201":
  *         description: Created
