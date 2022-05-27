@@ -48,7 +48,7 @@ const createDraftWallet = async (draftWalletBody) => {
  * @returns {Promise<Array>}
  */
 const validateNewSignerForDraftWallet = async (newSignerBody) => {
-  const draftWallet = await DraftWallet.findOne({ author: newSignerBody.author, round: 0 });
+  const draftWallet = await DraftWallet.findOne({ author: newSignerBody.author });
   if (!draftWallet) {
     throw new ApiError(httpStatus.FORBIDDEN, 'Non-activated draft wallet does not exist for this user');
   }
@@ -72,7 +72,7 @@ const validateNewSignerForDraftWallet = async (newSignerBody) => {
   const multisigSignersLessSigner = multisigContractData.signers.filter((signer) => signer.address !== newSignerBody.signer);
   if (
     multisigSignersLessSigner.length !== draftWallet.signers.length ||
-    !multisigSignersLessSigner.every((signerA) => draftWallet.signers.some((signerB) => signerB === signerA))
+    !multisigSignersLessSigner.every((signerA) => draftWallet.signers.some((signerB) => signerB === signerA.address))
   ) {
     throw new ApiError(httpStatus.FORBIDDEN, 'Draft wallet signers inconsistent with multisig signers');
   }
@@ -87,8 +87,9 @@ const validateNewSignerForDraftWallet = async (newSignerBody) => {
  */
 const addSignerToDraftWallet = async (newSignerBody, signers) => {
   return DraftWallet.findOneAndUpdate(
-    { address: newSignerBody.contract, signers: { $all: signers, $size: signers.length } },
-    { $push: { signers: newSignerBody.signer } }
+    { address: newSignerBody.contract, signers: { ...(signers.length && { $all: signers }), $size: signers.length } },
+    { $push: { signers: newSignerBody.signer } },
+    { useFindAndModify: false }
   );
 };
 
