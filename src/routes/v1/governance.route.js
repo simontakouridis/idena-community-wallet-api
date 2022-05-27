@@ -1,7 +1,7 @@
 const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const { adminOfWalletOnly, adminOfCurrentWalletOnly, adminOfCurrentWalletOrSoleAdminOnly } = require('../../middlewares/governance');
+const { authorOfDraftWalletOnly, adminOfWalletOnly, adminOfCurrentWalletOnly, adminOfCurrentWalletOrSoleAdminOnly } = require('../../middlewares/governance');
 const governanceValidation = require('../../validations/governance.validation');
 const governanceController = require('../../controllers/governance.controller');
 const { lowercaseAddress } = require('../../middlewares/general');
@@ -25,6 +25,12 @@ router.post(
   governanceController.addSigner
 );
 router.get('/draft-wallets', validate(governanceValidation.getDraftWallets), lowercaseAddress, governanceController.getDraftWallets);
+
+router
+  .route('/draft-wallets/:draftWalletId')
+  .patch(auth('manageUsers'), authorOfDraftWalletOnly, validate(governanceValidation.activateDraftWallet), governanceController.activateDraftWallet)
+  .delete(auth('manageUsers'), authorOfDraftWalletOnly, validate(governanceValidation.deleteDraftWallet), governanceController.deleteDraftWallet);
+
 router.get('/wallets', validate(governanceValidation.getWallets), lowercaseAddress, governanceController.getWallets);
 
 router.post(
@@ -192,6 +198,60 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
+ */
+
+/**
+ * @swagger
+ * /draft-wallets/{draftWalletId}:
+ *   patch:
+ *     summary: activate a draft wallet
+ *     tags: [Governance]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: draftWalletId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Draft Wallet Id
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Wallet'
+ *       "400":
+ *         $ref: '#/components/responses/DuplicateAddress'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
+ *   delete:
+ *     summary: Delete a draft wallet
+ *     tags: [Governance]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: draftWalletId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Draft Wallet Id
+ *     responses:
+ *       "200":
+ *         description: No content
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
  */
 
 /**

@@ -31,6 +31,16 @@ const addSigner = catchAsync(async (req, res) => {
   res.send(draftWallet);
 });
 
+const activateDraftWallet = catchAsync(async (req, res) => {
+  const wallet = await governanceService.activateDraftWallet(req.params.draftWalletId);
+  res.send(wallet);
+});
+
+const deleteDraftWallet = catchAsync(async (req, res) => {
+  await governanceService.deleteDraftWallet(req.params.draftWalletId);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
 const createProposal = catchAsync(async (req, res) => {
   const proposal = await governanceService.createProposal(req.body);
   res.status(httpStatus.CREATED).send(proposal);
@@ -60,6 +70,8 @@ module.exports = {
   getDraftWallets,
   getWallets,
   addSigner,
+  activateDraftWallet,
+  deleteDraftWallet,
   createProposal,
   getProposals,
   createTransaction,

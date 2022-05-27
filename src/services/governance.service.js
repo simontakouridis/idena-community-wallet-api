@@ -1,10 +1,38 @@
 const httpStatus = require('http-status');
+const mongoose = require('mongoose');
 const { DraftWallet, Wallet, Proposal, Transaction } = require('../models');
 const ApiError = require('../utils/ApiError');
 const externalService = require('./external.service');
+const { userService } = require('.');
 
 /**
  * WALLET FUNCTIONS
+ */
+
+/**
+ * Query for wallets
+ * @param {Object} filter - Mongo filter
+ * @param {Object} options - Query options
+ * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
+ * @param {number} [options.limit] - Maximum number of results per page (default = 10)
+ * @param {number} [options.page] - Current page (default = 1)
+ * @returns {Promise<QueryResult>}
+ */
+const queryWallets = async (filter, options) => {
+  const wallets = await Wallet.paginate(filter, options);
+  return wallets;
+};
+
+/**
+ * Get current wallet
+ * @returns {Promise<Wallet>}
+ */
+const getCurrentWallet = async () => {
+  return Wallet.getCurrent();
+};
+
+/**
+ * DRAFT WALLET FUNCTIONS
  */
 
 /**
@@ -108,25 +136,95 @@ const queryDraftWallets = async (filter, options) => {
 };
 
 /**
- * Query for wallets
- * @param {Object} filter - Mongo filter
- * @param {Object} options - Query options
- * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
- * @param {number} [options.limit] - Maximum number of results per page (default = 10)
- * @param {number} [options.page] - Current page (default = 1)
- * @returns {Promise<QueryResult>}
+ * Get draft wallet by id
+ * @param {ObjectId} id
+ * @returns {Promise<DraftWallet>}
  */
-const queryWallets = async (filter, options) => {
-  const wallets = await Wallet.paginate(filter, options);
-  return wallets;
+const getDraftWalletById = async (id) => {
+  return DraftWallet.findById(id);
 };
 
 /**
- * Get current wallet
+ * Activate draft wallet by id
+ * @param {ObjectId} draftWalletId
  * @returns {Promise<Wallet>}
  */
-const getCurrentWallet = async () => {
-  return Wallet.getCurrent();
+const activateDraftWallet = async (draftWalletId) => {
+  const draftWallet = await getDraftWalletById(draftWalletId);
+  if (!draftWallet) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Draft wallet not found');
+  }
+  if (await Wallet.isAddressTaken(draftWallet.address)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Wallet address already taken');
+  }
+
+  const session = await mongoose.startSession();
+  try {
+    session.startTransaction();
+
+    draftWallet.remove({ session });
+    const currentWallet = await getCurrentWallet();
+    const wallet = new Wallet({
+      address: draftWallet.address,
+      author: draftWallet.author,
+      signers: draftWallet.signers,
+      round: currentWallet ? currentWallet.round + 1 : 1,
+    });
+    await wallet.save({ session });
+
+    const getUserPromises = [];
+    for (let i = 0; i < wallet.signers.length; i++) {
+      const signer = wallet.signers[i];
+      getUserPromises.push(userService.getUserByAddress(signer));
+    }
+    const users = await Promise.all(getUserPromises);
+
+    const updateUserPromises = [];
+    for (let i = 0; i < users.length; i++) {
+      const user = users[i];
+      if (user) {
+        user.role = 'admin';
+        user.wallets.push(wallet.id);
+        updateUserPromises.push(user.save({ session }));
+      } else {
+        updateUserPromises.push(
+          userService.createUser(
+            {
+              name: 'unnamed',
+              address: wallet.signers[i],
+              role: 'admin',
+              isAddressVerified: false,
+              wallets: [wallet.address],
+            },
+            session
+          )
+        );
+      }
+    }
+    await Promise.all(updateUserPromises);
+
+    await session.commitTransaction();
+    session.endSession();
+    return wallet;
+  } catch (error) {
+    await session.abortTransaction();
+    session.endSession();
+    throw new ApiError(httpStatus.BAD_REQUEST, `Error with activate wallet transaction: ${error}`);
+  }
+};
+
+/**
+ * Delete draft wallet by id
+ * @param {ObjectId} draftWalletId
+ * @returns {Promise<DraftWallet>}
+ */
+const deleteDraftWallet = async (draftWalletId) => {
+  const draftWallet = await getDraftWalletById(draftWalletId);
+  if (!draftWallet) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Draft wallet not found');
+  }
+  await draftWallet.remove();
+  return draftWallet;
 };
 
 /**
@@ -189,6 +287,9 @@ module.exports = {
   validateNewSignerForDraftWallet,
   addSignerToDraftWallet,
   queryDraftWallets,
+  getDraftWalletById,
+  activateDraftWallet,
+  deleteDraftWallet,
   queryWallets,
   getCurrentWallet,
   createProposal,

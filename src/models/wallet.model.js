@@ -79,7 +79,7 @@ walletSchema.statics.getCurrent = async function () {
   const currentWallet = await this.find({ round: { $gte: 1 } })
     .sort({ round: -1 })
     .limit(1);
-  return currentWallet;
+  return currentWallet[0];
 };
 
 /**

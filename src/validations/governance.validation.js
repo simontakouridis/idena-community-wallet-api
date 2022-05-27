@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { validateAddress } = require('./custom.validation');
+const { validateAddress, objectId } = require('./custom.validation');
 const { proposalTypes } = require('../config/proposal');
 const { transactionTypes } = require('../config/transaction');
 
@@ -23,6 +23,18 @@ const getDraftWallets = {
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
+  }),
+};
+
+const activateDraftWallet = {
+  params: Joi.object().keys({
+    draftWalletId: Joi.string().custom(objectId),
+  }),
+};
+
+const deleteDraftWallet = {
+  params: Joi.object().keys({
+    draftWalletId: Joi.string().custom(objectId),
   }),
 };
 
@@ -93,6 +105,8 @@ module.exports = {
   createDraftWallet,
   addSigner,
   getDraftWallets,
+  activateDraftWallet,
+  deleteDraftWallet,
   getWallets,
   createProposal,
   getProposals,
