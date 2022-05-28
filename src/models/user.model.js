@@ -7,8 +7,8 @@ const userSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
       trim: true,
+      default: 'unnamed',
     },
     address: {
       type: String,
@@ -32,7 +32,7 @@ const userSchema = mongoose.Schema(
       default: false,
     },
     wallets: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wallet' }],
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wallet', unique: true }],
     },
   },
   {

@@ -42,7 +42,7 @@ const transactionSchema = mongoose.Schema(
       required: true,
     },
     sends: {
-      type: [{ type: String }],
+      type: [{ type: String, unique: true }],
     },
     push: {
       type: String,

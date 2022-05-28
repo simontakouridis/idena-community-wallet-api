@@ -27,7 +27,6 @@ const loginUserWithToken = async (idenaAuthToken) => {
     let user = await userService.getUserByAddress(idenaAuthDoc.userAddress);
     if (!user) {
       user = await userService.createUser({
-        name: 'unnamed',
         address: idenaAuthDoc.userAddress,
         role: 'user',
         isAddressVerified: true,

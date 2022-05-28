@@ -45,11 +45,11 @@ const walletSchema = mongoose.Schema(
     },
     round: {
       type: Number,
-      default: 0,
+      unique: true,
+      required: true,
     },
     transactions: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Transaction' }],
-      required: true,
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Transaction', unique: true }],
     },
   },
   {

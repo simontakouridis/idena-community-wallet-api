@@ -1,9 +1,7 @@
 const httpStatus = require('http-status');
-const mongoose = require('mongoose');
-const { DraftWallet, Wallet, Proposal, Transaction } = require('../models');
+const { User, DraftWallet, Wallet, Proposal, Transaction } = require('../models');
 const ApiError = require('../utils/ApiError');
 const externalService = require('./external.service');
-const { userService } = require('.');
 
 /**
  * WALLET FUNCTIONS
@@ -161,11 +159,7 @@ const activateDraftWallet = async (draftWalletId) => {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Wallet address already taken');
   }
 
-  const session = await mongoose.startSession();
   try {
-    session.startTransaction();
-
-    draftWallet.remove({ session });
     const currentWallet = await getCurrentWallet();
     const wallet = new Wallet({
       address: draftWallet.address,
@@ -173,45 +167,16 @@ const activateDraftWallet = async (draftWalletId) => {
       signers: draftWallet.signers,
       round: currentWallet ? currentWallet.round + 1 : 1,
     });
-    await wallet.save({ session });
-
-    const getUserPromises = [];
+    const updatePromises = [];
+    updatePromises.push(draftWallet.remove());
+    updatePromises.push(wallet.save());
     for (let i = 0; i < wallet.signers.length; i++) {
-      const signer = wallet.signers[i];
-      getUserPromises.push(userService.getUserByAddress(signer));
+      updatePromises.push(User.updateOne({ address: wallet.signers[i] }, { role: 'admin', $push: { wallets: wallet.id } }, { upsert: true }));
     }
-    const users = await Promise.all(getUserPromises);
+    await Promise.all(updatePromises);
 
-    const updateUserPromises = [];
-    for (let i = 0; i < users.length; i++) {
-      const user = users[i];
-      if (user) {
-        user.role = 'admin';
-        user.wallets.push(wallet.id);
-        updateUserPromises.push(user.save({ session }));
-      } else {
-        updateUserPromises.push(
-          userService.createUser(
-            {
-              name: 'unnamed',
-              address: wallet.signers[i],
-              role: 'admin',
-              isAddressVerified: false,
-              wallets: [wallet.address],
-            },
-            session
-          )
-        );
-      }
-    }
-    await Promise.all(updateUserPromises);
-
-    await session.commitTransaction();
-    session.endSession();
     return wallet;
   } catch (error) {
-    await session.abortTransaction();
-    session.endSession();
     throw new ApiError(httpStatus.BAD_REQUEST, `Error with activate wallet transaction: ${error}`);
   }
 };

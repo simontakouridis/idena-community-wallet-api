@@ -7,11 +7,11 @@ const ApiError = require('../utils/ApiError');
  * @param {Object} userBody
  * @returns {Promise<User>}
  */
-const createUser = async (userBody, session) => {
+const createUser = async (userBody) => {
   if (await User.isAddressTaken(userBody.address)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Address already taken');
   }
-  return User.create(userBody, session ? { session } : undefined);
+  return User.create(userBody);
 };
 
 /**
