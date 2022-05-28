@@ -154,6 +154,9 @@ const activateDraftWallet = async (draftWalletId) => {
   if (!draftWallet) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Draft wallet not found');
   }
+  if (draftWallet.signers.length < 5) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Draft wallet does not have enough signers');
+  }
   if (await Wallet.isAddressTaken(draftWallet.address)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Wallet address already taken');
   }
