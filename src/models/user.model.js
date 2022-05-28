@@ -32,7 +32,7 @@ const userSchema = mongoose.Schema(
       default: false,
     },
     wallets: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wallet', unique: true }],
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wallet' }],
     },
   },
   {

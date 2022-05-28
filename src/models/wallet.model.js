@@ -31,7 +31,6 @@ const walletSchema = mongoose.Schema(
       type: [
         {
           type: String,
-          unique: true,
           trim: true,
           lowercase: true,
           validate(value) {
@@ -49,7 +48,7 @@ const walletSchema = mongoose.Schema(
       required: true,
     },
     transactions: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Transaction', unique: true }],
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Transaction' }],
     },
   },
   {

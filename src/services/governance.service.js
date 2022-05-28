@@ -114,7 +114,7 @@ const validateNewSignerForDraftWallet = async (newSignerBody) => {
 const addSignerToDraftWallet = async (newSignerBody, signers) => {
   return DraftWallet.findOneAndUpdate(
     { address: newSignerBody.contract, signers: { ...(signers.length && { $all: signers }), $size: signers.length } },
-    { $push: { signers: newSignerBody.signer } },
+    { $addToSet: { signers: newSignerBody.signer } },
     { useFindAndModify: false }
   );
 };
@@ -171,13 +171,13 @@ const activateDraftWallet = async (draftWalletId) => {
     updatePromises.push(draftWallet.remove());
     updatePromises.push(wallet.save());
     for (let i = 0; i < wallet.signers.length; i++) {
-      updatePromises.push(User.updateOne({ address: wallet.signers[i] }, { role: 'admin', $push: { wallets: wallet.id } }, { upsert: true }));
+      updatePromises.push(User.updateOne({ address: wallet.signers[i] }, { role: 'admin', $addToSet: { wallets: wallet.id } }, { upsert: true }));
     }
     await Promise.all(updatePromises);
 
     return wallet;
   } catch (error) {
-    throw new ApiError(httpStatus.BAD_REQUEST, `Error with activate wallet transaction: ${error}`);
+    throw new ApiError(httpStatus.BAD_REQUEST, `Error with activate wallet ${error}`);
   }
 };
 
