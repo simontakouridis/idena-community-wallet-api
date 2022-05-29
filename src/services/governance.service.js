@@ -171,7 +171,7 @@ const activateDraftWallet = async (draftWalletId) => {
     updatePromises.push(draftWallet.remove());
     updatePromises.push(wallet.save());
     for (let i = 0; i < wallet.signers.length; i++) {
-      updatePromises.push(User.updateOne({ address: wallet.signers[i] }, { role: 'admin', $addToSet: { wallets: wallet.id } }, { upsert: true }));
+      updatePromises.push(User.updateOne({ address: wallet.signers[i] }, { role: 'admin', $addToSet: { wallets: wallet._id } }, { upsert: true }));
     }
     await Promise.all(updatePromises);
 

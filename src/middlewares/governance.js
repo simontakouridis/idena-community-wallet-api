@@ -23,7 +23,7 @@ const adminOfWalletOnly = (req, res, next) => {
     user,
     body: { wallet: walletId },
   } = req;
-  const isUserSignatory = user.wallets.find((wallet) => wallet === walletId);
+  const isUserSignatory = user.wallets.find((wallet) => wallet.equals(walletId));
   if (!isUserSignatory) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'User not admin of wallet');
   }
@@ -37,7 +37,7 @@ const adminOfCurrentWalletOnly = async (req, res, next) => {
   if (!currentWallet) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Current wallet not found');
   }
-  const isUserSignatory = user.wallets.find((wallet) => wallet === currentWallet.id);
+  const isUserSignatory = user.wallets.find((wallet) => wallet.equals(currentWallet._id));
   if (!isUserSignatory) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'User not admin of current wallet');
   }
@@ -55,7 +55,7 @@ const adminOfCurrentWalletOrSoleAdminOnly = async (req, res, next) => {
     }
     throw new ApiError(httpStatus.NOT_FOUND, 'Current wallet not found, and more than 1 admin');
   }
-  const isUserSignatory = user.wallets.find((wallet) => wallet === currentWallet.id);
+  const isUserSignatory = user.wallets.find((wallet) => wallet.equals(currentWallet._id));
   if (!isUserSignatory) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'User not admin of current wallet');
   }
