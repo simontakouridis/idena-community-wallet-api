@@ -46,8 +46,18 @@ const createProposal = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(proposal);
 });
 
+const editProposal = catchAsync(async (req, res) => {
+  const proposal = await governanceService.editProposal(req.params.proposalId, req.body);
+  res.send(proposal);
+});
+
+const deleteProposal = catchAsync(async (req, res) => {
+  await governanceService.deleteProposal(req.params.proposalId);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
 const getProposals = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['title', 'oracle', 'wallet', 'accepted', 'status', 'transaction']);
+  const filter = pick(req.query, ['title', 'oracle', 'wallet', 'acceptanceStatus', 'fundingStatus', 'transaction']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await governanceService.queryProposals(filter, options);
   res.send(result);
@@ -73,6 +83,8 @@ module.exports = {
   activateDraftWallet,
   deleteDraftWallet,
   createProposal,
+  editProposal,
+  deleteProposal,
   getProposals,
   createTransaction,
   getTransactions,

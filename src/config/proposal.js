@@ -1,10 +1,10 @@
 const proposalTypes = {
-  accepted: {
+  acceptanceStatus: {
     PENDING: 'pending',
-    YES: 'yes',
-    NO: 'no',
+    ACCEPTED: 'accepted',
+    REJECTED: 'rejected',
   },
-  status: {
+  fundingStatus: {
     PENDING: 'pending',
     FUNDED: 'funded',
     UNFUNDED: 'unfunded',

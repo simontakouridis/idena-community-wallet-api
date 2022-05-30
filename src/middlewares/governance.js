@@ -2,7 +2,7 @@ const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const governanceService = require('../services/governance.service');
 const userService = require('../services/user.service');
-const { DraftWallet } = require('../models');
+const { DraftWallet, Proposal } = require('../models');
 
 // authentication middleware must be invoked prior to this middleware
 const authorOfDraftWalletOnly = async (req, res, next) => {
@@ -26,6 +26,21 @@ const adminOfWalletOnly = (req, res, next) => {
   const isUserSignatory = user.wallets.find((wallet) => wallet.equals(walletId));
   if (!isUserSignatory) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'User not admin of wallet');
+  }
+  return next();
+};
+
+// authentication middleware must be invoked prior to this middleware
+const adminOfProposalWalletOnly = async (req, res, next) => {
+  const {
+    user,
+    params: { proposalId },
+  } = req;
+  const proposal = await Proposal.findById(proposalId);
+  const walletId = proposal.wallet;
+  const isUserSignatory = user.wallets.find((wallet) => wallet.equals(walletId));
+  if (!isUserSignatory) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'User not admin of proposal wallet');
   }
   return next();
 };
@@ -65,6 +80,7 @@ const adminOfCurrentWalletOrSoleAdminOnly = async (req, res, next) => {
 module.exports = {
   authorOfDraftWalletOnly,
   adminOfWalletOnly,
+  adminOfProposalWalletOnly,
   adminOfCurrentWalletOnly,
   adminOfCurrentWalletOrSoleAdminOnly,
 };

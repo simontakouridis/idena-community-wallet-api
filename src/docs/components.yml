@@ -103,10 +103,10 @@ components:
           type: string
         wallet:
           type: string
-        accepted:
+        acceptanceStatus:
           type: string
-          enum: [pending, yes, no]
-        status:
+          enum: [pending, accepted, rejected]
+        fundingStatus:
           type: string
           enum: [pending, funded, unfunded]
         transaction:
@@ -117,8 +117,8 @@ components:
         description: 'This is a description'
         oracle: '0xa303f357b382dc042c8a4e28a0abf616189b6a79'
         wallet: 5ebac534954b54139806c122
-        accepted: pending
-        status: pending
+        acceptanceStatus: pending
+        fundingStatus: pending
         transaction: 5ebac534954b54139806c119
 
     Transaction:

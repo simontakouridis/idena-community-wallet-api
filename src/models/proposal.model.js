@@ -27,14 +27,14 @@ const proposalSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Wallet',
     },
-    accepted: {
+    acceptanceStatus: {
       type: String,
-      enum: [proposalTypes.accepted.PENDING, proposalTypes.accepted.YES, proposalTypes.accepted.NO],
+      enum: [proposalTypes.acceptanceStatus.PENDING, proposalTypes.acceptanceStatus.ACCEPTED, proposalTypes.acceptanceStatus.REJECTED],
       required: true,
     },
-    status: {
+    fundingStatus: {
       type: String,
-      enum: [proposalTypes.status.PENDING, proposalTypes.status.FUNDED, proposalTypes.status.UNFUNDED],
+      enum: [proposalTypes.fundingStatus.PENDING, proposalTypes.fundingStatus.FUNDED, proposalTypes.fundingStatus.UNFUNDED],
       required: true,
     },
     transaction: {

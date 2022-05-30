@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const { validateAddress, objectId } = require('./custom.validation');
-const { proposalTypes } = require('../config/proposal');
 const { transactionTypes } = require('../config/transaction');
+const { proposalTypes } = require('../config/proposal');
 
 const createDraftWallet = {
   body: Joi.object().keys({
@@ -28,13 +28,13 @@ const getDraftWallets = {
 
 const activateDraftWallet = {
   params: Joi.object().keys({
-    draftWalletId: Joi.string().custom(objectId),
+    draftWalletId: Joi.string().required().custom(objectId),
   }),
 };
 
 const deleteDraftWallet = {
   params: Joi.object().keys({
-    draftWalletId: Joi.string().custom(objectId),
+    draftWalletId: Joi.string().required().custom(objectId),
   }),
 };
 
@@ -54,10 +54,6 @@ const createProposal = {
     title: Joi.string().required(),
     description: Joi.string(),
     oracle: Joi.string().custom(validateAddress),
-    wallet: Joi.string().min(24).max(24),
-    accepted: Joi.string().valid(proposalTypes.accepted.PENDING, proposalTypes.accepted.YES, proposalTypes.accepted.NO),
-    status: Joi.string().valid(proposalTypes.status.PENDING, proposalTypes.status.FUNDED, proposalTypes.status.UNFUNDED),
-    transaction: Joi.string().min(24).max(24),
   }),
 };
 
@@ -66,12 +62,37 @@ const getProposals = {
     title: Joi.string(),
     oracle: Joi.string(),
     wallet: Joi.string(),
-    accepted: Joi.string(),
-    status: Joi.string(),
+    acceptanceStatus: Joi.string().valid(
+      proposalTypes.acceptanceStatus.PENDING,
+      proposalTypes.acceptanceStatus.ACCEPTED,
+      proposalTypes.acceptanceStatus.REJECTED
+    ),
+    fundingStatus: Joi.string().valid(proposalTypes.fundingStatus.PENDING, proposalTypes.fundingStatus.FUNDED, proposalTypes.fundingStatus.UNFUNDED),
     transaction: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
+  }),
+};
+
+const editProposal = {
+  body: Joi.object().keys({
+    title: Joi.string(),
+    description: Joi.string(),
+    oracle: Joi.string().custom(validateAddress),
+    acceptanceStatus: Joi.string().valid(
+      proposalTypes.acceptanceStatus.PENDING,
+      proposalTypes.acceptanceStatus.ACCEPTED,
+      proposalTypes.acceptanceStatus.REJECTED
+    ),
+    fundingStatus: Joi.string().valid(proposalTypes.fundingStatus.PENDING, proposalTypes.fundingStatus.FUNDED, proposalTypes.fundingStatus.UNFUNDED),
+    transaction: Joi.string().min(24).max(24),
+  }),
+};
+
+const deleteProposal = {
+  params: Joi.object().keys({
+    proposalId: Joi.string().required().custom(objectId),
   }),
 };
 
@@ -110,6 +131,8 @@ module.exports = {
   getWallets,
   createProposal,
   getProposals,
+  editProposal,
+  deleteProposal,
   createTransaction,
   getTransactions,
 };

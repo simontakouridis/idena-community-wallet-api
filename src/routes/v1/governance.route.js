@@ -1,7 +1,13 @@
 const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const { authorOfDraftWalletOnly, adminOfWalletOnly, adminOfCurrentWalletOnly, adminOfCurrentWalletOrSoleAdminOnly } = require('../../middlewares/governance');
+const {
+  authorOfDraftWalletOnly,
+  adminOfWalletOnly,
+  adminOfProposalWalletOnly,
+  adminOfCurrentWalletOnly,
+  adminOfCurrentWalletOrSoleAdminOnly,
+} = require('../../middlewares/governance');
 const governanceValidation = require('../../validations/governance.validation');
 const governanceController = require('../../controllers/governance.controller');
 const { lowercaseAddress } = require('../../middlewares/general');
@@ -28,8 +34,8 @@ router.get('/draft-wallets', validate(governanceValidation.getDraftWallets), low
 
 router
   .route('/draft-wallets/:draftWalletId')
-  .patch(auth('manageUsers'), authorOfDraftWalletOnly, validate(governanceValidation.activateDraftWallet), governanceController.activateDraftWallet)
-  .delete(auth('manageUsers'), authorOfDraftWalletOnly, validate(governanceValidation.deleteDraftWallet), governanceController.deleteDraftWallet);
+  .patch(auth('manageWallets'), authorOfDraftWalletOnly, validate(governanceValidation.activateDraftWallet), governanceController.activateDraftWallet)
+  .delete(auth('manageWallets'), authorOfDraftWalletOnly, validate(governanceValidation.deleteDraftWallet), governanceController.deleteDraftWallet);
 
 router.get('/wallets', validate(governanceValidation.getWallets), lowercaseAddress, governanceController.getWallets);
 
@@ -41,7 +47,13 @@ router.post(
   lowercaseAddress,
   governanceController.createProposal
 );
+
 router.get('/proposals', validate(governanceValidation.getProposals), lowercaseAddress, governanceController.getProposals);
+
+router
+  .route('/proposals/:proposalId')
+  .put(auth('manageProposals'), adminOfProposalWalletOnly, validate(governanceValidation.editProposal), governanceController.editProposal)
+  .delete(auth('manageProposals'), adminOfProposalWalletOnly, validate(governanceValidation.deleteProposal), governanceController.deleteProposal);
 
 router.post(
   '/create-transaction',
@@ -244,7 +256,7 @@ module.exports = router;
  *           type: string
  *         description: Draft Wallet Id
  *     responses:
- *       "200":
+ *       "204":
  *         description: No content
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
@@ -348,24 +360,10 @@ module.exports = router;
  *                 type: string
  *               oracle:
  *                 type: string
- *               wallet:
- *                 type: string
- *               accepted:
- *                 type: string
- *                 enum: [pending, yes, no]
- *               status:
- *                 type: string
- *                 enum: [pending, funded, unfunded]
- *               transaction:
- *                 type: string
  *             example:
  *               title: 'Title of Proposal'
  *               description: 'Description of Proposal'
  *               oracle: '0xebb1bc133f0db6869c8ba67d0ce94ea86be83bc1'
- *               wallet: 62807ce6e069cd00272fa3af
- *               accepted: pending
- *               status: pending
- *               transaction: 62807d2ce069cd00272fa3c0
  *     responses:
  *       "201":
  *         description: Created
@@ -402,15 +400,15 @@ module.exports = router;
  *           type: string
  *         description: Proposal wallet
  *       - in: query
- *         name: accepted
+ *         name: acceptanceStatus
  *         schema:
  *           type: string
- *         description: Proposal accepted
+ *         description: Proposal acceptance status
  *       - in: query
- *         name: status
+ *         name: fundingStatus
  *         schema:
  *           type: string
- *         description: Proposal status
+ *         description: Proposal funding status
  *       - in: query
  *         name: transaction
  *         schema:
@@ -463,6 +461,86 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
+ */
+
+/**
+ * @swagger
+ * /proposals/{proposalId}:
+ *   put:
+ *     summary: edit proposal
+ *     tags: [Governance]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: proposalId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Proposal Id
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               oracle:
+ *                 type: string
+ *               acceptanceStatus:
+ *                 type: string
+ *                 enum: [pending, accepted, rejected]
+ *               fundingStatus:
+ *                 type: string
+ *                 enum: [pending, funded, unfunded]
+ *               transaction:
+ *                 type: string
+ *             example:
+ *               title: 'Title of Proposal'
+ *               description: 'Description of Proposal'
+ *               oracle: '0xebb1bc133f0db6869c8ba67d0ce94ea86be83bc1'
+ *               acceptanceStatus: 'pending'
+ *               fundingStatus: 'pending'
+ *               transaction: '6290297498583516260e5de1'
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Proposal'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
+ *   delete:
+ *     summary: Delete a proposal
+ *     tags: [Governance]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: ProposalId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Proposal Id
+ *     responses:
+ *       "204":
+ *         description: No content
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
  */
 
 /**

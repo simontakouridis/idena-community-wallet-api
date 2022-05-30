@@ -2,6 +2,7 @@ const httpStatus = require('http-status');
 const { User, DraftWallet, Wallet, Proposal, Transaction } = require('../models');
 const ApiError = require('../utils/ApiError');
 const externalService = require('./external.service');
+const { proposalTypes } = require('../config/proposal');
 
 /**
  * WALLET FUNCTIONS
@@ -187,11 +188,10 @@ const activateDraftWallet = async (draftWalletId) => {
  * @returns {Promise<DraftWallet>}
  */
 const deleteDraftWallet = async (draftWalletId) => {
-  const draftWallet = await getDraftWalletById(draftWalletId);
+  const draftWallet = await DraftWallet.findByIdAndDelete(draftWalletId);
   if (!draftWallet) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Draft wallet not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Draft wallet for delete not found');
   }
-  await draftWallet.remove();
   return draftWallet;
 };
 
@@ -205,7 +205,41 @@ const deleteDraftWallet = async (draftWalletId) => {
  * @returns {Promise<Proposal>}
  */
 const createProposal = async (proposalBody) => {
-  return Proposal.create(proposalBody);
+  const currentWallet = await getCurrentWallet();
+  const updatedBody = {
+    ...proposalBody,
+    wallet: currentWallet._id,
+    acceptanceStatus: proposalTypes.acceptanceStatus.PENDING,
+    fundingStatus: proposalTypes.fundingStatus.PENDING,
+  };
+  return Proposal.create(updatedBody);
+};
+
+/**
+ * Edit a proposal
+ * @param {string} proposalId
+ * @param {Object} proposalBody
+ * @returns {Promise<Proposal>}
+ */
+const editProposal = async (proposalId, proposalBody) => {
+  const proposal = await Proposal.findByIdAndUpdate(proposalId, proposalBody);
+  if (!proposal) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Proposal for edit not found');
+  }
+  return proposal;
+};
+
+/**
+ * Delete a proposal
+ * @param {string} proposalId
+ * @returns {Promise<Proposal>}
+ */
+const deleteProposal = async (proposalId) => {
+  const proposal = await Proposal.findByIdAndDelete(proposalId);
+  if (!proposal) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Proposal for delete not found');
+  }
+  return proposal;
 };
 
 /**
@@ -261,6 +295,8 @@ module.exports = {
   queryWallets,
   getCurrentWallet,
   createProposal,
+  editProposal,
+  deleteProposal,
   queryProposals,
   createTransaction,
   queryTransactions,
