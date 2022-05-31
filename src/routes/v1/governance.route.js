@@ -570,10 +570,10 @@ module.exports = router;
  *                 type: string
  *               category:
  *                 type: string
- *                 enum: [fundProposal, transferToNewWallet, payForOracle]
- *               proposal:
+ *                 enum: [payForOracle, fundProposal, setupNewWallet, transferFundsToNewWallet, other]
+ *               categoryOtherDescription:
  *                 type: string
- *               newWallet:
+ *               proposal:
  *                 type: string
  *               wallet:
  *                 type: string
@@ -583,9 +583,9 @@ module.exports = router;
  *                 type: number
  *             example:
  *               title: 'Title of Transaction'
- *               category: fundProposal
+ *               category: other
+ *               categoryOtherDescription: 'Paying for conference calls'
  *               proposal: 6280c41cfcc0830027b2d659
- *               newWallet: 62807ce6e069cd00272fa3432
  *               wallet: 62807ce6e069cd00272fa3af
  *               recipient: '0x9c380e8c30dc19dE008d4EFc09b7463803414639'
  *               amount: 1
@@ -624,11 +624,6 @@ module.exports = router;
  *         schema:
  *           type: string
  *         description: Transaction proposal
- *       - in: query
- *         name: newWallet
- *         schema:
- *           type: string
- *         description: Transaction newWallet
  *       - in: query
  *         name: wallet
  *         schema:

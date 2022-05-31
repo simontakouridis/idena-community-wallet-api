@@ -1,7 +1,9 @@
 const transactionTypes = {
-  FUND_PROPOSAL: 'fundProposal',
-  TRANSFER_TO_NEW_WALLET: 'transferToNewWallet',
   PAY_FOR_ORACLE: 'payForOracle',
+  FUND_PROPOSAL: 'fundProposal',
+  SETUP_NEW_WALLET: 'setupNewWallet',
+  TRANSFER_FUNDS_TO_NEW_WALLET: 'transferFundsToNewWallet',
+  OTHER: 'other',
 };
 
 module.exports = {

@@ -69,7 +69,7 @@ const createTransaction = catchAsync(async (req, res) => {
 });
 
 const getTransactions = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['title', 'category', 'proposal', 'newWallet', 'wallet', 'recipient']);
+  const filter = pick(req.query, ['title', 'category', 'proposal', 'wallet', 'recipient']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await governanceService.queryTransactions(filter, options);
   res.send(result);

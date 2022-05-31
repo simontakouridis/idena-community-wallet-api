@@ -132,7 +132,9 @@ components:
           type: string
         category:
           type: string
-          enum: [fundProposal, transferToNewWallet, payForOracle]
+          enum: [payForOracle, fundProposal, setupNewWallet, transferFundsToNewWallet, other]
+        categoryOtherDescription:
+          type: string
         proposal:
           type: string
         wallet:
@@ -150,7 +152,8 @@ components:
       example:
         id: 5ebac534954b54139806c120
         title: 'This is a title'
-        category: fundProposal
+        category: other
+        categoryOtherDescription: paying for conference calls
         proposal: 5ebac534954b54139806c121
         wallet: 5ebac534954b54139806c122
         recipient: '0xd839ffd2e9b5cb0301665cc9437c2aaa7e863eef'

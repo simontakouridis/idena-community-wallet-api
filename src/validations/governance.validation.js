@@ -98,9 +98,21 @@ const deleteProposal = {
 const createTransaction = {
   body: Joi.object().keys({
     title: Joi.string().required(),
-    category: Joi.string().required().valid(transactionTypes.FUND_PROPOSAL, transactionTypes.TRANSFER_TO_NEW_WALLET, transactionTypes.PAY_FOR_ORACLE),
+    category: Joi.string()
+      .required()
+      .valid(
+        transactionTypes.PAY_FOR_ORACLE,
+        transactionTypes.FUND_PROPOSAL,
+        transactionTypes.SETUP_NEW_WALLET,
+        transactionTypes.TRANSFER_FUNDS_TO_NEW_WALLET,
+        transactionTypes.OTHER
+      ),
+    categoryOtherDescription: Joi.string().when('category', {
+      is: transactionTypes.OTHER,
+      then: Joi.required(),
+      otherwise: Joi.forbidden(),
+    }),
     proposal: Joi.string().min(24).max(24),
-    newWallet: Joi.string().min(24).max(24),
     wallet: Joi.string().min(24).max(24).required(),
     recipient: Joi.string().required().custom(validateAddress),
     amount: Joi.number().required(),
@@ -110,9 +122,14 @@ const createTransaction = {
 const getTransactions = {
   query: Joi.object().keys({
     title: Joi.string(),
-    category: Joi.string(),
+    category: Joi.string().valid(
+      transactionTypes.PAY_FOR_ORACLE,
+      transactionTypes.FUND_PROPOSAL,
+      transactionTypes.SETUP_NEW_WALLET,
+      transactionTypes.TRANSFER_FUNDS_TO_NEW_WALLET,
+      transactionTypes.OTHER
+    ),
     proposal: Joi.string(),
-    newWallet: Joi.string(),
     wallet: Joi.string(),
     recipient: Joi.string(),
     sortBy: Joi.string(),

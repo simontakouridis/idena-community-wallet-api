@@ -11,16 +11,21 @@ const transactionSchema = mongoose.Schema(
     },
     category: {
       type: String,
-      enum: [transactionTypes.FUND_PROPOSAL, transactionTypes.TRANSFER_TO_NEW_WALLET, transactionTypes.PAY_FOR_ORACLE],
+      enum: [
+        transactionTypes.PAY_FOR_ORACLE,
+        transactionTypes.FUND_PROPOSAL,
+        transactionTypes.SETUP_NEW_WALLET,
+        transactionTypes.TRANSFER_FUNDS_TO_NEW_WALLET,
+        transactionTypes.OTHER,
+      ],
       required: true,
+    },
+    categoryOtherDescription: {
+      type: String,
     },
     proposal: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Proposal',
-    },
-    newWallet: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Wallet',
     },
     wallet: {
       type: mongoose.Schema.Types.ObjectId,
@@ -42,10 +47,26 @@ const transactionSchema = mongoose.Schema(
       required: true,
     },
     sends: {
-      type: [{ type: String }],
+      type: [
+        {
+          type: String,
+          lowercase: true,
+          validate(value) {
+            if (!isValidAddress(value)) {
+              throw new Error('Invalid signer address for send');
+            }
+          },
+        },
+      ],
     },
     push: {
       type: String,
+      lowercase: true,
+      validate(value) {
+        if (!isValidAddress(value)) {
+          throw new Error('Invalid signer address for push');
+        }
+      },
     },
   },
   {
