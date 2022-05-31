@@ -497,15 +497,17 @@ module.exports = router;
  *               fundingStatus:
  *                 type: string
  *                 enum: [pending, funded, unfunded]
- *               transaction:
- *                 type: string
+ *               transactions:
+ *                 type: array
+ *                 items:
+ *                   type: string
  *             example:
  *               title: 'Title of Proposal'
  *               description: 'Description of Proposal'
  *               oracle: '0xebb1bc133f0db6869c8ba67d0ce94ea86be83bc1'
  *               acceptanceStatus: 'pending'
  *               fundingStatus: 'pending'
- *               transaction: '6290297498583516260e5de1'
+ *               transactions: ['6290297498583516260e5de1', '6290297498583516260e5de2']
  *     responses:
  *       "200":
  *         description: OK

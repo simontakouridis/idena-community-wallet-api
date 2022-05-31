@@ -109,8 +109,10 @@ components:
         fundingStatus:
           type: string
           enum: [pending, funded, unfunded]
-        transaction:
-          type: string
+        transactions:
+          type: array
+          items:
+            type: string
       example:
         id: 5ebac534954b54139806c112
         title: 'This is a title'
@@ -119,7 +121,7 @@ components:
         wallet: 5ebac534954b54139806c122
         acceptanceStatus: pending
         fundingStatus: pending
-        transaction: 5ebac534954b54139806c119
+        transactions: ['5ebac534954b54139806c119', '5ebac534954b54139806c120']
 
     Transaction:
       type: object

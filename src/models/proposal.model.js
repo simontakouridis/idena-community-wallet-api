@@ -37,9 +37,8 @@ const proposalSchema = mongoose.Schema(
       enum: [proposalTypes.fundingStatus.PENDING, proposalTypes.fundingStatus.FUNDED, proposalTypes.fundingStatus.UNFUNDED],
       required: true,
     },
-    transaction: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Transaction',
+    transactions: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Transaction' }],
     },
   },
   {

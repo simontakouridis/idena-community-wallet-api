@@ -57,7 +57,7 @@ const deleteProposal = catchAsync(async (req, res) => {
 });
 
 const getProposals = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['title', 'oracle', 'wallet', 'acceptanceStatus', 'fundingStatus', 'transaction']);
+  const filter = pick(req.query, ['title', 'oracle', 'wallet', 'acceptanceStatus', 'fundingStatus']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await governanceService.queryProposals(filter, options);
   res.send(result);

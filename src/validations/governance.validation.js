@@ -68,7 +68,6 @@ const getProposals = {
       proposalTypes.acceptanceStatus.REJECTED
     ),
     fundingStatus: Joi.string().valid(proposalTypes.fundingStatus.PENDING, proposalTypes.fundingStatus.FUNDED, proposalTypes.fundingStatus.UNFUNDED),
-    transaction: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -86,7 +85,7 @@ const editProposal = {
       proposalTypes.acceptanceStatus.REJECTED
     ),
     fundingStatus: Joi.string().valid(proposalTypes.fundingStatus.PENDING, proposalTypes.fundingStatus.FUNDED, proposalTypes.fundingStatus.UNFUNDED),
-    transaction: Joi.string().min(24).max(24),
+    transactions: Joi.array().unique().items(Joi.string().min(24).max(24)),
   }),
 };
 
