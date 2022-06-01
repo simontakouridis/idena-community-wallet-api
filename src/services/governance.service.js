@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { User, DraftWallet, Wallet, Proposal, Transaction } = require('../models');
+const { User, DraftWallet, Wallet, Proposal, DraftTransaction, Transaction } = require('../models');
 const ApiError = require('../utils/ApiError');
 const externalService = require('./external.service');
 const { proposalTypes } = require('../config/proposal');
@@ -261,12 +261,26 @@ const queryProposals = async (filter, options) => {
  */
 
 /**
- * Create a transaction
- * @param {Object} transactionBody
- * @returns {Promise<Transaction>}
+ * Create a draft transaction
+ * @param {Object} draftTransactionBody
+ * @returns {Promise<DraftTransaction>}
  */
-const createTransaction = async (transactionBody) => {
-  return Transaction.create(transactionBody);
+const createDraftTransaction = async (draftTransactionBody) => {
+  return DraftTransaction.create(draftTransactionBody);
+};
+
+/**
+ * Query for draft transactions
+ * @param {Object} filter - Mongo filter
+ * @param {Object} options - Query options
+ * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
+ * @param {number} [options.limit] - Maximum number of results per page (default = 10)
+ * @param {number} [options.page] - Current page (default = 1)
+ * @returns {Promise<QueryResult>}
+ */
+const queryDraftTransactions = async (filter, options) => {
+  const draftTransactions = await DraftTransaction.paginate(filter, options);
+  return draftTransactions;
 };
 
 /**
@@ -298,6 +312,7 @@ module.exports = {
   editProposal,
   deleteProposal,
   queryProposals,
-  createTransaction,
+  createDraftTransaction,
+  queryDraftTransactions,
   queryTransactions,
 };

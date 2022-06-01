@@ -95,7 +95,7 @@ const deleteProposal = {
   }),
 };
 
-const createTransaction = {
+const createDraftTransaction = {
   body: Joi.object().keys({
     title: Joi.string().required(),
     category: Joi.string()
@@ -112,10 +112,33 @@ const createTransaction = {
       then: Joi.required(),
       otherwise: Joi.forbidden(),
     }),
-    proposal: Joi.string().min(24).max(24),
+    proposal: Joi.string().min(24).max(24).when('category', {
+      is: transactionTypes.FUND_PROPOSAL,
+      then: Joi.required(),
+      otherwise: Joi.forbidden(),
+    }),
     wallet: Joi.string().min(24).max(24).required(),
     recipient: Joi.string().required().custom(validateAddress),
-    amount: Joi.number().required(),
+    amount: Joi.number().integer().min(1).required(),
+  }),
+};
+
+const getDraftTransactions = {
+  query: Joi.object().keys({
+    title: Joi.string(),
+    category: Joi.string().valid(
+      transactionTypes.PAY_FOR_ORACLE,
+      transactionTypes.FUND_PROPOSAL,
+      transactionTypes.SETUP_NEW_WALLET,
+      transactionTypes.TRANSFER_FUNDS_TO_NEW_WALLET,
+      transactionTypes.OTHER
+    ),
+    proposal: Joi.string(),
+    wallet: Joi.string(),
+    recipient: Joi.string(),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
   }),
 };
 
@@ -149,6 +172,7 @@ module.exports = {
   getProposals,
   editProposal,
   deleteProposal,
-  createTransaction,
+  createDraftTransaction,
+  getDraftTransactions,
   getTransactions,
 };

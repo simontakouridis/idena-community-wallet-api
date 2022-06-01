@@ -56,13 +56,15 @@ router
   .delete(auth('manageProposals'), adminOfProposalWalletOnly, validate(governanceValidation.deleteProposal), governanceController.deleteProposal);
 
 router.post(
-  '/create-transaction',
+  '/create-draft-transaction',
   auth('manageTransactions'),
   adminOfWalletOnly,
-  validate(governanceValidation.createTransaction),
+  validate(governanceValidation.createDraftTransaction),
   lowercaseAddress,
-  governanceController.createTransaction
+  governanceController.createDraftTransaction
 );
+router.get('/draft-transactions', validate(governanceValidation.getDraftTransactions), lowercaseAddress, governanceController.getDraftTransactions);
+
 router.get('/transactions', validate(governanceValidation.getTransactions), lowercaseAddress, governanceController.getTransactions);
 
 module.exports = router;
@@ -547,9 +549,9 @@ module.exports = router;
 
 /**
  * @swagger
- * /governance/create-transaction:
+ * /governance/create-draft-transaction:
  *   post:
- *     summary: Create Transaction
+ *     summary: Create Draft Transaction
  *     tags: [Governance]
  *     security:
  *       - bearerAuth: []
@@ -595,7 +597,88 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Transaction'
+ *                $ref: '#/components/schemas/DraftTransaction'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ */
+
+/**
+ * @swagger
+ * /governance/draft-transactions:
+ *   get:
+ *     summary: Get all draft-transactions
+ *     tags: [Governance]
+ *     parameters:
+ *       - in: query
+ *         name: title
+ *         schema:
+ *           type: string
+ *         description: Transaction title
+ *       - in: query
+ *         name: category
+ *         schema:
+ *           type: string
+ *         description: Transaction category
+ *       - in: query
+ *         name: proposal
+ *         schema:
+ *           type: string
+ *         description: Transaction proposal
+ *       - in: query
+ *         name: wallet
+ *         schema:
+ *           type: string
+ *         description: Transaction wallet
+ *       - in: query
+ *         name: recipient
+ *         schema:
+ *           type: string
+ *         description: Transaction recipient
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *         description: sort by query in the form of field:desc/asc (ex. name:asc)
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         default: 10
+ *         description: Maximum number of wallets
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Page number
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 results:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/DraftTransaction'
+ *                 page:
+ *                   type: integer
+ *                   example: 1
+ *                 limit:
+ *                   type: integer
+ *                   example: 10
+ *                 totalPages:
+ *                   type: integer
+ *                   example: 1
+ *                 totalResults:
+ *                   type: integer
+ *                   example: 1
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":

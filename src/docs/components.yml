@@ -123,6 +123,46 @@ components:
         fundingStatus: pending
         transactions: ['5ebac534954b54139806c119', '5ebac534954b54139806c120']
 
+    DraftTransaction:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        category:
+          type: string
+          enum: [payForOracle, fundProposal, setupNewWallet, transferFundsToNewWallet, other]
+        categoryOtherDescription:
+          type: string
+        proposal:
+          type: string
+        wallet:
+          type: string
+        recipient:
+          type: string
+        amount:
+          type: number
+        sends:
+          type: array
+          items:
+            type: string
+      example:
+        id: 5ebac534954b54139806c120
+        title: 'This is a title'
+        category: other
+        categoryOtherDescription: paying for conference calls
+        proposal: 5ebac534954b54139806c121
+        wallet: 5ebac534954b54139806c122
+        recipient: '0xd839ffd2e9b5cb0301665cc9437c2aaa7e863eef'
+        amount: 10
+        sends:
+          [
+            '0xe1bd6eb3d75f8fceabbe07b1a5f9b5d4c5702691d8d0c650e7523a4518a83748',
+            '0x21c53fe856364a1964009f05bd06e4f62c3b6cfd99bc522816d2338b685a64d8',
+            '0xbc2f6b0280755c4544b74362fe1fc75e739ca41ebe8919334b7dbad06602853b',
+          ]
+
     Transaction:
       type: object
       properties:

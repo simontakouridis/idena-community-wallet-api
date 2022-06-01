@@ -3,7 +3,7 @@ const { isValidAddress } = require('ethereumjs-util');
 const { toJSON, paginate } = require('./plugins');
 const { transactionTypes } = require('../config/transaction');
 
-const transactionSchema = mongoose.Schema(
+const draftTransactionSchema = mongoose.Schema(
   {
     title: {
       type: String,
@@ -30,6 +30,7 @@ const transactionSchema = mongoose.Schema(
     wallet: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Wallet',
+      unique: true,
       required: true,
     },
     recipient: {
@@ -60,15 +61,6 @@ const transactionSchema = mongoose.Schema(
         },
       ],
     },
-    push: {
-      type: String,
-      lowercase: true,
-      validate(value) {
-        if (!isValidAddress(value)) {
-          throw new Error('Invalid signer address for push');
-        }
-      },
-    },
   },
   {
     timestamps: true,
@@ -76,12 +68,12 @@ const transactionSchema = mongoose.Schema(
 );
 
 // add plugin that converts mongoose to json
-transactionSchema.plugin(toJSON);
-transactionSchema.plugin(paginate);
+draftTransactionSchema.plugin(toJSON);
+draftTransactionSchema.plugin(paginate);
 
 /**
- * @typedef Transaction
+ * @typedef DraftTransaction
  */
-const Transaction = mongoose.model('Transaction', transactionSchema);
+const DraftTransaction = mongoose.model('DraftTransaction', draftTransactionSchema);
 
-module.exports = Transaction;
+module.exports = DraftTransaction;
