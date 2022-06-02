@@ -31,6 +31,15 @@ const getCurrentWallet = async () => {
 };
 
 /**
+ * Get wallet by id
+ * @param {ObjectId} id
+ * @returns {Promise<Wallet>}
+ */
+const getWalletById = async (id) => {
+  return Wallet.findById(id);
+};
+
+/**
  * DRAFT WALLET FUNCTIONS
  */
 
@@ -149,18 +158,17 @@ const getDraftWalletById = async (id) => {
  * @returns {Promise<Wallet>}
  */
 const activateDraftWallet = async (draftWalletId) => {
-  const draftWallet = await getDraftWalletById(draftWalletId);
-  if (!draftWallet) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Draft wallet not found');
-  }
-  if (draftWallet.signers.length < 5) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Draft wallet does not have enough signers');
-  }
-  if (await Wallet.isAddressTaken(draftWallet.address)) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Wallet address already taken');
-  }
-
   try {
+    const draftWallet = await getDraftWalletById(draftWalletId);
+    if (!draftWallet) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Draft wallet not found');
+    }
+    if (draftWallet.signers.length < 5) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Draft wallet does not have enough signers');
+    }
+    if (await Wallet.isAddressTaken(draftWallet.address)) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Wallet address already taken');
+    }
     const currentWallet = await getCurrentWallet();
     const wallet = new Wallet({
       address: draftWallet.address,
@@ -257,6 +265,15 @@ const queryProposals = async (filter, options) => {
 };
 
 /**
+ * Get proposal by id
+ * @param {ObjectId} id
+ * @returns {Promise<Proposal>}
+ */
+const getProposalById = async (id) => {
+  return Proposal.findById(id);
+};
+
+/**
  * TRANSACTION FUNCTIONS
  */
 
@@ -267,6 +284,16 @@ const queryProposals = async (filter, options) => {
  */
 const createDraftTransaction = async (draftTransactionBody) => {
   return DraftTransaction.create(draftTransactionBody);
+};
+
+/**
+ * Sign a draft transaction
+ * @param {Object} signTransactionBody
+ * @param {Object} user
+ * @returns {Promise<DraftTransaction>}
+ */
+const signDraftTransaction = async (signTransactionBody, user) => {
+  return DraftTransaction.findByIdAndUpdate(signTransactionBody.transaction, { $addToSet: { sends: user.address } });
 };
 
 /**
@@ -281,6 +308,70 @@ const createDraftTransaction = async (draftTransactionBody) => {
 const queryDraftTransactions = async (filter, options) => {
   const draftTransactions = await DraftTransaction.paginate(filter, options);
   return draftTransactions;
+};
+
+/**
+ * Get draft transaction by id
+ * @param {ObjectId} id
+ * @returns {Promise<DraftTransaction>}
+ */
+const getDraftTransactionById = async (id) => {
+  return DraftTransaction.findById(id);
+};
+
+/**
+ * Execute draft transaction by id
+ * @param {ObjectId} draftTransactionId
+ * @returns {Promise<Transaction>}
+ */
+const executeDraftTransaction = async (draftTransactionId, userAddress) => {
+  try {
+    const draftTransaction = await getDraftTransactionById(draftTransactionId);
+    if (!draftTransaction) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Draft transaction not found');
+    }
+    if (draftTransaction.sends.length < 3) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Draft transaction does not have enough sends');
+    }
+
+    const transaction = new Transaction({
+      title: draftTransaction.title,
+      category: draftTransaction.category,
+      ...(draftTransaction.categoryOtherDescription && { categoryOtherDescription: draftTransaction.categoryOtherDescription }),
+      ...(draftTransaction.proposal && { proposal: draftTransaction.proposal }),
+      wallet: draftTransaction.wallet,
+      recipient: draftTransaction.recipient,
+      amount: draftTransaction.amount,
+      sends: draftTransaction.sends,
+      push: userAddress,
+    });
+
+    const updatePromises = [];
+    updatePromises.push(draftTransaction.remove());
+    updatePromises.push(transaction.save());
+    updatePromises.push(Wallet.updateOne({ _id: draftTransaction.wallet }, { $addToSet: { transactions: draftTransaction._id } }));
+    if (draftTransaction.proposal) {
+      updatePromises.push(Proposal.updateOne({ _id: draftTransaction.proposal }, { $addToSet: { transactions: draftTransaction._id } }));
+    }
+    await Promise.all(updatePromises);
+
+    return transaction;
+  } catch (error) {
+    throw new ApiError(httpStatus.BAD_REQUEST, `Error with execute draft transaction ${error}`);
+  }
+};
+
+/**
+ * Delete draft transaction by id
+ * @param {ObjectId} draftTransactionId
+ * @returns {Promise<DraftTransaction>}
+ */
+const deleteDraftTransaction = async (draftTransactionId) => {
+  const draftTransaction = await DraftTransaction.findByIdAndDelete(draftTransactionId);
+  if (!draftTransaction) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Draft transction for delete not found');
+  }
+  return draftTransaction;
 };
 
 /**
@@ -308,11 +399,17 @@ module.exports = {
   deleteDraftWallet,
   queryWallets,
   getCurrentWallet,
+  getWalletById,
   createProposal,
   editProposal,
   deleteProposal,
   queryProposals,
+  getProposalById,
   createDraftTransaction,
+  signDraftTransaction,
   queryDraftTransactions,
+  getDraftTransactionById,
+  executeDraftTransaction,
+  deleteDraftTransaction,
   queryTransactions,
 };

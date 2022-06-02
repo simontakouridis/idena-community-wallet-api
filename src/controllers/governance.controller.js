@@ -68,11 +68,26 @@ const createDraftTransaction = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(draftTransaction);
 });
 
+const signDraftTransaction = catchAsync(async (req, res) => {
+  const draftTransaction = await governanceService.signDraftTransaction(req.body, req.user);
+  res.send(draftTransaction);
+});
+
 const getDraftTransactions = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['title', 'category', 'proposal', 'wallet', 'recipient']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await governanceService.queryDraftTransactions(filter, options);
   res.send(result);
+});
+
+const executeDraftTransaction = catchAsync(async (req, res) => {
+  const transaction = await governanceService.executeDraftTransaction(req.params.draftTransactionId, req.user.address);
+  res.send(transaction);
+});
+
+const deleteDraftTransaction = catchAsync(async (req, res) => {
+  await governanceService.deleteDraftTransaction(req.params.draftTransactionId);
+  res.status(httpStatus.NO_CONTENT).send();
 });
 
 const getTransactions = catchAsync(async (req, res) => {
@@ -94,6 +109,9 @@ module.exports = {
   deleteProposal,
   getProposals,
   createDraftTransaction,
+  signDraftTransaction,
   getDraftTransactions,
+  executeDraftTransaction,
+  deleteDraftTransaction,
   getTransactions,
 };

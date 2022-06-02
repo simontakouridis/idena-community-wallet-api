@@ -85,7 +85,7 @@ const editProposal = {
       proposalTypes.acceptanceStatus.REJECTED
     ),
     fundingStatus: Joi.string().valid(proposalTypes.fundingStatus.PENDING, proposalTypes.fundingStatus.FUNDED, proposalTypes.fundingStatus.UNFUNDED),
-    transactions: Joi.array().unique().items(Joi.string().min(24).max(24)),
+    transactions: Joi.array().unique().items(Joi.string().custom(objectId)),
   }),
 };
 
@@ -112,14 +112,32 @@ const createDraftTransaction = {
       then: Joi.required(),
       otherwise: Joi.forbidden(),
     }),
-    proposal: Joi.string().min(24).max(24).when('category', {
+    proposal: Joi.string().custom(objectId).when('category', {
       is: transactionTypes.FUND_PROPOSAL,
       then: Joi.required(),
       otherwise: Joi.forbidden(),
     }),
-    wallet: Joi.string().min(24).max(24).required(),
+    wallet: Joi.string().required().custom(objectId),
     recipient: Joi.string().required().custom(validateAddress),
     amount: Joi.number().integer().min(1).required(),
+  }),
+};
+
+const signDraftTransaction = {
+  body: Joi.object().keys({
+    transaction: Joi.string().required().custom(objectId),
+  }),
+};
+
+const executeDraftTransaction = {
+  params: Joi.object().keys({
+    draftTransactionId: Joi.string().required().custom(objectId),
+  }),
+};
+
+const deleteDraftTransaction = {
+  params: Joi.object().keys({
+    draftTransactionId: Joi.string().required().custom(objectId),
   }),
 };
 
@@ -173,6 +191,9 @@ module.exports = {
   editProposal,
   deleteProposal,
   createDraftTransaction,
+  signDraftTransaction,
+  executeDraftTransaction,
+  deleteDraftTransaction,
   getDraftTransactions,
   getTransactions,
 };

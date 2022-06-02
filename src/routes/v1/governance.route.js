@@ -5,6 +5,7 @@ const {
   authorOfDraftWalletOnly,
   adminOfWalletOnly,
   adminOfProposalWalletOnly,
+  adminOfDraftTransactionWalletOnly,
   adminOfCurrentWalletOnly,
   adminOfCurrentWalletOrSoleAdminOnly,
 } = require('../../middlewares/governance');
@@ -63,7 +64,29 @@ router.post(
   lowercaseAddress,
   governanceController.createDraftTransaction
 );
+router.post(
+  '/sign-draft-transaction',
+  auth('manageTransactions'),
+  adminOfDraftTransactionWalletOnly,
+  validate(governanceValidation.signDraftTransaction),
+  governanceController.signDraftTransaction
+);
 router.get('/draft-transactions', validate(governanceValidation.getDraftTransactions), lowercaseAddress, governanceController.getDraftTransactions);
+
+router
+  .route('/draft-transactions/:draftTransactionId')
+  .patch(
+    auth('manageTransactions'),
+    adminOfDraftTransactionWalletOnly,
+    validate(governanceValidation.executeDraftTransaction),
+    governanceController.executeDraftTransaction
+  )
+  .delete(
+    auth('manageTransactions'),
+    adminOfDraftTransactionWalletOnly,
+    validate(governanceValidation.deleteDraftTransaction),
+    governanceController.deleteDraftTransaction
+  );
 
 router.get('/transactions', validate(governanceValidation.getTransactions), lowercaseAddress, governanceController.getTransactions);
 
@@ -137,7 +160,7 @@ module.exports = router;
  *               contract: '0x7013a7e43c610ab7f4b61f67cb1830252f9b38eb'
  *     responses:
  *       "200":
- *         description: Created
+ *         description: OK
  *         content:
  *           application/json:
  *             schema:
@@ -606,6 +629,42 @@ module.exports = router;
 
 /**
  * @swagger
+ * /governance/sign-draft-transaction:
+ *   post:
+ *     summary: signing of draft transaction
+ *     tags: [Governance]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - transaction
+ *             properties:
+ *               transaction:
+ *                 type: string
+ *             example:
+ *               transaction: 6297197d71b2823464505e4e
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/DraftTransaction'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ */
+
+/**
+ * @swagger
  * /governance/draft-transactions:
  *   get:
  *     summary: Get all draft-transactions
@@ -683,6 +742,60 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
+ */
+
+/**
+ * @swagger
+ * /draft-transaction/{draftTransactionId}:
+ *   patch:
+ *     summary: execute a draft transaction
+ *     tags: [Governance]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: draftTransactionId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Draft Transaction Id
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Transaction'
+ *       "400":
+ *         $ref: '#/components/responses/DuplicateAddress'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
+ *   delete:
+ *     summary: Delete a draft transaction
+ *     tags: [Governance]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: draftTransactionId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Draft Transaction Id
+ *     responses:
+ *       "204":
+ *         description: No content
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
  */
 
 /**
