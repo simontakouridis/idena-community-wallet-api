@@ -133,6 +133,9 @@ const executeDraftTransaction = {
   params: Joi.object().keys({
     draftTransactionId: Joi.string().required().custom(objectId),
   }),
+  body: Joi.object().keys({
+    tx: Joi.string().required(),
+  }),
 };
 
 const deleteDraftTransaction = {

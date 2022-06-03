@@ -29,7 +29,23 @@ const getMultisigContract = async (contract) => {
   return response.data.result;
 };
 
+/**
+ * get address contract balances from idena api
+ * @param {string} address
+ * @param {string} contract
+ * @param {Object} params
+ * @returns {Promise<Any>}
+ */
+const getAddressContractBalances = async (address, contract, params) => {
+  const response = await axios.patch(`${config.idena.apiUrl}/Address/${address}/Contract/${contract}/BalanceUpdates`, null, { params });
+  if (!response || response.status !== 200 || !response.data || !response.data.result) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Error getting address contract balances data');
+  }
+  return response.data.result;
+};
+
 module.exports = {
   getContract,
   getMultisigContract,
+  getAddressContractBalances,
 };

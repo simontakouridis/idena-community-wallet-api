@@ -69,6 +69,8 @@ const createDraftTransaction = catchAsync(async (req, res) => {
 });
 
 const signDraftTransaction = catchAsync(async (req, res) => {
+  req.body.signer = req.user.address;
+  await governanceService.validateNewSignerForDraftTransaction(req.body);
   const draftTransaction = await governanceService.signDraftTransaction(req.body, req.user);
   res.send(draftTransaction);
 });
@@ -81,6 +83,7 @@ const getDraftTransactions = catchAsync(async (req, res) => {
 });
 
 const executeDraftTransaction = catchAsync(async (req, res) => {
+  await governanceService.validateExecutionOfDraftTransaction(req.params.draftTransactionId, req.body.tx);
   const transaction = await governanceService.executeDraftTransaction(req.params.draftTransactionId, req.user.address);
   res.send(transaction);
 });

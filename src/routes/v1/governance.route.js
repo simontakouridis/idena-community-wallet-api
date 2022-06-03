@@ -759,6 +759,19 @@ module.exports = router;
  *         schema:
  *           type: string
  *         description: Draft Transaction Id
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - tx
+ *             properties:
+ *               tx:
+ *                 type: string
+ *             example:
+ *               tx: '0xf7fcf4d18b828112e6583777c757eff276431ab89f6f9a65f22d5585c090b05f'
  *     responses:
  *       "200":
  *         description: OK

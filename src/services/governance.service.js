@@ -79,7 +79,7 @@ const createDraftWallet = async (draftWalletBody) => {
 };
 
 /**
- * Validates a new multisig wallet
+ * Validates a new signer for multisig wallet
  * @param {Object} newSignerBody
  * @returns {Promise<Array>}
  */
@@ -287,6 +287,29 @@ const createDraftTransaction = async (draftTransactionBody) => {
 };
 
 /**
+ * Validates a new signer for transaction
+ * @param {Object} newSignerBody
+ * @returns {Promise<Any>}
+ */
+const validateNewSignerForDraftTransaction = async (newSignerBody) => {
+  const draftTransaction = await DraftTransaction.findById(newSignerBody.transaction);
+  if (draftTransaction.sends.includes(newSignerBody.signer)) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Draft transaction already signed by this signer');
+  }
+
+  const wallet = await getWalletById(draftTransaction.wallet);
+  const multisigContractData = await externalService.getMultisigContract(wallet.address);
+
+  const newSigner = multisigContractData.signers.find(
+    (signer) =>
+      signer.address === newSignerBody.signer && signer.destAddress === draftTransaction.recipient && Number(signer.amount) === draftTransaction.amount
+  );
+  if (!newSigner) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Signer not present for transaction on multisig wallet');
+  }
+};
+
+/**
  * Sign a draft transaction
  * @param {Object} signTransactionBody
  * @param {Object} user
@@ -317,6 +340,42 @@ const queryDraftTransactions = async (filter, options) => {
  */
 const getDraftTransactionById = async (id) => {
   return DraftTransaction.findById(id);
+};
+
+/**
+ * Validates execution for transaction
+ * @param {ObjectId} draftTransactionId
+ * @param {string} tx
+ * @returns {Promise<Any>}
+ */
+const validateExecutionOfDraftTransaction = async (draftTransactionId, tx) => {
+  const draftTransaction = await DraftTransaction.findById(draftTransactionId);
+  if (draftTransaction.sends.length < 3) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Draft transaction has insufficient signers');
+  }
+
+  const wallet = await getWalletById(draftTransaction.wallet);
+  const multisigContractData = await externalService.getMultisigContract(wallet.address);
+
+  const signers = multisigContractData.signers.filter((signer) => signer.destAddress === draftTransaction.recipient && Number(signer.amount) === 0);
+  if (signers.length < 3) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Multisig wallet data is inconsistent with recent push');
+  }
+
+  const addressContractBalancesData = await externalService.getAddressContractBalances(draftTransaction.recipient, wallet.address, { limit: 1 });
+  if (!addressContractBalancesData.length) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'No recent pushes found');
+  }
+  const lastestAddressContractBalancesItem = addressContractBalancesData[0];
+  if (
+    lastestAddressContractBalancesItem.hash !== tx ||
+    lastestAddressContractBalancesItem.contractType !== 'Multisig' ||
+    lastestAddressContractBalancesItem.contractCallMethod !== 'Push' ||
+    Number(lastestAddressContractBalancesItem.balanceChange) !== draftTransaction.amount ||
+    lastestAddressContractBalancesItem.txReceipt.success !== true
+  ) {
+    throw new Error('Latest recipient contract balance data inconsistency');
+  }
 };
 
 /**
@@ -406,9 +465,11 @@ module.exports = {
   queryProposals,
   getProposalById,
   createDraftTransaction,
+  validateNewSignerForDraftTransaction,
   signDraftTransaction,
   queryDraftTransactions,
   getDraftTransactionById,
+  validateExecutionOfDraftTransaction,
   executeDraftTransaction,
   deleteDraftTransaction,
   queryTransactions,
