@@ -84,7 +84,7 @@ const getDraftTransactions = catchAsync(async (req, res) => {
 
 const executeDraftTransaction = catchAsync(async (req, res) => {
   await governanceService.validateExecutionOfDraftTransaction(req.params.draftTransactionId, req.body.tx);
-  const transaction = await governanceService.executeDraftTransaction(req.params.draftTransactionId, req.user.address);
+  const transaction = await governanceService.executeDraftTransaction(req.params.draftTransactionId, req.user.address, req.body.tx);
   res.send(transaction);
 });
 

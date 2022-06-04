@@ -79,6 +79,7 @@ router
     auth('manageTransactions'),
     adminOfDraftTransactionWalletOnly,
     validate(governanceValidation.executeDraftTransaction),
+    lowercaseAddress,
     governanceController.executeDraftTransaction
   )
   .delete(

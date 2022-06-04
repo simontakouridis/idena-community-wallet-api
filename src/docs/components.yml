@@ -189,6 +189,8 @@ components:
             type: string
         push:
           type: string
+        tx:
+          type: string
       example:
         id: 5ebac534954b54139806c120
         title: 'This is a title'
@@ -205,6 +207,7 @@ components:
             '0xbc2f6b0280755c4544b74362fe1fc75e739ca41ebe8919334b7dbad06602853b',
           ]
         push: '0x1f05ce48cf88e1737f3a1878252649f6b838583da9cf5138c08898c8c39f1586'
+        tx: '0x0f64bb0a681f3cccfbdc79993e31d222cd0d09c6e2b093a7da267ca719afcda5'
 
     Error:
       type: object

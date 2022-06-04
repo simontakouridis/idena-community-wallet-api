@@ -381,9 +381,11 @@ const validateExecutionOfDraftTransaction = async (draftTransactionId, tx) => {
 /**
  * Execute draft transaction by id
  * @param {ObjectId} draftTransactionId
+ * @param {string} userAddress
+ * @param {string} tx
  * @returns {Promise<Transaction>}
  */
-const executeDraftTransaction = async (draftTransactionId, userAddress) => {
+const executeDraftTransaction = async (draftTransactionId, userAddress, tx) => {
   try {
     const draftTransaction = await getDraftTransactionById(draftTransactionId);
     if (!draftTransaction) {
@@ -403,6 +405,7 @@ const executeDraftTransaction = async (draftTransactionId, userAddress) => {
       amount: draftTransaction.amount,
       sends: draftTransaction.sends,
       push: userAddress,
+      tx,
     });
 
     const updatePromises = [];

@@ -17,8 +17,11 @@ const lowercaseAddress = (req, res, next) => {
   if (req.body.contract) {
     req.body.contract = req.body.contract.toLowerCase();
   }
+  if (req.body.tx) {
+    req.body.tx = req.body.tx.toLowerCase();
+  }
   /**
-   * Param transformations
+   * Params transformations
    */
   if (req.params.address) {
     req.params.address = req.params.address.toLowerCase();
@@ -34,6 +37,9 @@ const lowercaseAddress = (req, res, next) => {
   }
   if (req.params.contract) {
     req.params.contract = req.params.contract.toLowerCase();
+  }
+  if (req.params.tx) {
+    req.params.tx = req.params.tx.toLowerCase();
   }
   next();
 };

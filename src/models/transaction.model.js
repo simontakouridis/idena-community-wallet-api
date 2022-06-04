@@ -69,6 +69,10 @@ const transactionSchema = mongoose.Schema(
         }
       },
     },
+    tx: {
+      type: String,
+      lowercase: true,
+    },
   },
   {
     timestamps: true,
