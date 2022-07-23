@@ -119,7 +119,7 @@ const createDraftTransaction = {
     }),
     wallet: Joi.string().required().custom(objectId),
     recipient: Joi.string().required().custom(validateAddress),
-    amount: Joi.number().integer().min(1).required(),
+    amount: Joi.number().precision(8).positive().required(),
   }),
 };
 
