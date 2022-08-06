@@ -105,6 +105,7 @@ const createDraftTransaction = {
         transactionTypes.FUND_PROPOSAL,
         transactionTypes.SETUP_NEW_WALLET,
         transactionTypes.TRANSFER_FUNDS_TO_NEW_WALLET,
+        transactionTypes.DELEGATE_REWARDS,
         transactionTypes.OTHER
       ),
     categoryOtherDescription: Joi.string().when('category', {
@@ -152,6 +153,7 @@ const getDraftTransactions = {
       transactionTypes.FUND_PROPOSAL,
       transactionTypes.SETUP_NEW_WALLET,
       transactionTypes.TRANSFER_FUNDS_TO_NEW_WALLET,
+      transactionTypes.DELEGATE_REWARDS,
       transactionTypes.OTHER
     ),
     proposal: Joi.string(),
@@ -171,6 +173,7 @@ const getTransactions = {
       transactionTypes.FUND_PROPOSAL,
       transactionTypes.SETUP_NEW_WALLET,
       transactionTypes.TRANSFER_FUNDS_TO_NEW_WALLET,
+      transactionTypes.DELEGATE_REWARDS,
       transactionTypes.OTHER
     ),
     proposal: Joi.string(),

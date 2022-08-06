@@ -16,6 +16,7 @@ const transactionSchema = mongoose.Schema(
         transactionTypes.FUND_PROPOSAL,
         transactionTypes.SETUP_NEW_WALLET,
         transactionTypes.TRANSFER_FUNDS_TO_NEW_WALLET,
+        transactionTypes.DELEGATE_REWARDS,
         transactionTypes.OTHER,
       ],
       required: true,

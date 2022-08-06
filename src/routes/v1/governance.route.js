@@ -596,7 +596,7 @@ module.exports = router;
  *                 type: string
  *               category:
  *                 type: string
- *                 enum: [payForOracle, fundProposal, setupNewWallet, transferFundsToNewWallet, other]
+ *                 enum: [payForOracle, fundProposal, setupNewWallet, transferFundsToNewWallet, delegateRewards, other]
  *               categoryOtherDescription:
  *                 type: string
  *               proposal:
