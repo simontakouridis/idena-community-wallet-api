@@ -370,7 +370,6 @@ const validateExecutionOfDraftTransaction = async (draftTransactionId, tx) => {
   if (
     lastestAddressContractBalancesItem.hash !== tx ||
     lastestAddressContractBalancesItem.contractType !== 'Multisig' ||
-    lastestAddressContractBalancesItem.contractCallMethod !== 'Push' ||
     Number(lastestAddressContractBalancesItem.balanceChange) !== draftTransaction.amount ||
     lastestAddressContractBalancesItem.txReceipt.success !== true
   ) {
