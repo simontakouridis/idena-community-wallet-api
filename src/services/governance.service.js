@@ -371,7 +371,8 @@ const validateExecutionOfDraftTransaction = async (draftTransactionId, tx) => {
     lastestAddressContractBalancesItem.hash !== tx ||
     lastestAddressContractBalancesItem.contractType !== 'Multisig' ||
     Number(lastestAddressContractBalancesItem.balanceChange) !== draftTransaction.amount ||
-    lastestAddressContractBalancesItem.txReceipt.success !== true
+    lastestAddressContractBalancesItem.txReceipt.success !== true ||
+    lastestAddressContractBalancesItem.txReceipt.method !== 'push'
   ) {
     throw new Error('Latest recipient contract balance data inconsistency');
   }
