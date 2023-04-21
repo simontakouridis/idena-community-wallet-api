@@ -411,9 +411,9 @@ const executeDraftTransaction = async (draftTransactionId, userAddress, tx) => {
     const updatePromises = [];
     updatePromises.push(draftTransaction.remove());
     updatePromises.push(transaction.save());
-    updatePromises.push(Wallet.updateOne({ _id: draftTransaction.wallet }, { $addToSet: { transactions: draftTransaction._id } }));
+    updatePromises.push(Wallet.updateOne({ _id: draftTransaction.wallet }, { $addToSet: { transactions: transaction._id } }));
     if (draftTransaction.proposal) {
-      updatePromises.push(Proposal.updateOne({ _id: draftTransaction.proposal }, { $addToSet: { transactions: draftTransaction._id } }));
+      updatePromises.push(Proposal.updateOne({ _id: draftTransaction.proposal }, { $addToSet: { transactions: transaction._id } }));
     }
     await Promise.all(updatePromises);
 
