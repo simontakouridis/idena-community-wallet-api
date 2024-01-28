@@ -1,0 +1,626 @@
+[{
+  "_id": {
+    "$oid": "62a413ad39409200270af410"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x70803a9ec8d165b1b7096d5a36666cd3dba3f91a",
+  "createdAt": {
+    "$date": "2022-06-11T04:01:49.466Z"
+  },
+  "updatedAt": {
+    "$date": "2022-06-11T04:01:49.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62a4484d39409200270af75a"
+  },
+  "name": "unnamed",
+  "role": "admin",
+  "isAddressVerified": true,
+  "wallets": [
+    {
+      "$oid": "62cc01262c541c00298298ab"
+    },
+    {
+      "$oid": "640260b4a3cd410027d355a5"
+    }
+  ],
+  "address": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "createdAt": {
+    "$date": "2022-06-11T07:46:21.353Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-03T21:03:48.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62a44bf139409200270af7f3"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x774bef3729d93fa446988f04bffcfe6edb0ce4b1",
+  "createdAt": {
+    "$date": "2022-06-11T08:01:53.342Z"
+  },
+  "updatedAt": {
+    "$date": "2022-06-11T08:01:53.342Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62a49a2f6df51a7868720aef"
+  },
+  "address": "0x412aa80992e5f701468df7bfe3bc1de0213e8649",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-06-11T13:35:43.402Z"
+  },
+  "role": "user",
+  "updatedAt": {
+    "$date": "2022-06-11T14:18:01.520Z"
+  },
+  "wallets": [],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "62a49a2f6df51a7868720af0"
+  },
+  "address": "0xb10c36c10674eb195b31d5734384eebb95d21e42",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-06-11T13:35:43.402Z"
+  },
+  "role": "user",
+  "updatedAt": {
+    "$date": "2022-06-11T13:46:08.565Z"
+  },
+  "wallets": [],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "62a49a2f6df51a7868720af1"
+  },
+  "address": "0x7f9a4d0ec72eb7c1912b285b6745f807d377aecc",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-06-11T13:35:43.402Z"
+  },
+  "role": "user",
+  "updatedAt": {
+    "$date": "2022-06-11T13:35:43.402Z"
+  },
+  "wallets": []
+},
+{
+  "_id": {
+    "$oid": "62a49a2f6df51a7868720af2"
+  },
+  "address": "0xeb4a85eec00bb48e791b4bf4a3587bf1eb5dad13",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-06-11T13:35:43.402Z"
+  },
+  "role": "user",
+  "updatedAt": {
+    "$date": "2022-06-11T13:35:43.402Z"
+  },
+  "wallets": []
+},
+{
+  "_id": {
+    "$oid": "62a49dce39409200270afb4c"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0xd749d173d54b43f085b2cc01391fa77326a829b4",
+  "createdAt": {
+    "$date": "2022-06-11T13:51:10.598Z"
+  },
+  "updatedAt": {
+    "$date": "2022-06-11T13:51:10.598Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62a4df6539409200270afd73"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0xa15de4839ed11ac66a6ff0a4e58fe90d99e67b3d",
+  "createdAt": {
+    "$date": "2022-06-11T18:31:01.286Z"
+  },
+  "updatedAt": {
+    "$date": "2022-06-11T18:31:01.286Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62a5306d39409200270afd99"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x3a6295e3574cb63c9e4ebba5558377da9d957b9d",
+  "createdAt": {
+    "$date": "2022-06-12T00:16:45.784Z"
+  },
+  "updatedAt": {
+    "$date": "2022-06-12T00:16:45.784Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62a9c43939409200270afde7"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x198c40d8322774fb33ca3e3abf8c2d4ffd798383",
+  "createdAt": {
+    "$date": "2022-06-15T11:36:25.877Z"
+  },
+  "updatedAt": {
+    "$date": "2022-06-15T11:36:25.877Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62cb52ea39409200270b00a7"
+  },
+  "name": "unnamed",
+  "role": "admin",
+  "isAddressVerified": true,
+  "wallets": [
+    {
+      "$oid": "62cc01262c541c00298298ab"
+    },
+    {
+      "$oid": "631dde2b8928a20027f145ca"
+    },
+    {
+      "$oid": "6527fd60cce72f0027eaed5f"
+    }
+  ],
+  "address": "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+  "createdAt": {
+    "$date": "2022-07-10T22:30:02.243Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-12T14:06:24.549Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62cb616939409200270b0241"
+  },
+  "name": "unnamed",
+  "role": "admin",
+  "isAddressVerified": true,
+  "wallets": [
+    {
+      "$oid": "62cc01262c541c00298298ab"
+    },
+    {
+      "$oid": "640260b4a3cd410027d355a5"
+    },
+    {
+      "$oid": "648e47b5cce72f0027ea9d09"
+    }
+  ],
+  "address": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "createdAt": {
+    "$date": "2022-07-10T23:31:53.829Z"
+  },
+  "updatedAt": {
+    "$date": "2023-06-17T23:54:29.322Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62cbf63439409200270b03f5"
+  },
+  "name": "unnamed",
+  "role": "admin",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x845aa9b6afc14cf0eda10ce00d91161898be4b32",
+  "createdAt": {
+    "$date": "2022-07-11T10:06:44.982Z"
+  },
+  "updatedAt": {
+    "$date": "2022-07-11T10:06:44.982Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62cc012618ff95d452fff3f3"
+  },
+  "address": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-07-11T10:53:26.385Z"
+  },
+  "role": "admin",
+  "updatedAt": {
+    "$date": "2023-10-12T14:06:24.549Z"
+  },
+  "wallets": [
+    {
+      "$oid": "62cc01262c541c00298298ab"
+    },
+    {
+      "$oid": "636f4b2b8928a20027f18708"
+    },
+    {
+      "$oid": "640260b4a3cd410027d355a5"
+    },
+    {
+      "$oid": "6527fd60cce72f0027eaed5f"
+    }
+  ],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "62cc012618ff95d452fff3f4"
+  },
+  "address": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-07-11T10:53:26.385Z"
+  },
+  "role": "admin",
+  "updatedAt": {
+    "$date": "2022-11-12T07:28:43.819Z"
+  },
+  "wallets": [
+    {
+      "$oid": "62cc01262c541c00298298ab"
+    },
+    {
+      "$oid": "636f4b2b8928a20027f18708"
+    }
+  ],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "631dd7ce8928a20027f1445e"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x562be8d8cb44e7c3a276f3af0344c93de4b5c192",
+  "createdAt": {
+    "$date": "2022-09-11T12:42:54.951Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-11T12:42:54.951Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "631dde2b156192ba3f33e1fc"
+  },
+  "address": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-09-11T13:10:03.593Z"
+  },
+  "role": "admin",
+  "updatedAt": {
+    "$date": "2022-11-12T07:28:43.819Z"
+  },
+  "wallets": [
+    {
+      "$oid": "631dde2b8928a20027f145ca"
+    },
+    {
+      "$oid": "636f4b2b8928a20027f18708"
+    }
+  ],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "631dde2b156192ba3f33e1fd"
+  },
+  "address": "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-09-11T13:10:03.593Z"
+  },
+  "role": "admin",
+  "updatedAt": {
+    "$date": "2023-03-03T21:03:48.436Z"
+  },
+  "wallets": [
+    {
+      "$oid": "631dde2b8928a20027f145ca"
+    },
+    {
+      "$oid": "640260b4a3cd410027d355a5"
+    }
+  ],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "631dde2b156192ba3f33e200"
+  },
+  "address": "0xd270ff0e68a47faf8b13ff1a419819c39ee9f829",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-09-11T13:10:03.593Z"
+  },
+  "role": "admin",
+  "updatedAt": {
+    "$date": "2022-09-12T19:46:47.241Z"
+  },
+  "wallets": [
+    {
+      "$oid": "631dde2b8928a20027f145ca"
+    }
+  ],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "631dde2b156192ba3f33e202"
+  },
+  "address": "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-09-11T13:10:03.594Z"
+  },
+  "role": "admin",
+  "updatedAt": {
+    "$date": "2023-10-12T14:06:24.549Z"
+  },
+  "wallets": [
+    {
+      "$oid": "631dde2b8928a20027f145ca"
+    },
+    {
+      "$oid": "640260b4a3cd410027d355a5"
+    },
+    {
+      "$oid": "648e47b5cce72f0027ea9d09"
+    },
+    {
+      "$oid": "6527fd60cce72f0027eaed5f"
+    }
+  ],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "631f70a58928a20027f14ca1"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x664d30b74a1876d8f846a00e56916129229cd1b4",
+  "createdAt": {
+    "$date": "2022-09-12T17:47:17.243Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-12T17:47:17.243Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636f4b2b156192ba3f3d1790"
+  },
+  "address": "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-11-12T07:28:43.818Z"
+  },
+  "role": "admin",
+  "updatedAt": {
+    "$date": "2023-10-12T14:06:24.549Z"
+  },
+  "wallets": [
+    {
+      "$oid": "636f4b2b8928a20027f18708"
+    },
+    {
+      "$oid": "648e47b5cce72f0027ea9d09"
+    },
+    {
+      "$oid": "6527fd60cce72f0027eaed5f"
+    }
+  ],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "636f4b2b156192ba3f3d1791"
+  },
+  "address": "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2022-11-12T07:28:43.818Z"
+  },
+  "role": "admin",
+  "updatedAt": {
+    "$date": "2023-06-17T23:54:29.322Z"
+  },
+  "wallets": [
+    {
+      "$oid": "636f4b2b8928a20027f18708"
+    },
+    {
+      "$oid": "648e47b5cce72f0027ea9d09"
+    }
+  ],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "639730f88928a20027f198d4"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x75e460f68a5d423cd6eaf768f8f687ec1985ad76",
+  "createdAt": {
+    "$date": "2022-12-12T13:47:36.005Z"
+  },
+  "updatedAt": {
+    "$date": "2022-12-12T13:47:36.005Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6430c2f0a3cd410027d37046"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x3e08d6a54ea782bd0fa9ddc209c4fc4cd43cd3f1",
+  "createdAt": {
+    "$date": "2023-04-08T01:27:12.914Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-08T01:27:12.914Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648e47b5156192ba3f5d1677"
+  },
+  "address": "0x6118b2fcb8075a54b3ef3f02c4d7aa5a5c513afb",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-06-17T23:54:29.322Z"
+  },
+  "role": "admin",
+  "updatedAt": {
+    "$date": "2023-08-25T13:48:41.282Z"
+  },
+  "wallets": [
+    {
+      "$oid": "648e47b5cce72f0027ea9d09"
+    }
+  ],
+  "isAddressVerified": true,
+  "name": "unnamed"
+},
+{
+  "_id": {
+    "$oid": "649f0df2cce72f0027ead6dc"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x2b6aba427e126921ace7fc4a0c08307a518c71a9",
+  "createdAt": {
+    "$date": "2023-06-30T17:16:34.384Z"
+  },
+  "updatedAt": {
+    "$date": "2023-06-30T17:16:34.384Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64e8b88bcce72f0027eadbc7"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0x4a80c66d51a1c96aee4b91b1f0f9d5b4524efc39",
+  "createdAt": {
+    "$date": "2023-08-25T14:19:55.777Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-25T14:19:55.777Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64e90355cce72f0027eadc6c"
+  },
+  "name": "unnamed",
+  "role": "user",
+  "isAddressVerified": true,
+  "wallets": [],
+  "address": "0xcbd39ab7aa381a3be3c63927b687c5dc914d07e5",
+  "createdAt": {
+    "$date": "2023-08-25T19:39:01.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-25T19:39:01.615Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6527ad48cce72f0027eaebe5"
+  },
+  "name": "unnamed",
+  "role": "admin",
+  "isAddressVerified": true,
+  "wallets": [
+    {
+      "$oid": "6527fd60cce72f0027eaed5f"
+    }
+  ],
+  "address": "0xb0c8027b6f9fedb6c5fdd2352e010215b05c153a",
+  "createdAt": {
+    "$date": "2023-10-12T08:24:40.977Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-12T14:06:24.549Z"
+  },
+  "__v": 0
+}]

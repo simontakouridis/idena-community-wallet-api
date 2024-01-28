@@ -1,0 +1,2203 @@
+[{
+  "_id": {
+    "$oid": "62dbb7873de0600027c5465b"
+  },
+  "sends": [
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Translation of Idena Chronicles Oracle Funding",
+  "category": "payForOracle",
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0x8c8bbf6c7048d63cda390fa6dc3c76dbc6270e5f",
+  "amount": 44.7869,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0x5c630b29032bff7f40874a07f370759888a8f274c246df5df5766ed30b1f5c94",
+  "createdAt": {
+    "$date": "2022-07-23T08:55:35.526Z"
+  },
+  "updatedAt": {
+    "$date": "2022-07-23T08:55:35.526Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62ed85ce3de0600027c54cf1"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82"
+  ],
+  "title": "Chronicles translation #89: Romanian",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "62db89792c541c0029829eb7"
+  },
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0xaf001b9348179964306cbbc600554602aee6f85b",
+  "amount": 750,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0x046244e43b2c1d5eb89ba1361d2a84e5c283d1a985fca155754c2f887bf88ce9",
+  "createdAt": {
+    "$date": "2022-08-05T21:04:14.974Z"
+  },
+  "updatedAt": {
+    "$date": "2022-08-05T21:04:14.974Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62ed8bbe3de0600027c54e8f"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Chronicles translation #89: Serbian",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "62db89792c541c0029829eb7"
+  },
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "amount": 750,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0xcd7cfb27fb48c1ea832ac17e27bf2d38af6cb9cdc8ef67485ae9b407bfe9fc4c",
+  "createdAt": {
+    "$date": "2022-08-05T21:29:34.218Z"
+  },
+  "updatedAt": {
+    "$date": "2022-08-05T21:29:34.218Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62edebe7673e7212b9dc4a53"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Chronicles translation #89: Russian",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "62db89792c541c0029829eb7"
+  },
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0x8a9fa6319286EdD353Fdb165736A7b1890d9f984",
+  "amount": 750,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0xab923401447916513886ac1a964781d21373e4fd88ff692144b3d9b53ba801cc",
+  "createdAt": {
+    "$date": "2022-08-05T21:29:34.218Z"
+  },
+  "updatedAt": {
+    "$date": "2022-08-05T21:29:34.218Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62eedd6562b34f0027b85c23"
+  },
+  "sends": [
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23"
+  ],
+  "title": "Epoch #89: Fireshift#8654",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "amount": 100,
+  "push": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "tx": "0x9786f33f4b4a5910859bba2b3a4dcb59302c478afaeed6d165b1e33c9aaa9b56",
+  "createdAt": {
+    "$date": "2022-08-06T21:30:13.511Z"
+  },
+  "updatedAt": {
+    "$date": "2022-08-06T21:30:13.511Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62efa9f462b34f0027b85fa5"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Epoch #89: appropriate-name#3819",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "amount": 100,
+  "push": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "tx": "0xb0f3bc28e11325aa5c41fdaef7a8a2954c394102e8173d8d7ea4b3983e8fb088",
+  "createdAt": {
+    "$date": "2022-08-07T12:03:00.836Z"
+  },
+  "updatedAt": {
+    "$date": "2022-08-07T12:03:00.836Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62fbd03f62b34f0027b86a05"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23"
+  ],
+  "title": "Epoch #89: Ubiubi2018#9073",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "amount": 100,
+  "push": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "tx": "0xfb85a8e1110849aa4bf01efb34bfe72a40bf2a3b56440d56d1739142b500ceb0",
+  "createdAt": {
+    "$date": "2022-08-16T17:13:35.164Z"
+  },
+  "updatedAt": {
+    "$date": "2022-08-16T17:13:35.164Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62fcc55062b34f0027b86ef2"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Epoch 89: zorga#1831",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+  "amount": 100,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0x3ca8d9e0f9f2f094ee293e5f28b36837bf4306d330dd2b36fd47f9738903543f",
+  "createdAt": {
+    "$date": "2022-08-17T10:39:12.022Z"
+  },
+  "updatedAt": {
+    "$date": "2022-08-17T10:39:12.022Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62fd475a62b34f0027b871cf"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85"
+  ],
+  "title": "Chronicles translation #90: Romanian",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "62db89792c541c0029829eb7"
+  },
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0xaf001b9348179964306cbbc600554602aee6f85b",
+  "amount": 750,
+  "push": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "tx": "0x47938d0a75af03cf4403ee456c622acbe62d383d6d03936a3dd53efc07855565",
+  "createdAt": {
+    "$date": "2022-08-17T19:54:03.003Z"
+  },
+  "updatedAt": {
+    "$date": "2022-08-17T19:54:03.003Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62fd592e62b34f0027b874a7"
+  },
+  "sends": [
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Chronicles translation #90: Russian",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "62db89792c541c0029829eb7"
+  },
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0x8a9fa6319286edd353fdb165736a7b1890d9f984",
+  "amount": 750,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0x5545d845a19169fda3a0d841ba9a1d6392886e68999b512b7acd41a372169f12",
+  "createdAt": {
+    "$date": "2022-08-17T21:10:06.357Z"
+  },
+  "updatedAt": {
+    "$date": "2022-08-17T21:10:06.357Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62feaac762b34f0027b879c8"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Chronicles translation #90: Serbian",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "62db89792c541c0029829eb7"
+  },
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "amount": 750,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0x3616641746e2a5bb9cffaddf9187786eee8a6fb2417c8c68b1bfb0946fd18454",
+  "createdAt": {
+    "$date": "2022-08-18T21:10:31.890Z"
+  },
+  "updatedAt": {
+    "$date": "2022-08-18T21:10:31.890Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6317ab1b62b34f0027b87dc7"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85"
+  ],
+  "title": "Chronicles translation #91: Serbian",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "62db89792c541c0029829eb7"
+  },
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "amount": 750,
+  "push": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "tx": "0xad751404054ddd22f647b239bc54fa44855d19b6570ce923611ab851ee532420",
+  "createdAt": {
+    "$date": "2022-09-06T20:18:35.471Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-06T20:18:35.471Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6318e8f362b34f0027b880e0"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Chronicles translation #91: Russian",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "62fd592e62b34f0027b874a7"
+  },
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0x8a9fa6319286edd353fdb165736a7b1890d9f984",
+  "amount": 750,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0xbc1ec035b8c56f3bf06d136dd7c050bb3d08fbc0e8d7c7b2612e83c42b88d689",
+  "createdAt": {
+    "$date": "2022-09-07T18:54:43.567Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-07T18:54:43.567Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6318ec7b62b34f0027b881e8"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23"
+  ],
+  "title": "Chronicles translation #91: Romanian",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "62db89792c541c0029829eb7"
+  },
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0xaf001b9348179964306cbbc600554602aee6f85b",
+  "amount": 750,
+  "push": "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+  "tx": "0x9521082928f6196703080bb8864391ce7ace010ac2901d94294a265e8cc18fd4",
+  "createdAt": {
+    "$date": "2022-09-07T19:09:47.020Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-07T19:09:47.020Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "631ef3da8928a20027f148bf"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Funds for the Round 2",
+  "category": "transferFundsToNewWallet",
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "recipient": "0x86b8ae414be7e2cae9279d1844b6c357d1428883",
+  "amount": 68505.1141,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0x701e4bd7ac4e3f3e5294adce23f7212e5a4c75d45aac33ad5fe668ae6e9433b6",
+  "createdAt": {
+    "$date": "2022-09-12T08:54:51.004Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-12T08:54:51.004Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "631f6c5b8928a20027f14be2"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf"
+  ],
+  "title": "Epoch #92: nudesushi#1839",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+  "amount": 100,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x3b1918c6c63d5fc900b469ae219f67dd9ad633c27e312f304cacbdd34d104f30",
+  "createdAt": {
+    "$date": "2022-09-12T17:28:59.586Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-12T17:28:59.586Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "631f73358928a20027f14d64"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Epoch #92: TravCrypto#5429",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0xd270ff0e68a47faf8b13ff1a419819c39ee9f829",
+  "amount": 100,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x7c85d1b55dbf6a72e8c89c13ccefb224b2ee049c889e2f4bfff8c01990b1a8f9",
+  "createdAt": {
+    "$date": "2022-09-12T17:58:13.545Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-12T17:58:13.545Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "631f746c8928a20027f14e76"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf"
+  ],
+  "title": "Epoch #92: Egyptian pharaoh#3925",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+  "amount": 100,
+  "push": "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+  "tx": "0x45459aac02dd9cbc4348e71ba0dd33f0d26d7bcd4d8b0c67e285c65d1e11eb2d",
+  "createdAt": {
+    "$date": "2022-09-12T18:03:24.004Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-12T18:03:24.004Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "631f7bef8928a20027f1500f"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Epoch #92: zorga#1831",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+  "amount": 100,
+  "push": "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+  "tx": "0x24f17ba7429bc5aa57f26fcf58954a1372132649242a4f0c3a3b36cc7f7ee169",
+  "createdAt": {
+    "$date": "2022-09-12T18:35:27.737Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-12T18:35:27.737Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "631f7e288928a20027f150f9"
+  },
+  "sends": [
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0x00000000544f9e6ac748bc078f33d1165e227346"
+  ],
+  "title": "Epoch #92: Zen#9156",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "amount": 100,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0xb937774c2629dc215b2f306d899c8d96d19141247f22a4063be38f571ce5b7f9",
+  "createdAt": {
+    "$date": "2022-09-12T18:44:56.066Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-12T18:44:56.066Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "632dc2708928a20027f15aae"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23"
+  ],
+  "title": "Fund Oracle Voting",
+  "category": "payForOracle",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x53eeadb4f6d2c7dc1d7f3a4b466226b909f87b43",
+  "amount": 5100,
+  "push": "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+  "tx": "0x85a448f73de7d4e14277afdd578fd0c4324f170a7eed1848f7684eb370519435",
+  "createdAt": {
+    "$date": "2022-09-23T14:28:00.560Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-23T14:28:00.560Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "633935798928a20027f1607c"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf"
+  ],
+  "title": "Governance changes proposal",
+  "category": "payForOracle",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0xc81ffd62eed0b9c8d5613c77e20b20a124d52418",
+  "amount": 5100,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0xbd1fae44289a1269d2eddecca1dc453c7c688e1c4d1c4dfd3eedbf9fdfa36e35",
+  "createdAt": {
+    "$date": "2022-10-02T06:53:45.929Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-02T06:53:45.929Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "633c78708928a20027f162fd"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf"
+  ],
+  "title": "Russian Chronicle Translation #92",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x8a9fa6319286edd353fdb165736a7b1890d9f984",
+  "amount": 500,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x102190c94622f56bbc5d64692aa16685b9dbcf9cf41f38eb92063bb81317474c",
+  "createdAt": {
+    "$date": "2022-10-04T18:16:16.570Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-04T18:16:16.570Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "633c7dac8928a20027f1650e"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Romanian Chronicle Translation #92",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0xaf001b9348179964306cbbc600554602aee6f85b",
+  "amount": 500,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x49c4ecbe87505b91bc7b804d88628452d9eb98419f6727295ec6573bb4f25289",
+  "createdAt": {
+    "$date": "2022-10-04T18:38:36.657Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-04T18:38:36.657Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "633c84df8928a20027f16676"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Serbian Chronicle Translation #92",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "amount": 500,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0xfe0cfef257fcadf5b467274d9b600b4d1db42356076de1148755239995193ec3",
+  "createdAt": {
+    "$date": "2022-10-04T19:09:19.595Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-04T19:09:19.595Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "633cc77c8928a20027f1687e"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Greek Chronicle Translation #92",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x55fd949e854479b1b10e2f8d633863c61fa408d3",
+  "amount": 500,
+  "push": "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+  "tx": "0xc7e8a62bd7ea1665cba653fd7dad6fc597d1e920531f6cd4a3ebe77d560572c0",
+  "createdAt": {
+    "$date": "2022-10-04T23:53:32.906Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-04T23:53:32.906Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "633e594c8928a20027f16a31"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23"
+  ],
+  "title": "Italian Chronicle Translation #92",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x46009bee7f2c3135478df0f7229fe538bf17a2e6",
+  "amount": 500,
+  "push": "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+  "tx": "0x0cf1e2266be83fe6b55c0c139093fdc38d823e6b8e07232ddf7982194aabc3b4",
+  "createdAt": {
+    "$date": "2022-10-06T04:27:56.127Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-06T04:27:56.127Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "634080bd8928a20027f16d94"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf"
+  ],
+  "title": "Fund Oracle Voting",
+  "category": "payForOracle",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x3872105d195c8a3a6f0290f883e0b10c3f4a2167",
+  "amount": 5100,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x04d4d431f97325712c32824de9d8e47eab39e8c1efd6c1ed7fec0f53cea6f333",
+  "createdAt": {
+    "$date": "2022-10-07T19:40:45.251Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-07T19:40:45.251Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63462e5d8928a20027f1709b"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Fund Oracle Voting",
+  "category": "payForOracle",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0xc48cc13299e233ae2b618b899bffe2b593e8440d",
+  "amount": 5100,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x823a14eff8bb332e42ccbe4bda236afab6e2ce001a58cee578da72bfc88ac344",
+  "createdAt": {
+    "$date": "2022-10-12T03:02:53.669Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-12T03:02:53.669Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6353cbf78928a20027f173a8"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23"
+  ],
+  "title": "Fund ARM64 idena-go implementation",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "633eba158928a20027f16a5f"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x2dae0e6887bf698b60c5dba0a41413e339a53fc8",
+  "amount": 10000,
+  "push": "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+  "tx": "0x86cd31e99d3bf1a7296c38e504d516d31644b3bda4dbc528c38c9fbdc8b6e55c",
+  "createdAt": {
+    "$date": "2022-10-22T10:54:47.546Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-22T10:54:47.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "635437c48928a20027f17538"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xd270ff0e68a47faf8b13ff1a419819c39ee9f829",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23"
+  ],
+  "title": "Fund Flip Wars",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "63426cc88928a20027f16e3b"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0xdf99278b151862a67d2f1b42f0a245a7557e7560",
+  "amount": 15000,
+  "push": "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+  "tx": "0xc03066c263652abfb03bfbd9dada51bfe6e49d8f0358130369a948432027cbaf",
+  "createdAt": {
+    "$date": "2022-10-22T18:34:45.006Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-22T18:34:45.006Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "635f61fe8928a20027f17742"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Fund Oracle Voting",
+  "category": "payForOracle",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0xcfe7d0ecd94af5218224dbc62f1ef2c88855ead1",
+  "amount": 5100,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0xfb7ad85e885d2965dc18121a17999af22f613f799a4c4497f9025af2a9a84c3c",
+  "createdAt": {
+    "$date": "2022-10-31T05:49:50.616Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-31T05:49:50.616Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636a77e08928a20027f17d83"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf"
+  ],
+  "title": "Russian Chronicle Translation #93-94",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x8a9fa6319286edd353fdb165736a7b1890d9f984",
+  "amount": 500,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0xc8a13d086cd940ddd2ddd40a00d785c9dde266db475fd7d22bf5e794780e4dce",
+  "createdAt": {
+    "$date": "2022-11-08T15:38:08.412Z"
+  },
+  "updatedAt": {
+    "$date": "2022-11-08T15:38:08.412Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636a79788928a20027f17eca"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Romanian Chronicle Translation #93-94",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0xaf001b9348179964306cbbc600554602aee6f85b",
+  "amount": 500,
+  "push": "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+  "tx": "0x467f1419ff03a6461058e6c3aeafe50d428eb7eefecd07d33374f2eb0e53cc61",
+  "createdAt": {
+    "$date": "2022-11-08T15:44:56.444Z"
+  },
+  "updatedAt": {
+    "$date": "2022-11-08T15:44:56.444Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636a9f268928a20027f180a4"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf"
+  ],
+  "title": "Serbian Chronicle Translation #93-94",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "amount": 500,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0xdc5e3c987b46e30c14d80480b20917337db66877db51a1ddf8e6e5ed426a7f49",
+  "createdAt": {
+    "$date": "2022-11-08T18:25:42.050Z"
+  },
+  "updatedAt": {
+    "$date": "2022-11-08T18:25:42.050Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636bb4c58928a20027f1825a"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Greek Chronicle Translation #93-94",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x55fd949e854479b1b10e2f8d633863c61fa408d3",
+  "amount": 500,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x01d1ff2a3ac94a05aead6d1ba491a56b2ff650017a2d3ade82cb77b347ec2d03",
+  "createdAt": {
+    "$date": "2022-11-09T14:10:13.048Z"
+  },
+  "updatedAt": {
+    "$date": "2022-11-09T14:10:13.048Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636d21178928a20027f183d1"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf"
+  ],
+  "title": "Italian Chronicle Translation #93-94",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x46009bee7f2c3135478df0f7229fe538bf17a2e6",
+  "amount": 500,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x0b5f232a724260050bdeaedd620a3ac9ab78d7df312a09a72350211ce9d1fdcd",
+  "createdAt": {
+    "$date": "2022-11-10T16:04:39.846Z"
+  },
+  "updatedAt": {
+    "$date": "2022-11-10T16:04:39.846Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636f79578928a20027f188ba"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xc591f97ee09e4c5e994901bd23cdcf1144487e23"
+  ],
+  "title": "Transfer funds to next round",
+  "category": "transferFundsToNewWallet",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "recipient": "0x6dd34065fc3a1127e678de9f48adee4c3fbbc470",
+  "amount": 37505.114099,
+  "push": "0xc591f97ee09e4c5e994901bd23cdcf1144487e23",
+  "tx": "0x693b63624c9aba768a612078a3e890605d15a21c4d20830d17ff2e9e824a4a5f",
+  "createdAt": {
+    "$date": "2022-11-12T10:45:43.920Z"
+  },
+  "updatedAt": {
+    "$date": "2022-11-12T10:45:43.920Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636f85d18928a20027f18abe"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26"
+  ],
+  "title": "Fund Testnet Implementation",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "635019568928a20027f171f6"
+  },
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0xa15de4839ed11ac66a6ff0a4e58fe90d99e67b3d",
+  "amount": 5000,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0xdd5859b728b47603f7fc12ea97b7353ef38b3999acf1e0cee5b76f02ec8de83b",
+  "createdAt": {
+    "$date": "2022-11-12T11:38:57.529Z"
+  },
+  "updatedAt": {
+    "$date": "2022-11-12T11:38:57.529Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "639343ff8928a20027f191f3"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0x00000000544f9e6ac748bc078f33d1165e227346"
+  ],
+  "title": "Greek Chronicle Translation #95-96",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0x55fd949e854479b1b10e2f8d633863c61fa408d3",
+  "amount": 500,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x70f994cdcf0212920bc0a793d606eacd21f18e7b9cf1e3c74c082c1310a1df4e",
+  "createdAt": {
+    "$date": "2022-12-09T14:19:43.437Z"
+  },
+  "updatedAt": {
+    "$date": "2022-12-09T14:19:43.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "639346318928a20027f19333"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0x00000000544f9e6ac748bc078f33d1165e227346"
+  ],
+  "title": "Russian Chronicle Translation #95-96",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0x8a9fa6319286edd353fdb165736a7b1890d9f984",
+  "amount": 500,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0xf6df64d49a94e61ebc88e03902c05e1fb85f4928de2fc5f4575e1f8f1121c43d",
+  "createdAt": {
+    "$date": "2022-12-09T14:29:05.080Z"
+  },
+  "updatedAt": {
+    "$date": "2022-12-09T14:29:05.080Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63934b278928a20027f19495"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82"
+  ],
+  "title": "Romanian Chronicle Translation #95-96",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0xaf001b9348179964306cbbc600554602aee6f85b",
+  "amount": 500,
+  "push": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "tx": "0x086261311d0d07a26c2664eb74af6961853820a5c028463880d0fa0b01625d6e",
+  "createdAt": {
+    "$date": "2022-12-09T14:50:15.487Z"
+  },
+  "updatedAt": {
+    "$date": "2022-12-09T14:50:15.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6393572a8928a20027f196d0"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0x00000000544f9e6ac748bc078f33d1165e227346"
+  ],
+  "title": "Serbian Chronicle Translation #95-96",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "amount": 500,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x51b4399ab7c87480dbc38917467611c42e8ffdf3051ab18dad5c9af187f9f3d6",
+  "createdAt": {
+    "$date": "2022-12-09T15:41:30.199Z"
+  },
+  "updatedAt": {
+    "$date": "2022-12-09T15:41:30.199Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63935e078928a20027f197fa"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Italian Chronicle Translation #95-96",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0x46009bee7f2c3135478df0f7229fe538bf17a2e6",
+  "amount": 500,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0x7aa6981667d80c907da3a75787f7a5b996be40201bd0f02938ff04fad8de96b6",
+  "createdAt": {
+    "$date": "2022-12-09T16:10:47.798Z"
+  },
+  "updatedAt": {
+    "$date": "2022-12-09T16:10:47.798Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63f72bf6c8cc9200276bc643"
+  },
+  "sends": [
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0x00000000544f9e6ac748bc078f33d1165e227346"
+  ],
+  "title": "appropriate-name#3819 NPC 69",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "amount": 100,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0xe0f8369311bf5bcb457fd52f273dc88942749700999f81da3fc7fda0010fa7fb",
+  "createdAt": {
+    "$date": "2023-02-23T09:03:50.538Z"
+  },
+  "updatedAt": {
+    "$date": "2023-02-23T09:03:50.538Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63f7c3fda3cd410027d34f73"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26"
+  ],
+  "title": "Zen Delegate Rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "amount": 100,
+  "push": "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+  "tx": "0x4ba0458fff73deedee63d40edfd4ef04373e03fd2a756c04e865bc5933ad1a55",
+  "createdAt": {
+    "$date": "2023-02-23T19:52:29.838Z"
+  },
+  "updatedAt": {
+    "$date": "2023-02-23T19:52:29.838Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63f7c7a4a3cd410027d35085"
+  },
+  "sends": [
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "EDM Delegate Rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+  "amount": 100,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0x819034fecc30071a9d07ccac33c1be52538828e503d738fc975872e48c405ead",
+  "createdAt": {
+    "$date": "2023-02-23T20:08:04.177Z"
+  },
+  "updatedAt": {
+    "$date": "2023-02-23T20:08:04.177Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63f86a88a3cd410027d35218"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0x00000000544f9e6ac748bc078f33d1165e227346"
+  ],
+  "title": "georgiy delegate rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "amount": 100,
+  "push": "0x00000000544f9e6ac748bc078f33d1165e227346",
+  "tx": "0x22962c5446e4a7c64698bee95199852bc51242db8f3db5fd7d25e9fb6311687f",
+  "createdAt": {
+    "$date": "2023-02-24T07:43:04.333Z"
+  },
+  "updatedAt": {
+    "$date": "2023-02-24T07:43:04.333Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63f892e3a3cd410027d35313"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26"
+  ],
+  "title": "Hlolve delegate rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63",
+  "amount": 100,
+  "push": "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+  "tx": "0xa9a8831e03ae3d515f4cadda64a61438b7880ac92907635e7c45268db2a7c91b",
+  "createdAt": {
+    "$date": "2023-02-24T10:35:15.831Z"
+  },
+  "updatedAt": {
+    "$date": "2023-02-24T10:35:15.831Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "640304c8a3cd410027d356d5"
+  },
+  "sends": [
+    "0x00000000544f9e6ac748bc078f33d1165e227346",
+    "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26"
+  ],
+  "title": "Transfer funds to new wallet",
+  "category": "transferFundsToNewWallet",
+  "wallet": {
+    "$oid": "636f4b2b8928a20027f18708"
+  },
+  "recipient": "0x49a0de31fc1c345a96d7ce289ec187e5386caaa3",
+  "amount": 59505.114099,
+  "push": "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+  "tx": "0x1cf7cf53eb1c7f4bbed0e8c76ee3210c166449bd91e7d3851bd90d56f06e1452",
+  "createdAt": {
+    "$date": "2023-03-04T08:43:52.903Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-04T08:43:52.903Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6404f499a3cd410027d35a7b"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf"
+  ],
+  "title": "Community funding proposal oracle - Chronicle translations",
+  "category": "payForOracle",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0xb5f795b2bbe4d249714210bc81d9832b925d9e4b",
+  "amount": 5100,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0x4f2e23639cf46b600de44b8f601ddfb940c2d1862bb252fba94ab39477e18d94",
+  "createdAt": {
+    "$date": "2023-03-05T19:59:21.814Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-05T19:59:21.814Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "640787a9a3cd410027d3647c"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Fireshift proposal oracle",
+  "category": "payForOracle",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x36dae7d35f442eb789d90e57a959cbb1acc5df4f",
+  "amount": 5100,
+  "push": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "tx": "0x6105b741faf11a6d7100c85e42f6697e8f6c493bd75c680ff1713152cf834003",
+  "createdAt": {
+    "$date": "2023-03-07T18:51:21.906Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-07T18:51:21.906Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64177106a3cd410027d36807"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Serbian by npc69 epoch97-102",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "amount": 1000,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0x8a2c6e730e7b6ca38dc03870412eacd51680792b1ac7ac64ff39e8a069d68559",
+  "createdAt": {
+    "$date": "2023-03-19T20:31:02.808Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-19T20:31:02.808Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6418ed40a3cd410027d3698e"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Romanian by Zen epoch97-102",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0xaf001b9348179964306cbbc600554602aee6f85b",
+  "amount": 1000,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0x6cd785ff390c46e9b61d2027f6e3287551f2eb82ddcd0c7717ccc7dd75819ab9",
+  "createdAt": {
+    "$date": "2023-03-20T23:33:20.557Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-20T23:33:20.557Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "641932eca3cd410027d36a76"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85"
+  ],
+  "title": "Russian by IDENA World epoch97-102",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x8a9fa6319286edd353fdb165736a7b1890d9f984",
+  "amount": 1000,
+  "push": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "tx": "0x74330d40407c3df0ccbbfd20ea9541110c785342b9a59123fb627c832329ba32",
+  "createdAt": {
+    "$date": "2023-03-21T04:30:36.753Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-21T04:30:36.753Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "641a0682a3cd410027d36b91"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Greek by TomThisIsIt epoch97-102",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x55fd949e854479b1b10e2f8d633863c61fa408d3",
+  "amount": 1000,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0x8ad56885c6e86f28139814c2c81ef7154af32a94479aaa61e05ee78eb9a5080d",
+  "createdAt": {
+    "$date": "2023-03-21T19:33:22.385Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-21T19:33:22.385Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "641a15b6a3cd410027d36c91"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Italian by Kazeru Wakabayashi",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x46009bee7f2c3135478df0f7229fe538bf17a2e6",
+  "amount": 1000,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0x80cab52be557cd94c66d1b6c7ea3caaec14af04a5edc9cc423f9716a4e874aee",
+  "createdAt": {
+    "$date": "2023-03-21T20:38:14.377Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-21T20:38:14.377Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "641a1ec4a3cd410027d36d70"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Hungarian by Viktor Mate Takacs epoch97-102",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x4e372aeecb60e70be6ed47e0de3fc7c2cecb6bde",
+  "amount": 1000,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0xfde7764ae1aa4859b8cac52d2df1c972adb1803760ff0d77872dd66ba49aabcb",
+  "createdAt": {
+    "$date": "2023-03-21T21:16:52.192Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-21T21:16:52.192Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "641a5531a3cd410027d36f0d"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Fireshift proposal payment part 1",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "641a1fcca3cd410027d36d96"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0xc288a2904494a4f088059e341bbccdc3ada0bcdd",
+  "amount": 5000,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0x92b3d19031b0cfad5f74cb12858c675d1ca9dd34102dc0782e939117e69d0027",
+  "createdAt": {
+    "$date": "2023-03-22T01:09:05.132Z"
+  },
+  "updatedAt": {
+    "$date": "2023-03-22T01:09:05.132Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "643d77b0a3cd410027d372cd"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85"
+  ],
+  "title": "Fireshift proposal part 2",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "641a1fcca3cd410027d36d96"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0xc288a2904494a4f088059e341bbccdc3ada0bcdd",
+  "amount": 5000,
+  "push": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "tx": "0x87b6481cc93222ce02dba7397d7ac926ecdf53610718489187ce20c7fbd376e6",
+  "createdAt": {
+    "$date": "2023-04-17T16:45:36.758Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-17T16:45:36.758Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "643d86b1a3cd410027d37426"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85"
+  ],
+  "title": "Serbian by npc69 epoch97-102 part 2",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x7a9e8d758c68c8fbe54f5791c203b5bd8788bd82",
+  "amount": 500,
+  "push": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "tx": "0xf18d609efa8fb5e0c6f73df85170b7eb8ede1142933a6e299c7d2c5c5e99bb6e",
+  "createdAt": {
+    "$date": "2023-04-17T17:49:37.570Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-17T17:49:37.570Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "643dc08aa3cd410027d376e2"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Romanian by Zen epoch103-105",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0xaf001b9348179964306cbbc600554602aee6f85b",
+  "amount": 500,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0xa90d3c4c8d8c1bd24e6841549b58c555787cb81d06465ed515488357b9b5f2a3",
+  "createdAt": {
+    "$date": "2023-04-17T21:56:26.504Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-17T21:56:26.504Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "643ea952a3cd410027d37a34"
+  },
+  "sends": [
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Russian by Fireshift epoch103-105",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x8a9fa6319286edd353fdb165736a7b1890d9f984",
+  "amount": 500,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0xfc02b842720343c718c50581d510842012a349534404418b1ce25b48f00e6819",
+  "createdAt": {
+    "$date": "2023-04-18T14:29:38.996Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T14:29:38.996Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "643f096aa3cd410027d37b92"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Greek by TomThisIsIt epoch103-105",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x55fd949e854479b1b10e2f8d633863c61fa408d3",
+  "amount": 500,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0x9a3ba948f1669e25a2fed36525568275c7dc496ef6b153c2fc6bb83ba71e7de9",
+  "createdAt": {
+    "$date": "2023-04-18T21:19:38.202Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T21:19:38.202Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "643fe1eca3cd410027d37d8e"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Hungarian translation epoch 103-105 illusionmayhem",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x4e372aeecb60e70be6ed47e0de3fc7c2cecb6bde",
+  "amount": 500,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0xec7993603b877b97e4975d4da2a8f54861665c2297ac4855d70ecb4a838a83a2",
+  "createdAt": {
+    "$date": "2023-04-19T12:43:24.234Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-19T12:43:24.234Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64425d7b060601731057cd93"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "Georgiy delegate reward",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "amount": 100,
+  "tx": "0x99006b2967048de3f47c4284166958a09f1389a6963279b66be25435c3c8d106",
+  "push": "0x936D0b38AC89Ea0A06Ea42Ecf3356beed13640D9",
+  "createdAt": {
+    "$date": "2023-04-22T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-22T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6445bcbfcce72f0027ea8345"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Ubiubi2018 delegate rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "amount": 100,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0x01fbc74353c721bd6647f2928649e849a4121a055552ce24d213f3e649cb53bf",
+  "createdAt": {
+    "$date": "2023-04-23T23:18:23.549Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-23T23:18:23.549Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64467490cce72f0027ea8460"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Pharao delegate rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+  "amount": 100,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0xee46f8db2fb9a6de24fdf3f5e5b74ecb0ae1c403eecb282bee73d02882d8a8eb",
+  "createdAt": {
+    "$date": "2023-04-24T12:22:40.753Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-24T12:22:40.753Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64473a88cce72f0027ea8613"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9"
+  ],
+  "title": "nudesushi delegate rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+  "amount": 100,
+  "push": "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+  "tx": "0xfb59e3a15cbd7d760240083aebd9629e7258ccced936b0c16f651b365a52f88d",
+  "createdAt": {
+    "$date": "2023-04-25T02:27:20.148Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-25T02:27:20.148Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "644ea490cce72f0027ea8fe5"
+  },
+  "sends": [
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85"
+  ],
+  "title": "Fireshift delegate rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "amount": 100,
+  "push": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "tx": "0x587717b21cbb821a4508af4534d2a8f2183175319a26f54761c12697a689db97",
+  "createdAt": {
+    "$date": "2023-04-30T17:25:36.951Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-30T17:25:36.951Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64529696cce72f0027ea966e"
+  },
+  "sends": [
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0x3430b99884e7580e30b87af011aa35c6e095a4c0"
+  ],
+  "title": "Italian translation epoch 103-105 Kazeru Wakabayashi",
+  "category": "fundProposal",
+  "proposal": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x46009bee7f2c3135478df0f7229fe538bf17a2e6",
+  "amount": 500,
+  "push": "0x3430b99884e7580e30b87af011aa35c6e095a4c0",
+  "tx": "0x33b273984d9cb516621385b86ef7580c4343c9b557dcbff17789dc46cd7f7d45",
+  "createdAt": {
+    "$date": "2023-05-03T17:15:02.104Z"
+  },
+  "updatedAt": {
+    "$date": "2023-05-03T17:15:02.104Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64712248cce72f0027ea9a1b"
+  },
+  "sends": [
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Community funding proposal oracle - Chronicle translations. Epoch 108 → 💰∅",
+  "category": "payForOracle",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x7d97f4f946613f59c5642121a56405e59a9b80f2",
+  "amount": 5100,
+  "push": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "tx": "0xe6f1b4df1737fdd45f8bc8a432894ca6363b20dd1be2a4ddfab506a1b92b2f8f",
+  "createdAt": {
+    "$date": "2023-05-26T21:19:04.420Z"
+  },
+  "updatedAt": {
+    "$date": "2023-05-26T21:19:04.420Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648e9f02cce72f0027ea9fb0"
+  },
+  "sends": [
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85"
+  ],
+  "title": "0xa8084d7dee0f3cd6af223747518268d5b619b47fea2db4d9ea547b8b347240fb",
+  "category": "setupNewWallet",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x8ed95e7365156af7c001b9ea6c813803190fb42f",
+  "amount": 24,
+  "push": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "tx": "0xb3f8b009a37412a16840ae78af0a7936cd3efb981c72f0ab759d86f3dc0c4e00",
+  "createdAt": {
+    "$date": "2023-06-18T06:06:58.300Z"
+  },
+  "updatedAt": {
+    "$date": "2023-06-18T06:06:58.300Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64e90a85cce72f0027eadd3e"
+  },
+  "sends": [
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+    "0x6118b2fcb8075a54b3ef3f02c4d7aa5a5c513afb",
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85"
+  ],
+  "title": "Community funding proposal oracle - Chronicle translations",
+  "category": "payForOracle",
+  "wallet": {
+    "$oid": "648e47b5cce72f0027ea9d09"
+  },
+  "recipient": "0x8292d5abf0dd3ce18c798c6ec5bccf1ae0f7d6ff",
+  "amount": 5100,
+  "push": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "tx": "0xaa930260512c98c4e2bf4dd981293021ac16f762432d90860eb1e03a66c41ef2",
+  "createdAt": {
+    "$date": "2023-08-25T20:09:41.990Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-25T20:09:41.990Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6526c18ccce72f0027eae1e5"
+  },
+  "sends": [
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+    "0x6118b2fcb8075a54b3ef3f02c4d7aa5a5c513afb",
+    "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63"
+  ],
+  "title": "EDM Delegate Rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "648e47b5cce72f0027ea9d09"
+  },
+  "recipient": "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+  "amount": 100,
+  "push": "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63",
+  "tx": "0x28e1780c5722c9e7a89b8be747ae3fb77ef96d5ec4dd97df3230013b51ce08d6",
+  "createdAt": {
+    "$date": "2023-10-11T15:38:52.034Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-11T15:38:52.034Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6526da8dcce72f0027eae366"
+  },
+  "sends": [
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+    "0x6118b2fcb8075a54b3ef3f02c4d7aa5a5c513afb",
+    "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63"
+  ],
+  "title": "Fireshift Delegate Rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "648e47b5cce72f0027ea9d09"
+  },
+  "recipient": "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+  "amount": 100,
+  "push": "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63",
+  "tx": "0x686def5dbf4c45e43319e6fb1d172c4bda325efc3a1eb82a76a8db9e0b4dc3b6",
+  "createdAt": {
+    "$date": "2023-10-11T17:25:33.232Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-11T17:25:33.232Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6526f054cce72f0027eae4f4"
+  },
+  "sends": [
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+    "0x6118b2fcb8075a54b3ef3f02c4d7aa5a5c513afb",
+    "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63"
+  ],
+  "title": "Hlove Deleagte Rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "648e47b5cce72f0027ea9d09"
+  },
+  "recipient": "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63",
+  "amount": 100,
+  "push": "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63",
+  "tx": "0xb726dac4bb1f684aac6c6919dd95a234ac3c7dcfaf7281add171c0a97c52e6e5",
+  "createdAt": {
+    "$date": "2023-10-11T18:58:28.691Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-11T18:58:28.691Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65270baacce72f0027eae777"
+  },
+  "sends": [
+    "0x6118b2fcb8075a54b3ef3f02c4d7aa5a5c513afb",
+    "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63",
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26"
+  ],
+  "title": "Nudesushi Delegate Rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "648e47b5cce72f0027ea9d09"
+  },
+  "recipient": "0xaa421c6698fb57be302cd98a3aafe1e997a767bf",
+  "amount": 100,
+  "push": "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+  "tx": "0x07222003e8a6650ae0c4d3beb4cc4f9cf546f5247089482b323bbc1b7903370d",
+  "createdAt": {
+    "$date": "2023-10-11T20:55:06.628Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-11T20:55:06.628Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "652712cdcce72f0027eae919"
+  },
+  "sends": [
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+    "0x6118b2fcb8075a54b3ef3f02c4d7aa5a5c513afb",
+    "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63"
+  ],
+  "title": "QuickMythril Delegate Rewards",
+  "category": "delegateRewards",
+  "wallet": {
+    "$oid": "648e47b5cce72f0027ea9d09"
+  },
+  "recipient": "0x6118b2fcb8075a54b3ef3f02c4d7aa5a5c513afb",
+  "amount": 100,
+  "push": "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63",
+  "tx": "0xdf69c1c4509c2b9cd9596551c3321b299906d45bf700d46dd90ec996108edc7d",
+  "createdAt": {
+    "$date": "2023-10-11T21:25:33.697Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-11T21:25:33.697Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65284ba7cce72f0027eaefef"
+  },
+  "sends": [
+    "0x6118b2fcb8075a54b3ef3f02c4d7aa5a5c513afb",
+    "0xa1bdc2f3de4908ee464f8695448c3f4390111d26",
+    "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63"
+  ],
+  "title": "Funds to the Round 6 Wallet",
+  "category": "transferFundsToNewWallet",
+  "wallet": {
+    "$oid": "648e47b5cce72f0027ea9d09"
+  },
+  "recipient": "0x94543642cc8b079bb791fcb156a6eb51013f5171",
+  "amount": 39131.114099,
+  "push": "0x4af9d0f5a405b0db32970fd88e84fd72f8be0c63",
+  "tx": "0xc8b186c954df590ad6203ce8efd815a6933cd5bd065ee6739ea58a4fbcb8c6b8",
+  "createdAt": {
+    "$date": "2023-10-12T19:40:23.367Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-12T19:40:23.367Z"
+  },
+  "__v": 0
+}]

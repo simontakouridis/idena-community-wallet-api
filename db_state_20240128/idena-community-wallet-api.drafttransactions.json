@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "648ea3f4cce72f0027eaa00c"
+  },
+  "sends": [
+    "0xa550f64c53c35b2965936ca67e6dad4211b79b85",
+    "0x936d0b38ac89ea0a06ea42ecf3356beed13640d9",
+    "0x8ed95e7365156af7c001b9ea6c813803190fb42f"
+  ],
+  "title": "Transfer funds to new wallet",
+  "category": "transferFundsToNewWallet",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "recipient": "0x03830c3141250758d2152f72a9fc74313788cd72",
+  "amount": 39731.114099,
+  "createdAt": {
+    "$date": "2023-06-18T06:28:04.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-06-18T08:56:07.474Z"
+  },
+  "__v": 0
+}]

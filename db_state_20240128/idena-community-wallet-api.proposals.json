@@ -1,0 +1,316 @@
+[{
+  "_id": {
+    "$oid": "62db89792c541c0029829eb7"
+  },
+  "transactions": [
+    {
+      "$oid": "62edebe7673e7212b9dc4a53"
+    },
+    {
+      "$oid": "62ed85ce3de0600027c54cf1"
+    },
+    {
+      "$oid": "62ed8bbe3de0600027c54e8f"
+    },
+    {
+      "$oid": "62fcc90962b34f0027b86f37"
+    },
+    {
+      "$oid": "62fd47e162b34f0027b871f5"
+    },
+    {
+      "$oid": "62fd598c62b34f0027b874f1"
+    },
+    {
+      "$oid": "63178c4462b34f0027b87c02"
+    },
+    {
+      "$oid": "6318ea1f62b34f0027b880f7"
+    }
+  ],
+  "title": "Translation of Idena Chronicles",
+  "description": "Rewarding the translations of Idena Chronicles to different languages every epoch.",
+  "oracle": "0x8c8bbf6c7048d63cda390fa6dc3c76dbc6270e5f",
+  "wallet": {
+    "$oid": "62cc01262c541c00298298ab"
+  },
+  "acceptanceStatus": "accepted",
+  "fundingStatus": "funded",
+  "createdAt": {
+    "$date": "2022-07-23T05:39:05.580Z"
+  },
+  "updatedAt": {
+    "$date": "2022-09-08T08:01:31.751Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "632daa9d8928a20027f15927"
+  },
+  "transactions": [
+    {
+      "$oid": "633c27328928a20027f160fb"
+    },
+    {
+      "$oid": "633c78ba8928a20027f16324"
+    },
+    {
+      "$oid": "633c7dd58928a20027f16525"
+    },
+    {
+      "$oid": "633c85258928a20027f1668f"
+    },
+    {
+      "$oid": "633d0d4e8928a20027f168bc"
+    },
+    {
+      "$oid": "6367aa3f8928a20027f17852"
+    },
+    {
+      "$oid": "636a78048928a20027f17da9"
+    },
+    {
+      "$oid": "636a79a08928a20027f17ef2"
+    },
+    {
+      "$oid": "636a9f658928a20027f180bd"
+    },
+    {
+      "$oid": "636bbc7b8928a20027f18295"
+    },
+    {
+      "$oid": "63933a688928a20027f19085"
+    },
+    {
+      "$oid": "6393449b8928a20027f1924a"
+    },
+    {
+      "$oid": "639348218928a20027f1936f"
+    },
+    {
+      "$oid": "63934f1e8928a20027f195b3"
+    },
+    {
+      "$oid": "6393576e8928a20027f196f6"
+    }
+  ],
+  "title": "Translation of Idena Chronicles",
+  "description": "Rewarding the translations of Idena Chronicles to different languages for 3 epochs",
+  "oracle": "0x53eeadb4f6d2c7dc1d7f3a4b466226b909f87b43",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "acceptanceStatus": "accepted",
+  "fundingStatus": "funded",
+  "createdAt": {
+    "$date": "2022-09-23T12:46:21.207Z"
+  },
+  "updatedAt": {
+    "$date": "2022-12-21T08:01:52.990Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "633eba158928a20027f16a5f"
+  },
+  "transactions": [
+    {
+      "$oid": "6353b8518928a20027f172d0"
+    }
+  ],
+  "title": "ARM64 idena-go implementation",
+  "description": "Implementation of the Idena node in ARM64 arhitecture",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "acceptanceStatus": "accepted",
+  "fundingStatus": "funded",
+  "createdAt": {
+    "$date": "2022-10-06T11:20:53.696Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-22T11:02:42.304Z"
+  },
+  "__v": 0,
+  "oracle": "0x3872105d195c8a3a6f0290f883e0b10c3f4a2167"
+},
+{
+  "_id": {
+    "$oid": "63426cc88928a20027f16e3b"
+  },
+  "transactions": [
+    {
+      "$oid": "6353ce678928a20027f173f0"
+    }
+  ],
+  "title": "Idena Flip Wars",
+  "description": "Funding Flip Wars Tournaments",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "acceptanceStatus": "accepted",
+  "fundingStatus": "funded",
+  "createdAt": {
+    "$date": "2022-10-09T06:40:08.722Z"
+  },
+  "updatedAt": {
+    "$date": "2022-10-22T18:34:45.003Z"
+  },
+  "__v": 0,
+  "oracle": "0xc48cc13299e233ae2b618b899bffe2b593e8440d"
+},
+{
+  "_id": {
+    "$oid": "635019568928a20027f171f6"
+  },
+  "transactions": [
+    {
+      "$oid": "636f7b4a8928a20027f18907"
+    }
+  ],
+  "title": "Idena testnet implementation",
+  "description": "Implementation of a testnet for Idena along with necessary tools",
+  "wallet": {
+    "$oid": "631dde2b8928a20027f145ca"
+  },
+  "acceptanceStatus": "accepted",
+  "fundingStatus": "funded",
+  "createdAt": {
+    "$date": "2022-10-19T15:35:50.714Z"
+  },
+  "updatedAt": {
+    "$date": "2022-11-12T11:39:18.019Z"
+  },
+  "__v": 0,
+  "oracle": "0xcfe7d0ecd94af5218224dbc62f1ef2c88855ead1"
+},
+{
+  "_id": {
+    "$oid": "64174027a3cd410027d366e9"
+  },
+  "transactions": [
+    {
+      "$oid": "6417412da3cd410027d36701"
+    },
+    {
+      "$oid": "64177450a3cd410027d36843"
+    },
+    {
+      "$oid": "6418ee1da3cd410027d369b2"
+    },
+    {
+      "$oid": "6419db66a3cd410027d36ad4"
+    },
+    {
+      "$oid": "641a083fa3cd410027d36bce"
+    },
+    {
+      "$oid": "641a15e2a3cd410027d36cac"
+    },
+    {
+      "$oid": "643d7c59a3cd410027d3730c"
+    },
+    {
+      "$oid": "643da43ba3cd410027d37588"
+    },
+    {
+      "$oid": "643dc134a3cd410027d3771f"
+    },
+    {
+      "$oid": "643ea9a1a3cd410027d37a5c"
+    },
+    {
+      "$oid": "643f0b0da3cd410027d37bbe"
+    },
+    {
+      "$oid": "64529696cce72f0027ea966e"
+    }
+  ],
+  "title": "Translation of chronicles",
+  "description": "https://ipfs.idena.io/ipfs/bafkreiecm5ova35zihtcdfyevdzq6wbhtxrbttiaklstv3mhds2hy4uoye",
+  "oracle": "0xb5f795b2bbe4d249714210bc81d9832b925d9e4b",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "acceptanceStatus": "accepted",
+  "fundingStatus": "funded",
+  "createdAt": {
+    "$date": "2023-03-19T17:02:31.162Z"
+  },
+  "updatedAt": {
+    "$date": "2023-06-12T20:41:41.619Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "641a1fcca3cd410027d36d96"
+  },
+  "transactions": [
+    {
+      "$oid": "641a2119a3cd410027d36dc6"
+    },
+    {
+      "$oid": "643c4f97a3cd410027d37138"
+    }
+  ],
+  "title": "Fireshift ansible role proposal",
+  "description": "https://ipfs.idena.io/ipfs/bafkreicvp3fsht4hxfnlo3ph2bjglpc5evvdsemkuhzabfgzfspd5fkaga",
+  "oracle": "0x36dae7d35f442eb789d90e57a959cbb1acc5df4f",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "acceptanceStatus": "accepted",
+  "fundingStatus": "funded",
+  "createdAt": {
+    "$date": "2023-03-21T21:21:16.272Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-17T19:07:18.049Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "646fe1aacce72f0027ea9877"
+  },
+  "transactions": [],
+  "title": "Translation of chronicles. Epoch 108 → 💰∅",
+  "description": "https://ipfs.idena.io/ipfs/bafkreifrtucdgrsg5rmrjfo5xzmcerwqzviuk6dtltb5mfxqqij6ayypsu",
+  "oracle": "0x7d97f4f946613f59c5642121a56405e59a9b80f2",
+  "wallet": {
+    "$oid": "640260b4a3cd410027d355a5"
+  },
+  "acceptanceStatus": "pending",
+  "fundingStatus": "pending",
+  "createdAt": {
+    "$date": "2023-05-25T22:31:06.029Z"
+  },
+  "updatedAt": {
+    "$date": "2023-05-25T22:31:06.029Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64e8a4c6cce72f0027ead8b9"
+  },
+  "transactions": [],
+  "title": "Translation of Chronicles",
+  "description": "https://ipfs.idena.io/ipfs/bafkreigalsutyjf6ntslpzskhyge3tclgkv6qozusbr257tfxckx74lyqy",
+  "oracle": "0x8292d5abf0dd3ce18c798c6ec5bccf1ae0f7d6ff",
+  "wallet": {
+    "$oid": "648e47b5cce72f0027ea9d09"
+  },
+  "acceptanceStatus": "pending",
+  "fundingStatus": "pending",
+  "createdAt": {
+    "$date": "2023-08-25T12:55:34.104Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-25T12:55:34.104Z"
+  },
+  "__v": 0
+}]
